@@ -1,1 +1,1 @@
-# janxkoci.github.io
+# Jan Koci's blog
