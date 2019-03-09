@@ -42,6 +42,8 @@ I'm by NO means an expert. On the contrary - I'm far from the level of dr. Flego
 
 But precisely for this reason I know the struggles of beginners, because they are still in my memory (some quite alive). I went through similar problems recently and I think it might have helped if I had something akin to this small tutorial at hand. Google can be overwhelming at times, right? :)
 
+**Update:** Originally I started with Google Docs, this version uses Markdown and Github instead.
+
 ***
 
 ## Connection
