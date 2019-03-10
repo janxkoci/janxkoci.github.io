@@ -243,7 +243,7 @@ There are several tools in linux that allow you to process files in very efficie
 The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl).
 
 ## Don't go crazy
-There is no reason go crazy about command line. There are quite a few programs that were designed by pros and wizards to make your life in the command line much easier. From file managers through text editors to internet browsers and even movie players.
+There is no reason to go crazy about command line. There are quite a few programs that were designed by pros and wizards to make your life in the command line much easier. From file managers through text editors to internet browsers and even movie players.
 
 ### Midnight Commander - the savior
 
