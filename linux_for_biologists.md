@@ -1,9 +1,3 @@
----
-title: Jan Kočí
-description: A biologist in search of the meaning of things
-theme: jekyll-theme-minimal
----
-
 # Genome analysis survival guide
 *Linux for terrified biologists*
 
