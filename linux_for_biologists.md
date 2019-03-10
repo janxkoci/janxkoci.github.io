@@ -229,7 +229,7 @@ To **quit** the interactive mode just press letter `q` (it's usually shown on th
 
 	q # quits the interactive mode (so it's not a real command)
 
-![top task manager](../img/top.png)
+![top task manager](./img/top.png)
 
 Top (above) is a popular interactive task manager for linux command line. Learn more with man top.
 So going back to our example with fasta files and having quick look at them, you can send the results of head into interactive browser less:
@@ -283,7 +283,7 @@ Very simple and popular command line text editor. The shortcuts at the bottom bu
 
 	nano new.txt # opens empty new.txt file in the nano editor
 
-![nano text editor](../img/nano.png)
+![nano text editor](./img/nano.png)
 
 #### Other editors
 There are other editors, popular with linux gurus and commandline wizards, such as Vi / Vim or Emacs. Although they are powerful, in my opinion they are too complicated for beginners' use (I use mcedit most of the time, or in case I need something more sophisticated, I switch to graphical editor, such as Sublime text). But it's good to know they exist. So if you see some online tutorial, which uses `vim` command to edit a text file, you can replace `vim` with some other editor you prefer. Vi/vim is very common in online tutorials as it's an editor that is installed on *every* linux computer on the planet, which is not the case for other editors. However there is a way out - later I show you how to install nano if it's missing on your system (most modern systems like Ubuntu have nano though).
@@ -349,13 +349,13 @@ Package managers are very common on Linux distributions - they make installing s
 
 **Update:** I haven't tested this rigorously, but I would be careful using both on the same machine because of the PATH variable (which also depends on if you include any of them in the system path). I used both on the same machine to some extent by including only one (conda) in the system PATH.
 
-![GNOME Software](../img/gnome-software.png)
+![GNOME Software](./img/gnome-software.png)
 
 Even though these managers aim at HPCs, you can also use them on your own laptop. And it’s often a good idea to do so - you will have the same versions of packages on both laptop and HPC, so you don’t have to worry about incompatibility of your scripts with different versions of packages. It’s then very easy to develop and test your scripts and pipelines, before running them on HPC and full data for weeks.
 
 #### Conda
 
-![conda software manager](../img/conda.png)
+![conda software manager](./img/conda.png)
 
 [Conda](https://conda.io/docs/) started as a package manager to distribute python packages for data science, as part of Anaconda project. However since then it grew into general purpose package manager with several software repositories (channels) for science and bioinformatics, the most important being [Bioconda](https://bioconda.github.io/). These days, conda will let you install a lot of scientific software, including:
 
