@@ -247,7 +247,7 @@ There is no reason to go crazy about command line. There are quite a few program
 
 ### Midnight Commander - the savior
 
-![midnight commander](../img/mc.png)
+![midnight commander](./img/mc.png)
 
 Start this advanced file manager with simple:
 
