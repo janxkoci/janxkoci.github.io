@@ -232,6 +232,7 @@ To **quit** the interactive mode just press letter `q` (it's usually shown on th
 ![top task manager](./img/top.png)
 
 Top (above) is a popular interactive task manager for linux command line. Learn more with man top.
+
 So going back to our example with fasta files and having quick look at them, you can send the results of head into interactive browser less:
 
 	head *fasta | less
