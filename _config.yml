@@ -2,3 +2,8 @@ title: Jan Kočí
 description: "Open all the science! #ASAPbio"
 
 theme: minima
+
+header_pages:
+  - index.md
+  - tutorials.md
+  
