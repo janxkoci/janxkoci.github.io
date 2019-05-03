@@ -1,5 +1,4 @@
 title: Jan Kočí
 description: "Open all the science! #ASAPbio"
-logo: img/jankoci.png
 
-theme: jekyll-theme-minimal
+theme: minima
