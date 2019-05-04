@@ -2,7 +2,7 @@
 *Linux for terrified biologists*
 
 ## Contents
-- Intro - What is this?
+- Preface - What is this?
 - Connection
   - SSH - secure shell
 - First linux commands
@@ -29,14 +29,14 @@
     - Conda
     - Linuxbrew
 - Sequences everywhere
-- Data overview
-- Quality control
-- Burrows-Wheeler algorithm (BWA)
+  - Data overview
+    - Quality control
+  - Burrows-Wheeler algorithm (BWA)
 
 ***
 
 ## Preface - What is this?
-This started as my notes for the Genome analysis course taught by Dr. Flegontov, that I took at the University of Ostrava in 2016. Soon I turned it into a short tutorial for my classmates (and my supervisor, then interested in learning the subject). I still update it every now and then, so it's work in progress. You can comment on stuff you would like to clarify or expand and I'll try my best to improve it.
+This document started as my notes for the Genome analysis course taught by Dr. Flegontov, that I took at the University of Ostrava in 2016. Soon I turned it into a short tutorial for my classmates (and my supervisor, then interested in learning the subject). I still update it every now and then, so it's work in progress. You can comment on stuff you would like to clarify or expand and I'll try my best to improve it.
 
 I'm by NO means an expert. On the contrary - I'm far from the level of dr. Flegontov, only maybe a few lessons ahead of other students in the group.
 
