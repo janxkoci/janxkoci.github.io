@@ -1,4 +1,8 @@
-# Genome analysis survival guide
+---
+layout: post
+title: Genome analysis survival guide
+---
+
 *Linux for terrified biologists*
 
 ## Contents
@@ -337,7 +341,7 @@ screen -d -r PID # detach and reattach to screen with PID
 You can find more info in the `man screen` page (if you don't have it on your local computer, you can still read it on the HPC/cluster where you connect to).
 
 ### Qsub / Bsub & co.
-The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you find they use specialized software to manage their computing jobs (also because they have vastly more users to compete for resources they have to manage). The two I've encountered are `qsub` and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
+The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you will find they use specialized software to manage their computing jobs (also because they have to manage vastly more users that compete for resources). The two I've encountered are `qsub` and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
 
 ***
 
