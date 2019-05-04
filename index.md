@@ -1,4 +1,7 @@
-# Articles
+---
+layout: page
+title: Articles
+---
 
 ## Linux for terrified biologists
 I wrote a tutorial a while ago to help biologists like me with the struggles of linux command line. I decided to publish it here for larger audience to benefit from it. [Read more...](./linux_for_biologists.md).

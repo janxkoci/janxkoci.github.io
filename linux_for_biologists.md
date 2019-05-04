@@ -14,7 +14,7 @@
   - Standard output and redirecting
   - Wildcards
   - Interactive commands
-- Don't go crazy
+- Life in the commandline
   - Midnight Commander - the saviour
   - Text editors
     - MCedit
@@ -67,6 +67,8 @@ The number after `-p` is port; 22 is default and can be omitted, but you can be 
 To connect from **Mac** you also just open **Terminal** and type something like this:
 
 	ssh studentuser@genome.osu.cz -p22
+
+***
 
 ## First linux commands
 ### Looking around
@@ -134,6 +136,8 @@ This is probably the most helpful thing you will find here :)
 
 *Tip: the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)*
 
+***
+
 ## Syntax
 You may have noticed a few similarities with the R language. Linux command line actually uses its own language called bash (but can easily use some others, like awk or perl).
 
@@ -166,6 +170,8 @@ I'm showing the preferred syntax, but you can actually switch sides in R:
 So the analogy between the two languages becomes more obvious.
 
 *Tip: note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.*
+
+***
 
 ## Playing with files and stuff
 
@@ -237,13 +243,17 @@ So going back to our example with fasta files and having quick look at them, you
 
 	head *fasta | less
 
+***
+
 ## Processing files
 There are several tools in linux that allow you to process files in very efficient ways. Some more simple, some more complex (in fact up to the level of programming languages), but their basics are usually easy to master. The most useful tools range from `sed` or `tr` to `awk` and `perl`. Some of them are way too complex (e.g. perl) to cover here fully, so I will just introduce them at a level I consider useful.
 
 ### sed
 The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl).
 
-## Don't go crazy
+***
+
+## Life in the commandline
 There is no reason to go crazy about command line. There are quite a few programs that were designed by pros and wizards to make your life in the command line much easier. From file managers through text editors to internet browsers and even movie players.
 
 ### Midnight Commander - the savior
@@ -254,13 +264,13 @@ Start this advanced file manager with simple:
 
 	mc # launches Midnight Commander
 
-After opening, you will see two panels listing content of current folder - you can use **Tab** to switch between the panels (mouse clicks also work here, which is kind of a miracle).
+After opening, you will see two panels listing content of current folder - you can use **Tab** to switch between the panels (mouse clicks also work here, which is kind of cool).
 
 On the bottom you see 10 buttons with labels and numbers - the numbers correspond to keys on top row of your keyboard, labeled **F1 - F10**. So for example to copy file(s) between panels (if you open different folders in them) you just press **F5**. Easy :)
 
 *Tip: select multiple files with **Shift** (if you use ssh from Ubuntu) or **Insert** (Putty on Windows & Xubuntu terminal)*
 
-View (**F3**) and Edit (**F4**) are also little miracles on their own - you can use View to see content of various files (as long as they are not binary, so it works on text files, fasta, fastq and even displays basic pdf and html files! - how cool is that? :))
+View (**F3**) and Edit (**F4**) are little miracles on their own - you can use View to see content of various files (as long as they are not binary, so it works on text files, fasta, fastq and even displays basic pdf and html files! - how cool is that? :))
 
 Edit can open and modify many text files and scripts. In case of script files you get features like syntax highlighting etc.
 
@@ -288,6 +298,8 @@ Very simple and popular command line text editor. The shortcuts at the bottom bu
 
 #### Other editors
 There are other editors, popular with linux gurus and commandline wizards, such as Vi / Vim or Emacs. Although they are powerful, in my opinion they are too complicated for beginners' use (I use mcedit most of the time, or in case I need something more sophisticated, I switch to graphical editor, such as Sublime text). But it's good to know they exist. So if you see some online tutorial, which uses `vim` command to edit a text file, you can replace `vim` with some other editor you prefer. Vi/vim is very common in online tutorials as it's an editor that is installed on *every* linux computer on the planet, which is not the case for other editors. However there is a way out - later I show you how to install nano if it's missing on your system (most modern systems like Ubuntu have nano though).
+
+***
 
 ## Keep the work running
 When you login to some linux server, you usually plan to run some kind of pipeline or analysis, that usually runs for several hours or days, so you don't want to bother your own computer with it. However if you just login and enter your commands, you will soon find out that after you logout, your session was interrupted and all your programs were closed. Just like if you turned off your own computer, your programs would also close.
@@ -326,6 +338,8 @@ You can find more info in the `man screen` page (if you don't have it on your lo
 
 ### Qsub / Bsub & co.
 The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you find they use specialized software to manage their computing jobs (also because they have vastly more users to compete for resources they have to manage). The two I've encountered are `qsub` and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
+
+***
 
 ## Installing software
 There are many ways to install software on linux system, however the most important question for you is whether you have **admin (root) privileges** or not (I assume you *have* internet connection, otherwise you have bigger problem at hand). If you use linux on your own desktop/laptop, you almost surely have these privileges. That means you can easily install software from online repositories with package managers like apt, yum, or pacman. However in case of linux servers or HPCs (High Performance Computers) needed for many resource-intensive analyses and pipelines, the chances are you don't have admin rights.
@@ -384,6 +398,8 @@ conda install -c conda-forge nano # installs newer version of nano editor from t
 
 #### Linuxbrew
 [Linuxbrew](http://linuxbrew.sh/) is a port of popular Homebrew package manager from macOS. It is based on ruby instead of python, however as with conda, the language used is not important to the end user. It also lets you install software on HPCs and clusters without root (admin) privileges, using its own repositories, called taps, to download and install software.
+
+***
 
 ## Sequences everywhere
 
