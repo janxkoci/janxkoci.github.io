@@ -411,9 +411,4 @@ conda install -c conda-forge nano # installs newer version of nano editor from t
 
 #### Quality control
 
-Burrows-Wheeler algorithm (BWA)
-wikipedia: https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform
-You can also check out manual page of BWA mapper by typing
-man bwa
-Tip: GATTACA is also a great movie with genetics-related plot ;)
 More stuff soon, now I'm a bit busy :)
