@@ -440,5 +440,13 @@ But in case you are wondering: we used wildcard `file*.fq.gz` to select our file
 Playing with files like this is all fun and good, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real or full of technical artifacts.
 
 #### FastQC
+Probably the most widely used program for QC is FastQC. It has graphical window, or can be used from commandline if you have many files.
+
+    fastqc # start the program in graphical mode
+    fastqc *fq.gz # run the program on all fastq files in current folder
+    
+The first command opens a graphical window, where you select a file for QC using the menu. The second command runs the analysis on specified file, in this case all files in a directory that end with *fq.gz*. It will output the reports in html format, that you can open in any web browser.
+
+*Tip: to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
 
 More stuff soon, now I'm a bit busy :)
