@@ -406,9 +406,39 @@ conda install -c conda-forge nano # installs newer version of nano editor from t
 ***
 
 ## Sequences everywhere
+Most sequencing projects start with raw data from sequencing centre, typically in [FastQ format](https://en.wikipedia.org/wiki/FASTQ_format). The common file extensions are *fastq* or *fq*, or in case of files compressed by `gzip`, the extension would be e.g. *fq.gz*. Some sequencing centres send the data with *txt.gz* extension, but the format is still fastq.
 
 ### Data overview
+The FastQ format consists of four lines per each read, meaning we can count lines and divide by 4 to figure out number of reads sequenced. With uncompressed fastq, this could be as simple as:
 
-#### Quality control
+    wc -l file.fq # counts number of lines in file.fq
+    
+For instance paired-end (PE) data usually come in two files and they should have the same number of lines. We can use wildcards to check both files with one command:
+
+    wc -l sequences*.fq # counts number of lines in files such as sequences_F.fq & sequences_R.fq
+    
+With compressed files, as is usually the case due to their size, it gets little more tricky. `wc` doesn't work with uncompressed files, so we have to use `zcat` (`cat` for gzipped files) or other method to uncompress the data first. The command `zcat` also has to uncompress the whole file before `wc` can count lines, so it can take considerably longer. The simplest command would look like this:
+
+    zcat file.fq.gz | wc -l
+    
+However with PE data it's not as simple, as `zcat` would concatenate them (just like `cat` would) and `wc -l` would give us just number of lines in the concatenated file, so we should use `for` loop instead of wildcards:
+
+    for f in file*.fq.gz
+    do
+        zcat $f | wc -l
+    done
+    
+Or on one line:
+
+    for f in file*.fq.gz; do zcat $f | wc -l; done
+    
+So now you know two ways to write `for` loop in bash - didn't even hurt, did it ;)
+
+But in case you are wondering: we used wildcard `file*.fq.gz` to select our files, then the `for` loop assigns them one by one to the *variable* `f`. We then *call* this variable by using it with the dollar sign, like `$f`. Then the `for` loop uses keywords like `do` and `done` at the beginning and the end of our loop, respectively. And in the one-liner version, you have to put a few semicolons `;` to delimit lines or blocks of code. That's pretty much it :)
+
+### Quality control
+Playing with files like this is all fun and good, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real or full of technical artifacts.
+
+#### FastQC
 
 More stuff soon, now I'm a bit busy :)
