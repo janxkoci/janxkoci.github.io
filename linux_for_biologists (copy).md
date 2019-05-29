@@ -5,8 +5,6 @@ title: Genome analysis survival guide
 
 *Linux for terrified biologists*
 
-{% include toc.html %}
-
 ## Contents
 - Preface - What is this?
 - Connection
