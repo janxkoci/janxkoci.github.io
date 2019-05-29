@@ -379,7 +379,7 @@ conda install -c conda-forge nano # installs newer version of nano editor from t
 Most sequencing projects start with raw data from sequencing centre, typically in [FastQ format](https://en.wikipedia.org/wiki/FASTQ_format). The common file extensions are *fastq* or *fq*, or in case of files compressed by `gzip`, the extension would be e.g. *fq.gz*. Some sequencing centres send the data with *txt.gz* extension, but the format is still fastq.
 
 ### Data overview
-The FastQ format consists of four lines per each read, meaning we can count lines and divide by 4 to figure out number of reads sequenced. With uncompressed fastq, this could be as simple as:
+The [FastQ format](https://en.wikipedia.org/wiki/FASTQ_format) consists of four lines per each read, meaning we can count lines and divide by 4 to figure out number of reads sequenced. With uncompressed fastq, this could be as simple as:
 
     wc -l file.fq # counts number of lines in file.fq
     
@@ -420,3 +420,6 @@ The first command opens a graphical window, where you select a file for QC using
 *Tip: to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
 
 More stuff soon, now I'm a bit busy :)
+
+## Comments
+If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/dc630a17ca29ffdb18e70894942f3c01).
