@@ -7,38 +7,6 @@ title: Genome analysis survival guide
 
 {% include toc.html %}
 
-## Contents
-- Preface - What is this?
-- Connection
-  - SSH - secure shell
-- First linux commands
-  - Looking around
-  - Command parameters
-  - Helpful manuals
-- Syntax
-- Playing with files and stuff
-  - Standard output and redirecting
-  - Wildcards
-  - Interactive commands
-- Life in the commandline
-  - Midnight Commander - the saviour
-  - Text editors
-    - MCedit
-    - Nano
-    - Other editors
-- Keep the work running
-  - Disown & nohup
-  - Screen
-  - Qsub / Bsub & co.
-- Installing software
-  - Scientific package managers
-    - Conda
-    - Linuxbrew
-- Sequences everywhere
-  - Data overview
-    - Quality control
-  - Burrows-Wheeler algorithm (BWA)
-
 ***
 
 ## Preface - What is this?
