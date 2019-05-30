@@ -223,12 +223,18 @@ So going back to our example with fasta files and having quick look at them, you
 There are several tools in linux that allow you to process files in very efficient ways. Some more simple, some more complex (in fact up to the level of programming languages), but their basics are usually easy to master. The most useful tools range from `sed` or `tr` to `awk` and `perl`. Some of them are way too complex (e.g. perl) to cover here fully, so I will just introduce them at a level I consider useful.
 
 ### sed
-The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl).
+The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl). You can think of it as **find-and-replace** feature from your Office suite, but on steroids. Most notably, `sed` can use **regular expressions** to filter and process your data.
+
+Typical `sed` syntax could look like this:
+
+    sed 's/OLD/NEW/g' file.txt # substitute OLD with NEW in file.txt and print to stdout
+
+This command takes a file.txt and _substitutes_ (`s`) the pattern OLD with pattern NEW _globally_ (`g`).
 
 ***
 
 ## Life in the commandline
-There is no reason to go crazy about command line. There are quite a few programs that were designed by pros and wizards to make your life in the command line much easier. From file managers through text editors to internet browsers and even movie players.
+There is no reason to go crazy from the command line. Quite a few programs were designed by pros and wizards to make your life in the command line much easier. From file managers and text editors to internet browsers and even movie players.
 
 ### Midnight Commander - the savior
 
@@ -349,11 +355,11 @@ Historically, in such cases your options would include (based on my experience, 
 **But** there are new better options, coming from this century :)
 
 ### Scientific package managers
-Package managers are very common on Linux distributions - they make installing software easy by connecting to curated repositories, from which you can download and install any available software using these managers. Some managers aim at general users and look like e.g. Google Play store (see elementary AppCenter below), others are focused on power users. Most of the general package managers present in Linux distributions require root (admin) privileges. However several package managers have been developed specifically for scientists and use on HPCs and clusters without such privileges. These include `conda` and `linuxbrew`. Most programs are available via both managers, however I found few edge cases when a package was only found in one of them. ~~However it’s possible to install and use both at the same time.~~
-
-**Update:** I haven't tested this rigorously, but I would be careful using both on the same machine because of the PATH variable (which also depends on if you include any of them in the system path). I used both on the same machine to some extent by including only one (conda) in the system PATH.
+Package managers are very common on Linux distributions - they make installing software easy by connecting to curated repositories, from which you can download and install any available software using these managers. Some managers aim at general users and look like Google Play store (see e.g. elementary AppCenter below), other managers are focused on power users.
 
 ![elementary AppCenter](./img/appcenter.png)
+
+Most of the general package managers present in Linux distributions require root (admin) privileges. However several package managers have been developed specifically for scientists and for use on HPCs and clusters without such privileges. These include `conda` and `linuxbrew`. Most programs are available via both managers, however I found few edge cases when a package was only found in one of them. ~~However it’s possible to install and use both at the same time.~~ **Update:** I haven't tested this rigorously, but I would be careful using both on the same machine because of the PATH variable (which also depends on if you include any of them in the system path). I used both on the same machine to some extent by including only one (conda) in the system PATH.
 
 Even though these managers aim at HPCs, you can also use them on your own laptop. And it’s often a good idea to do so - you will have the same versions of packages on both laptop and HPC, so you don’t have to worry about incompatibility of your scripts with different versions of packages. It’s then very easy to develop and test your scripts and pipelines, before running them on HPC and full data for weeks.
 
