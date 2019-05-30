@@ -397,7 +397,7 @@ conda install -c conda-forge nano # installs newer version of nano editor from t
 ***
 
 ## Sequences everywhere
-Most sequencing projects start with raw data from sequencing centre, typically in [FastQ format](https://en.wikipedia.org/wiki/FASTQ_format). The common file extensions are *fastq* or *fq*, or in case of files compressed by `gzip`, the extension would be e.g. *fq.gz*. Some sequencing centres send the data with *txt.gz* extension, but the format is still fastq.
+Most sequencing projects start with raw data from sequencing centre, typically in [FastQ format](https://en.wikipedia.org/wiki/FASTQ_format). The common file extensions are *fastq* or *fq*, or in case of files compressed by `gzip`, the extension would be e.g. *fq.gz*. Some sequencing centres send the data with *txt.gz* extension, but the format is still gzipped fastq.
 
 ### Data overview
 The [FastQ format](https://en.wikipedia.org/wiki/FASTQ_format) consists of four lines per each read, meaning we can count lines and divide by 4 to figure out number of reads sequenced. With uncompressed fastq, this could be as simple as:
@@ -427,11 +427,11 @@ So now you know two ways to write `for` loop in bash - didn't even hurt, did it 
 
 But in case you are wondering: we used wildcard `file*.fq.gz` to select our files, then the `for` loop assigns them one by one to the *variable* `f`. We then *call* this variable by using it with the dollar sign, like `$f`. Then the `for` loop uses keywords like `do` and `done` at the beginning and the end of our loop, respectively. And in the one-liner version, you have to put a few semicolons `;` to delimit lines or blocks of code. That's pretty much it :)
 
-### Quality control
-Playing with files like this is all fun and game, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real or full of technical artifacts.
+### Quality control (QC)
+Playing with files like this is all fun and game, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
 
 #### FastQC
-Probably the most widely used program for QC is FastQC. It has graphical window, or can be used from commandline if you have many files.
+Probably the most widely used program for QC is [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). It has graphical window, or can be used from commandline if you have many files.
 
     fastqc # start the program in graphical mode
     fastqc *fq.gz # run the program on all fastq files in current folder
@@ -440,7 +440,22 @@ The first command opens a graphical window, where you select a file for QC using
 
 *Tip: to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
 
-More stuff soon, now I'm a bit busy :)
+#### MultiQC
+[MultiQC](https://multiqc.info/) is a package designed to assess multiple samples at once. It uses output of FastQC and compiles an interactive report for all samples.
+
+#### AfterQC
+[AfterQC](https://github.com/OpenGene/AfterQC) is a tool that can compile a QC report of your data, but also perform trimming of your reads based on various criteria.
+
+However I'm personally careful to use this tool, as a lot of the trimming options are enabled by default and it's quite tedious to switch off the ones you don't want. There is an option to produce just the report without any trimming though.
+
+### Trimming
+Speaking of trimming, it is usually the next step after QC. It is done to remove low-quality bases (or reads), artificial DNA (such as leftover sequencing adapters or PhiX spike-in), or just to trim reads to the same length (which is required in some subsequent tasks, such as *de novo* assembly).
+
+There are several popular trimming tools that typically use one of the two main approaches to trimming. Tools like [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) or [fqtrim](http://ccb.jhu.edu/software/fqtrim/index.shtml) use sliding-window method to scan reads, while e.g. [BBDuk](https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/bbduk-guide/) uses k-mers to scan reads.
+
+The importance of read trimming depends on what do you plan next with those reads. If you want to use those reads for *de novo* assembly, you have to perform trimming very carefully. If you just want to align (map) reads to assembled reference genome or transcriptome, then you can afford some suboptimal trimming, as mapping to reference will take care of some of your problems (e.g. adapters will not map to a reference that doesn't contain their sequence).
+
+**More stuff soon, now I'm a bit busy :)**
 
 ## Comments
 If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/dc630a17ca29ffdb18e70894942f3c01).
