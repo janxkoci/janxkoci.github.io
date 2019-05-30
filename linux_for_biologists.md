@@ -311,7 +311,22 @@ screen -d -r PID # detach and reattach to screen with PID
 You can find more info in the `man screen` page (if you don't have it on your local computer, you can still read it on the HPC/cluster where you connect to).
 
 ### Qsub / Bsub & co.
-The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you will find they use specialized software to manage their computing jobs (also because they have to manage vastly more users that compete for resources). The two I've encountered are `qsub` and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
+The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you will find they use specialized software to manage their computing jobs (also because they have to manage vastly more users that compete for resources).
+
+The two systems I've encountered are `qsub` (from PBS system) and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
+
+Here are just a few quick example qsub commands to get you started:
+
+	qsub -N Job_name -l walltime=10:30,mem=32GB job_script.sh # job submission with in-line PBS parameters
+	qstat -u username # check status of username's jobs
+	qstat # status of all jobs
+	qstat -a # status of all jobs with more info
+	qdel JOB.ID # kill job with JOB.ID
+
+You can also check the manual pages:
+
+	man pbs # manual page of PBS system
+	man qsub # manual page for qsub command
 
 ***
 
