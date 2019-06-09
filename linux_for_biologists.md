@@ -441,7 +441,9 @@ The first command opens a graphical window, where you select a file for QC using
 *Tip: to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
 
 #### MultiQC
-[MultiQC](https://multiqc.info/) is a package designed to assess multiple samples at once. It uses output of FastQC and compiles an interactive report for all samples.
+[MultiQC](https://multiqc.info/) is a package designed to assess multiple samples at once. It uses output of FastQC and compiles an interactive report for all samples. 
+
+It is especially useful in projects that use reduced representation of genomes to scan large populations or hybrid zones, such as *sequence capture* (also known as *targeted enrichment*), *RADseq* (restriction-site associated DNA), *GBS* or similar methods.
 
 #### AfterQC
 [AfterQC](https://github.com/OpenGene/AfterQC) is a tool that can compile a QC report of your data, but also perform trimming of your reads based on various criteria.
@@ -454,6 +456,32 @@ Speaking of trimming, it is usually the next step after QC. It is done to remove
 There are several popular trimming tools that typically use one of the two main approaches to trimming. Tools like [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) or [fqtrim](http://ccb.jhu.edu/software/fqtrim/index.shtml) use sliding-window method to scan reads, while e.g. [BBDuk](https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/bbduk-guide/) uses k-mers to scan reads.
 
 The importance of read trimming depends on what do you plan next with those reads. If you want to use those reads for *de novo* assembly, you have to perform trimming very carefully. If you just want to align (map) reads to assembled reference genome or transcriptome, then you can afford some suboptimal trimming, as mapping to reference will take care of some of your problems (e.g. adapters will not map to a reference that doesn't contain their sequence).
+
+### *De novo* assembly
+*De novo* sequence assembly is quite advanced topic so I will touch only briefly on a few aspects. Use the lectures of dr. Flegontov or other resources to get more in-depth knowlege of the topic.
+
+The aim of assembly is to reconstruct long sequence of DNA from very short fragments, produced e.g. by Next-gen sequencing. For instance Illumina reads span from 75bp up to 300bp (as of 2018-19). Paired-end reads give extra power, but they are not nearly long enough - they allow reading of fragments from both ends, but Illumina still requires fragments around 700bp. So a specialized algorithms had been developed to use overlaps between many reads to create so called **contigs** - a somewhat longer pieces of DNA sequence, sometimes spanning whole genes.
+
+The final goal of assembly is to produce a reference sequence, such as a genome, a transcriptome, or other, that can be then used for mapping (alignment).
+
+Several quality packages exist to perform *de novo* assembly of your sequences, some more general, others more optimized to data of certain size (e.g. bacterial genomes) or type (e.g. RADseq).
+
+Popular assemblers include Velvet, Abyss, SPAdes, SOAPdenovo2, or tadpole (from BBtools). These typically work with shotgun sequencing data, such as produced by whole-genome sequencing (WGS), RNAseq, or sequence capture. Rainbow is a popular assembler for RADseq data produced by the original protocol of Baird et al (2008).
+
+#### Redundancy reduction
+After assembly it's often necessary to clean the reference from repetitive sequences, pseudogenes, paralogues, and other redundant sequences. One reason is to improve subsequent mapping, where multiple mapping candidates in the reference would dilute the coverage of our data. You also want to remove false signal from e.g. pseudogenes before you analyze data.
+
+There are several approaches to deal with redundancy. Some popular packages include CD-Hit software or the MCL algorithm.
+
+#### Quality assessment
+After successful assembly and cleaning of the reference, one might want to see how the reference improved and if it can be improved further.
+
+### Scaffolding
+Scaffolding typically follows the assembly step. The aim is to connect separate contigs into longer sequences, using e.g. paired-end (PE) data or some other source, e.g. mate pairs (MP). The contigs are connected by gaps, no new sequence data are added. This information on physical proximity of contigs is exctracted from known length of fragments, that were sequenced from both ends (e.g. using PE or MP).
+
+Scaffolding is useful for better understanding of expression, linkage (and LD in populations), and other useful features of sequencing data.
+
+### Mapping
 
 **More stuff soon, now I'm a bit busy :)**
 
