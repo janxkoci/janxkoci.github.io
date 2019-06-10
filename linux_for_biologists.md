@@ -432,10 +432,12 @@ There are actually simpler ways to do this even with wildcards. For example you 
     zgrep -c ^ file*fq.gz # counts all lines in each file matching the wildcard
     zgrep -c '' file*fq.gz # again counts all lines in each file
     
-However, you will still need `for` loops to process your files with specialized bioinformatics softwares. For instance most trimmers or mappers (aligners) allow at most two files for primary input and wouldn't work if you try to provide all your files in one step. You will need the `for` loop in the future.
+However, you will still need `for` loops to process your files with specialized bioinformatics softwares. For instance most trimmers or mappers (aligners) allow at most two files for primary input and wouldn't work if you try to provide all your files in one step. You *will* need the `for` loop in the future.
+
+*Tip: you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I know only about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).*
 
 ### Quality control (QC)
-Playing with files like this is all fun and game, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
+Playing with files like this is all fun and games, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
 
 #### FastQC
 Probably the most widely used program for QC is [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). It has graphical window, or can be used from commandline if you have many files.
