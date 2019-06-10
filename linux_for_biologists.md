@@ -427,6 +427,13 @@ So now you know two ways to write `for` loop in bash - didn't even hurt, did it 
 
 But in case you are wondering: we used wildcard `file*.fq.gz` to select our files, then the `for` loop assigns them one by one to the *variable* `f`. We then *call* this variable by using it with the dollar sign, like `$f`. Then the `for` loop uses keywords like `do` and `done` at the beginning and the end of our loop, respectively. And in the one-liner version, you have to put a few semicolons `;` to delimit lines or blocks of code. That's pretty much it :)
 
+There are actually simpler ways to do this even with wildcards. For example you could use `zgrep -c` to count lines with some pattern present on all lines, such as beginning of line `^` or empty string `''`.
+
+    zgrep -c ^ file*fq.gz # counts all lines in each file matching the wildcard
+    zgrep -c '' file*fq.gz # again counts all lines in each file
+    
+However, you will still need `for` loops to process your files with specialized bioinformatics softwares. For instance most trimmers or mappers (aligners) allow at most two files for primary input and wouldn't work if you try to provide all your files in one step. You will need the `for` loop in the future.
+
 ### Quality control (QC)
 Playing with files like this is all fun and game, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
 
