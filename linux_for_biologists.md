@@ -359,7 +359,7 @@ Package managers are very common on Linux distributions - they make installing s
 
 ![elementary AppCenter](./img/appcenter.png)
 
-Most of the general package managers present in Linux distributions require root (admin) privileges. However several package managers have been developed specifically for scientists and for use on HPCs and clusters without such privileges. These include `conda` and `linuxbrew`. Most programs are available via both managers, however I found few edge cases when a package was only found in one of them. ~~However it’s possible to install and use both at the same time.~~ **Update:** I haven't tested this rigorously, but I would be careful using both on the same machine because of the PATH variable (which also depends on if you include any of them in the system path). I used both on the same machine to some extent by including only one (conda) in the system PATH.
+Most of the general package managers present in Linux distributions require root (admin) privileges. However several package managers have been developed specifically for scientists and for use on HPCs and clusters without such privileges. These include **conda** and **linuxbrew**. Most programs are available via both managers, however I found few edge cases when a package was only found in one of them. ~~However it’s possible to install and use both at the same time.~~ **Update:** I haven't tested this rigorously, but I would be careful using both on the same machine because of the PATH variable (which also depends on if you include any of them in the system path). I used both on the same machine to some extent by including only one (conda) in the system PATH.
 
 Even though these managers aim at HPCs, you can also use them on your own laptop. And it’s often a good idea to do so - you will have the same versions of packages on both laptop and HPC, so you don’t have to worry about incompatibility of your scripts with different versions of packages. It’s then very easy to develop and test your scripts and pipelines, before running them on HPC and full data for weeks.
 
@@ -392,7 +392,7 @@ conda install -c conda-forge nano # installs newer version of nano editor from t
 ```
 
 #### Linuxbrew
-[Linuxbrew](http://linuxbrew.sh/) is a port of popular Homebrew package manager from macOS. It is based on ruby instead of python, however as with conda, the language used is not important to the end user. It also lets you install software on HPCs and clusters without root (admin) privileges, using its own repositories, called taps, to download and install software.
+[Linuxbrew](http://linuxbrew.sh/) is a port of popular Homebrew package manager from macOS. It is based on ruby instead of python, however as with conda, the language used is not important to the end user. It also lets you install software on HPCs and clusters without root (admin) privileges, using its own repositories, called taps, to download and install software. The most useful tap for bioinformatics is [BrewSci-bio](https://brewsci.github.io/homebrew-bio/).
 
 ***
 
