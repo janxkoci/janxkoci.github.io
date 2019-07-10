@@ -83,7 +83,7 @@ cd / # change to root directory of the system (like C:/)
 cd ~ # go home ;) i.e. /home/studentuser
 ```
 
-*Tip: one dot represents directory you are currently in. That's sometimes used for running scripts etc.*
+> Tip: one dot represents directory you are currently in. That's sometimes used for running scripts etc.
 
 To copy file into some subdirectory, just type:
 
@@ -92,7 +92,7 @@ cp file.txt Jena/ # copies file.txt into Jena directory
 cp file.txt Jena/renamed.txt # rename file during transfer
 ```
 
-*Tip: If you want to recall previous command, press arrow up (like in R). Now you can modify it and confirm with Enter. Also, if you start typing name of file/folder like Je.. and hit Tab, it will fill in the rest of the name - magic! :) But only if there is nothing else starting with the same letters Je.. - in such case hit Tab second time and it will tell you what other files match what you type. That’s double magic, my friend :)*
+> Tip: If you want to recall previous command, press arrow up (like in R). Now you can modify it and confirm with Enter. Also, if you start typing name of file/folder like Je.. and hit Tab, it will fill in the rest of the name - magic! :) But only if there is nothing else starting with the same letters Je.. - in such case hit Tab second time and it will tell you what other files match what you type. That’s double magic, my friend :)
 
 	ls Jena # check content of subfolder without going there
 
@@ -108,7 +108,7 @@ Every command tool has its manual, which lists all the parameters and other usef
 
 This is probably the most helpful thing you will find here :)
 
-*Tip: the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)*
+> Tip: the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)
 
 ***
 
@@ -127,7 +127,7 @@ Many parameters have shortcuts which look like this:
 
 	function -p value # shorter version
 
-*Tip: You can find both long and short version in the man page of particular command.*
+> Tip: You can find both long and short version in the man page of particular command.
  
 Let's try something more. In R you can see objects in the environment with `ls()` but you can also save its result into new object like this:
 
@@ -143,7 +143,7 @@ I'm showing the preferred syntax, but you can actually switch sides in R:
 
 So the analogy between the two languages becomes more obvious.
 
-*Tip: note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.*
+> Tip: note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.
 
 ***
 
@@ -223,13 +223,23 @@ So going back to our example with fasta files and having quick look at them, you
 There are several tools in linux that allow you to process files in very efficient ways. Some more simple, some more complex (in fact up to the level of programming languages), but their basics are usually easy to master. The most useful tools range from `sed` or `tr` to `awk` and `perl`. Some of them are way too complex (e.g. perl) to cover here fully, so I will just introduce them at a level I consider useful.
 
 ### sed
-The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl). You can think of it as **find-and-replace** feature from your Office suite, but on steroids. Most notably, `sed` can use **regular expressions** to filter and process your data.
+The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl). You can think of it as **find-and-replace** feature from your Office suite, but on steroids. Most notably, `sed` can use **regular expressions** (regex) to filter and process your data.
 
 Typical `sed` syntax could look like this:
 
     sed 's/OLD/NEW/g' file.txt # substitute OLD with NEW in file.txt and print to stdout
 
-This command takes a file.txt and _substitutes_ (`s`) the pattern OLD with pattern NEW _globally_ (`g`).
+This command takes a file.txt and _substitutes_ (`s`) the pattern OLD with pattern NEW, _globally_ (`g`), i.e. every occurrence on every line. If you omit the `g`, it will replace just the first occurrence of OLD on every line.
+
+By the way, the slashes used for separating patterns are more of a convention - if you need something else, you can replace them. Consider this example, where you want to replace slashes `/` with double-slashes `//`:
+
+    sed 's/\//\/\//g' file.txt # wait what?
+    sed 's#/#//#g' # aha ok!
+
+In the first version we had to *escape* the slashes as special characters. By using a different separator we could avoid the issue entirely. A more realistic case would be for example to process filenames with paths in your script, that often contain slashes.
+
+### tr
+
 
 ***
 
@@ -346,7 +356,7 @@ There are however still cases where you need to install software on your own:
 - On smaller HPCs, run by e.g. university, usually managed by one or few person(s).
 - On big clusters, if the software in their modules is old / outdated (or you just need different version).
 
-Historically, in such cases your options would include (based on my experience, in order of preference):
+**Historically**, in such cases your options would include (based on my experience, in order of preference):
 
 - Email the admin and ask him to install the package you need. Do a bit of googling on what version you need and if it depends on other packages (“dependencies”).
 - Some packages run without installation, then you are in luck. For example all java programs run without installation and Java environment is usually pre-installed on HPCs and clusters. Downside is - they are Java programs.
