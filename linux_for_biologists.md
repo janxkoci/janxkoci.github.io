@@ -83,7 +83,7 @@ cd / # change to root directory of the system (like C:/)
 cd ~ # go home ;) i.e. /home/studentuser
 ```
 
-> Tip: one dot represents directory you are currently in. That's sometimes used for running scripts etc.
+*__Tip:__ one dot represents directory you are currently in. That's sometimes used for running scripts etc.*
 
 To copy file into some subdirectory, just type:
 
@@ -92,7 +92,7 @@ cp file.txt Jena/ # copies file.txt into Jena directory
 cp file.txt Jena/renamed.txt # rename file during transfer
 ```
 
-> Tip: If you want to recall previous command, press arrow up (like in R). Now you can modify it and confirm with Enter. Also, if you start typing name of file/folder like Je.. and hit Tab, it will fill in the rest of the name - magic! :) But only if there is nothing else starting with the same letters Je.. - in such case hit Tab second time and it will tell you what other files match what you type. That’s double magic, my friend :)
+*__Tip:__ If you want to recall previous command, press arrow up (like in R). Now you can modify it and confirm with Enter. Also, if you start typing name of file/folder like Je.. and hit Tab, it will fill in the rest of the name - magic! :) But only if there is nothing else starting with the same letters Je.. - in such case hit Tab second time and it will tell you what other files match what you type. That’s double magic, my friend :)*
 
 	ls Jena # check content of subfolder without going there
 
@@ -108,7 +108,7 @@ Every command tool has its manual, which lists all the parameters and other usef
 
 This is probably the most helpful thing you will find here :)
 
-> Tip: the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)
+*__Tip:__ the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)*
 
 ***
 
@@ -127,7 +127,7 @@ Many parameters have shortcuts which look like this:
 
 	function -p value # shorter version
 
-> Tip: You can find both long and short version in the man page of particular command.
+*__Tip:__ You can find both long and short version in the man page of particular command.*
  
 Let's try something more. In R you can see objects in the environment with `ls()` but you can also save its result into new object like this:
 
@@ -143,7 +143,7 @@ I'm showing the preferred syntax, but you can actually switch sides in R:
 
 So the analogy between the two languages becomes more obvious.
 
-> Tip: note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.
+*__Tip:__ note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.*
 
 ***
 
@@ -169,13 +169,13 @@ If you use `cat` with just one file, it will just print it on your screen, which
 
 This is the famous **unix `|` pipe**. It takes standard output (**stdout**) of one command (here `cat`) and uses it as standard input (**stdin**) of another command (here `wc`).
 
-*Tip: one > symbol will create new file or overwrite existing one. If you want to append output to the end of existing file instead of overwriting it, you can use >>.*
+*__Tip:__ one > symbol will create new file or overwrite existing one. If you want to append output to the end of existing file instead of overwriting it, you can use >>.*
 
 You can already do something useful with these, for example count number of sequences inside your fasta file (each sequence starts with “>” as you probably know):
 
 	cat alignment.fasta | grep '>' | wc -l # gives number of sequences in alignment.fasta file
 
-*Tip: stdin and stdout are example of classic programming terminology and it may be handy to know such stuff when you google for solution to your problems. In many scenarios **stdout is your screen** and **stdin is your keyboard** (if you don't redirect them). There is also standard error (**stderr**), which is sometimes used as second output, typically to print error messages (but can be used for other purposes too).*
+*__Tip:__ stdin and stdout are example of classic programming terminology and it may be handy to know such stuff when you google for solution to your problems. In many scenarios **stdout is your screen** and **stdin is your keyboard** (if you don't redirect them). There is also standard error (**stderr**), which is sometimes used as second output, typically to print error messages (but can be used for other purposes too).*
 
 ### Wildcards
 Wildcards (also called globbing patterns) allow you to work on multiple files at the same time. By far the most widely used is asterisk `*`, which allows you to select multiple files by using it with common pattern in their names. For example, you can join all fasta files inside current folder with simple:
@@ -258,13 +258,13 @@ After opening, you will see two panels listing content of current folder - you c
 
 On the bottom you see 10 buttons with labels and numbers - the numbers correspond to keys on top row of your keyboard, labeled **F1 - F10**. So for example to copy file(s) between panels (if you open different folders in them) you just press **F5**. Easy :)
 
-*Tip: select multiple files with **Shift** (if you use ssh from Ubuntu) or **Insert** (Putty on Windows & Xubuntu terminal)*
+*__Tip:__ select multiple files with **Shift** (if you use ssh from Ubuntu) or **Insert** (Putty on Windows & Xubuntu terminal)*
 
 View (**F3**) and Edit (**F4**) are little miracles on their own - you can use View to see content of various files (as long as they are not binary, so it works on text files, fasta, fastq and even displays basic pdf and html files! - how cool is that? :))
 
 Edit can open and modify many text files and scripts. In case of script files you get features like syntax highlighting etc.
 
-*Tip: sometimes (probably first time) after pressing F3 or F4 you are asked to select default viewer or editor. The natives of MC are easy to pick by name - **mcview** and **mcedit**. I'm talking about these in here.*
+*__Tip:__ sometimes (probably first time) after pressing F3 or F4 you are asked to select default viewer or editor. The natives of MC are easy to pick by name - **mcview** and **mcedit**. I'm talking about these in here.*
 
 Sometimes you need to run some regular commands when you have MC open. You can “minimize” MC with keyboard shortcut **Ctrl+o** (or **C-o** for short). You can later get back to MC with the same shortcut.
 
@@ -277,7 +277,7 @@ MCedit can even be started by itself, without the MC. For instance you can simpl
 
 You can edit existing files the same way, just type a name of some file in the folder to open it.
 
-*Tip: name completion with Tab key works as expected ;)*
+*__Tip:__ name completion with Tab key works as expected ;)*
 
 #### Nano
 Very simple and popular command line text editor. The shortcuts at the bottom buttons work with Ctrl and the corresponding letter. So to e.g. exit `nano` editor you would press Ctrl+x (it will also ask you to save any changes). You can start it the same way as other editors:
@@ -311,7 +311,7 @@ bwa mem ref.fa reads.fq > aln-se.sam & disown
 nohup bwa mem ref.fa reads.fq > aln-se.sam &
 ```
 
-*Tip: the `&` symbol moves the command into background so you can input other commands (e.g. `disown`). It doesn't let you logout from HPC without interrupting your job (on its own), but it allows for some rudimentary multitasking.*
+*__Tip:__ the `&` symbol moves the command into background so you can input other commands (e.g. `disown`). It doesn't let you logout from HPC without interrupting your job (on its own), but it allows for some rudimentary multitasking.*
 
 If you find that `nohup` doesn't work with some programs, it might be because programmers of the software in question can change `nohup` behaviour. In such case `disown` should be a safer option.
 
@@ -444,7 +444,7 @@ There are actually simpler ways to do this even with wildcards. For example you 
     
 However, you will still need `for` loops to process your files with specialized bioinformatics softwares. For instance most trimmers or mappers (aligners) allow at most two files for primary input and wouldn't work if you try to provide all your files in one step. You *will* need the `for` loop in the future.
 
-*Tip: you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I know only about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).*
+*__Tip:__ you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I know only about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).*
 
 ### Quality control (QC)
 Playing with files like this is all fun and games, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
@@ -457,7 +457,7 @@ Probably the most widely used program for QC is [FastQC](https://www.bioinformat
     
 The first command opens a graphical window, where you select a file for QC using the menu. The second command runs the analysis on specified file, in this case all files in a directory that end with *fq.gz*. It will output the reports in html format, that you can open in any web browser.
 
-*Tip: to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
+*__Tip:__ to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
 
 #### MultiQC
 [MultiQC](https://multiqc.info/) is a package designed to assess multiple samples at once. It uses output of FastQC and compiles an interactive report for all samples. 
