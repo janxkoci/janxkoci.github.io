@@ -54,7 +54,9 @@ This is the infamous **linux command line** and it waits for your input (that is
 
 To look around, type:
 
-	ls # lists contents of current folder
+```bash
+ls # lists contents of current folder
+```
 
 which will show content of a folder you are in. If you are familiar with R statistical environment you might notice it looks like R command `ls()`. And indeed it has similar function. You might also notice the `#` with **comment** after it - that's also similar to R. I will use it to comment on what something does - if you copy it into the command line with the command, nothing extra happens, just as in R ;) **Everything between `#` and new line (Enter) is ignored by linux.**
 
@@ -169,7 +171,7 @@ If you use `cat` with just one file, it will just print it on your screen, which
 
 This is the famous **unix `|` pipe**. It takes standard output (**stdout**) of one command (here `cat`) and uses it as standard input (**stdin**) of another command (here `wc`).
 
-*__Tip:__ one > symbol will create new file or overwrite existing one. If you want to append output to the end of existing file instead of overwriting it, you can use >>.*
+*__Tip:__ one `>` symbol will create new file or overwrite existing one. If you want to append output to the end of existing file instead of overwriting it, you can use `>>`.*
 
 You can already do something useful with these, for example count number of sequences inside your fasta file (each sequence starts with “>” as you probably know):
 
@@ -231,15 +233,36 @@ Typical `sed` syntax could look like this:
 
 This command takes a file.txt and _substitutes_ (`s`) the pattern OLD with pattern NEW, _globally_ (`g`), i.e. every occurrence on every line. If you omit the `g`, it will replace just the first occurrence of OLD on every line.
 
-By the way, the slashes used for separating patterns are more of a convention - if you need something else, you can replace them. Consider this example, where you want to replace slashes `/` with double-slashes `//`:
+By the way, the slashes used for separating patterns are more of a convention - if you need something else, you can replace them. Consider this example, where you would replace slashes `/` with double-slashes `//`:
 
-    sed 's/\//\/\//g' file.txt # wait what?
-    sed 's#/#//#g' # aha ok!
+```bash
+sed 's/\//\/\//g' file.txt # wait what?
+sed 's#/#//#g' file.txt # aha ok!
+```
 
-In the first version we had to *escape* the slashes as special characters. By using a different separator we could avoid the issue entirely. A more realistic case would be for example to process filenames with paths in your script, that often contain slashes.
+In the first version we had to *escape* the slashes as special characters (by prepending them with backslashes `\`). By using a different separator we could avoid the issue entirely. A more realistic case would be for example to process filenames with paths in your script, that often contain slashes.
+
+You can play around with `sed` by piping to it e.g. from the `echo` command:
+
+```bash
+echo Hello world! # prints Hello world!
+echo Hello world! | sed 's/ /\t/' # replaces space with tabulator
+```
+
+Sed can also do much more than just simple find-and-replace operations - it can count lines based on a pattern, process every odd, even, or 71th line in your file and so on. It really gives you quite a power to select the right lines as well as processing capabilities. You can also chain several `sed` commands with pipes into a pipeline for even more complex processing.
 
 ### tr
+Tr is another tool for doing replacements of patterns in your files. I found it to be quite simple to use and more user friendly in some cases (for instance working with line breaks in sed can be little tricky, while tr is pretty straightforward).
 
+The basic syntax of tr would look as follows:
+
+```bash
+tr "OLD" "NEW" file.txt # replace OLD with NEW in file.txt
+tr -d "OLD" file.txt # delete OLD from file
+tr " " "\t" file.txt # replace each space with a tabulator
+```
+
+Tr is not as popular in the online tutorials as sed is, probably because it's little limited in what it can do when compared to sed. However it's very simple to use and can be also chained by pipes into more complex processing tool, so feel free to play around with it.
 
 ***
 
@@ -422,16 +445,20 @@ With compressed files, as is usually the case due to their size, it gets little 
 
     zcat file.fq.gz | wc -l # uncompress file.fq.gz on the fly and count lines
     
-However with PE data it's not as simple, as `zcat` would concatenate them (just like `cat` would) and `wc -l` would give us just number of lines in the concatenated file, so we should use `for` loop instead of wildcards:
+However with PE data it's not as simple, as `zcat` would concatenate them (just like `cat` would) and `wc -l` would give us just number of lines in the concatenated file, so we should use `for` loop instead of just wildcards:
 
-    for f in file*.fq.gz
-    do
-        zcat $f | wc -l
-    done
-    
+```bash
+for f in file*.fq.gz
+do
+    zcat $f | wc -l
+done
+```
+
 Or on one line:
 
-    for f in file*.fq.gz; do zcat $f | wc -l; done
+```bash
+for f in file*.fq.gz; do zcat $f | wc -l; done
+```
     
 So now you know two ways to write `for` loop in bash - didn't even hurt, did it ;)
 
@@ -444,7 +471,7 @@ There are actually simpler ways to do this even with wildcards. For example you 
     
 However, you will still need `for` loops to process your files with specialized bioinformatics softwares. For instance most trimmers or mappers (aligners) allow at most two files for primary input and wouldn't work if you try to provide all your files in one step. You *will* need the `for` loop in the future.
 
-*__Tip:__ you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I know only about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).*
+*__Tip:__ you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I only know about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).*
 
 ### Quality control (QC)
 Playing with files like this is all fun and games, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
@@ -470,14 +497,14 @@ It is especially useful in projects that use reduced representation of genomes t
 However I'm personally careful to use this tool, as a lot of the trimming options are enabled by default and it's quite tedious to switch off the ones you don't want. There is an option to produce just the report without any trimming though.
 
 ### Trimming
-Speaking of trimming, it is usually the next step after QC. It is done to remove low-quality bases (or reads), artificial DNA (such as leftover sequencing adapters or PhiX spike-in), or just to trim reads to the same length (which is required in some subsequent tasks, such as *de novo* assembly).
+Speaking of trimming, it is usually the next step after QC. It is done to remove low-quality bases (or reads), artificial DNA (such as leftover sequencing adapters or PhiX spike-in), or just to trim reads to the same length (which might be required in some subsequent tasks, such as *de novo* assembly).
 
 There are several popular trimming tools that typically use one of the two main approaches to trimming. Tools like [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) or [fqtrim](http://ccb.jhu.edu/software/fqtrim/index.shtml) use sliding-window method to scan reads, while e.g. [BBDuk](https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/bbduk-guide/) uses k-mers to scan reads.
 
 The importance of read trimming depends on what do you plan next with those reads. If you want to use those reads for *de novo* assembly, you have to perform trimming very carefully. If you just want to align (map) reads to assembled reference genome or transcriptome, then you can afford some suboptimal trimming, as mapping to reference will take care of some of your problems (e.g. adapters will not map to a reference that doesn't contain their sequence).
 
 ### *De novo* assembly
-*De novo* sequence assembly is quite advanced topic so I will touch only briefly on a few aspects. Use the lectures of dr. Flegontov or other resources to get more in-depth knowlege of the topic.
+*De novo* sequence assembly is quite advanced topic so I will touch only briefly on a few aspects. Use the lectures of dr. Flegontov or other resources to get more in-depth knowledge of the topic.
 
 The aim of assembly is to reconstruct long sequence of DNA from very short fragments, produced e.g. by Next-gen sequencing. For instance Illumina reads span from 75bp up to 300bp (as of 2018-19). Paired-end reads give extra power, but they are not nearly long enough - they allow reading of fragments from both ends, but Illumina still requires fragments around 700bp. So a specialized algorithms had been developed to use overlaps between many reads to create so called **contigs** - a somewhat longer pieces of DNA sequence, sometimes spanning whole genes.
 
