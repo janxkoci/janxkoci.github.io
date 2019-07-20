@@ -356,11 +356,13 @@ The two systems I've encountered are `qsub` (from PBS system) and `bsub`, both w
 
 Here are just a few quick example qsub commands to get you started:
 
-	qsub -N Job_name -l walltime=10:30,mem=32GB job_script.sh # job submission with in-line PBS parameters
-	qstat -u username # check status of username's jobs
-	qstat # status of all jobs
-	qstat -a # status of all jobs with more info
-	qdel JOB.ID # kill job with JOB.ID
+```bash
+qsub -N Job_name -l walltime=10:30,mem=32GB job_script.sh # job submission with in-line PBS parameters
+qstat -u username # check status of username's jobs
+qstat # status of all jobs
+qstat -a # status of all jobs with more info
+qdel JOB.ID # kill job with JOB.ID
+```
 
 You can also check the manual pages:
 
