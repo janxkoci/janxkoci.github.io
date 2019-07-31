@@ -339,7 +339,7 @@ nohup bwa mem ref.fa reads.fq > aln-se.sam &
 If you find that `nohup` doesn't work with some programs, it might be because programmers of the software in question can change `nohup` behaviour. In such case `disown` should be a safer option.
 
 ### Screen
-Screen is an **incredible tool**. It is a window manager for command line - it will let you open several “windows” with different programs, use them in parallel, switch between them and also keeps them running when you detach from it on logout.
+Screen is an **incredible tool**. It is a window manager for command line - it will let you open several “windows” or "workspaces" with different programs, use them in parallel, switch between them and also keeps them running when you detach from it on logout.
 
 ```bash
 screen -ls # lists available screens (with PIDs)
@@ -347,7 +347,22 @@ screen -S transcriptome-pipeline # creates new (named) screen
 screen -d -r PID # detach and reattach to screen with PID
 ```
 
+Typically you would connect to a HPC, reconnect to one of your screens or start a new one and start some long-running script. You can use keyboard shortcuts to switch between different windows and so on.
+
+These shortcuts *always* start with **Ctrl+a** combo (**C-a** for short) followed by some other key or combination of keys. For example to create new workspace you would press **C-a**, release both and then press **c**. Some shortcuts use capital letter after pressing C-a - that just means you hold Shift when you press the letter. For instance the shortcut to start logging your screen into a file is C-a H, or Ctrl+a followed by Shift+h, to be more explicit. If the second key contains Ctrl, then you don't have to release it after C-a - e.g. switching between last two workspaces is done by holding Ctrl and tapping two times the letter a (C-a C-a).
+
+Some of the shortcuts I find most usefull are these:
+
+- **C-a c** = create new workspace
+- **C-a C-a** = switch between last two workspaces (ala Alt+Tab)
+- **C-a "** = show list of workspaces inside current screen session
+- **C-a n/p** = switch to next/previous workspace
+- **C-a d** = detach from a screen session
+- **C-a ?** = help
+
 You can find more info in the `man screen` page (if you don't have it on your local computer, you can still read it on the HPC/cluster where you connect to).
+
+_**Note:** I noticed that some programs (especially MC) may work slightly differently inside screen session than they would do normally. For example on some HPCs the mouse input is ignored and you have to use keyboard for scrolling (arrows, PgUp & PgDn) or opening menu (F9) in MC. Also you won't see history of your commands when you minimize MC with Ctrl+o (but you can still browse previous commands with arrow up). Other programs, like emacs, may be also affected. However I've only seen this on a few HPCs._
 
 ### Qsub / Bsub & co.
 The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you will find they use specialized software to manage their computing jobs (also because they have to manage vastly more users that compete for resources).
