@@ -42,6 +42,8 @@ To connect from **Mac** you also just open **Terminal** and type something like 
 
 	ssh studentuser@genome.osu.cz -p22
 
+To **disconnect** from ssh session you can either type `exit`, press Ctrl+d, or simply close the window of your client.
+
 ***
 
 ## First linux commands
@@ -339,7 +341,7 @@ nohup bwa mem ref.fa reads.fq > aln-se.sam &
 If you find that `nohup` doesn't work with some programs, it might be because programmers of the software in question can change `nohup` behaviour. In such case `disown` should be a safer option.
 
 ### Screen
-Screen is an **incredible tool**. It is a window manager for command line - it will let you open several “windows” or "workspaces" with different programs, use them in parallel, switch between them and also keeps them running when you detach from it on logout.
+Screen is an **incredible tool**. It is a window manager for command line - it will let you open several “windows” or "workspaces" with different programs, use them in parallel, switch between them, and it also keeps them running when you detach from it on logout. Actually you may even skip detaching and just close the window and screen will keep running your programs - this might be helpful if you connect from a weak or patchy network (e.g. train), so that random disconnection won't ruin your work.
 
 ```bash
 screen -ls # lists available screens (with PIDs)
