@@ -8,6 +8,8 @@ header_pages:
   - about.md
   - tutorials.md
 
+show_excerpts: true
+
 kramdown:
   parse_block_html: true
 
