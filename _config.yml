@@ -5,8 +5,8 @@ author: Jan Kočí
 theme: minima
 
 header_pages:
-  - about.md
   - tutorials.md
+  - about.md
 
 show_excerpts: true
 
