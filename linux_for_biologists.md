@@ -149,6 +149,13 @@ So the analogy between the two languages becomes more obvious.
 
 *__Tip:__ note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.*
 
+### Hello world
+And speaking of syntax, what about the famous "Hello world!" program? This is usually the first program you learn in a new language, as it's one of the simplest possible. It should just print Hello world! on the screen. In bash, this is as simple as:
+
+    echo Hello world! # the Hello world program
+
+Notice that unlike most scripting languages, the command used is not `print`.
+
 ***
 
 ## Playing with files and stuff
@@ -227,7 +234,7 @@ So going back to our example with fasta files and having quick look at them, you
 There are several tools in linux that allow you to process files in very efficient ways. Some more simple, some more complex (in fact up to the level of programming languages), but their basics are usually easy to master. The most useful tools range from `sed` or `tr` to `awk` and `perl`. Some of them are way too complex (e.g. perl) to cover here fully, so I will just introduce them at a level I consider useful.
 
 ### sed
-The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost whatever your imagination holds (if not, there is still awk and perl). You can think of it as **find-and-replace** feature from your Office suite, but on steroids. Most notably, `sed` can use **regular expressions** (regex) to filter and process your data.
+The `sed` command, i.e. the "stream editor" is used all the time in the work of bioinformatician. Stream is the stuff you send from stdout to stdin. The `sed` allows you to edit it, process it, format it, or almost [whatever](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_05.html) your imagination holds (if not, there is still awk and perl). You can think of it as **find-and-replace** feature from your Office suite, but on steroids. Most notably, `sed` can use **regular expressions** (regex) to filter and process your data.
 
 Typical `sed` syntax could look like this:
 
@@ -266,10 +273,13 @@ tr " " "\t" file.txt # replace each space with a tabulator
 
 Tr is not as popular in the online tutorials as sed is, probably because it's little limited in what it can do when compared to sed. However it's very simple to use and can be also chained by pipes into more complex processing tool, so feel free to play around with it.
 
+### AWK
+AWK is not just a command, but a [whole programming language](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_06.html). It's designed to process text files, especially in tabular format, extract data and create reports.
+
 ***
 
 ## Life in the commandline
-There is no reason to go crazy from the command line. Quite a few programs were designed by pros and wizards to make your life in the command line much easier. From file managers and text editors to internet browsers and even movie players.
+There is no reason to go crazy from the command line. Quite a few programs were designed by pros and wizards to make your life in the command line much easier. From file managers and text editors to internet browsers and even music players.
 
 ### Midnight Commander - the savior
 
