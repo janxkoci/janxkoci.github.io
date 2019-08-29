@@ -16,7 +16,7 @@ I'm by NO means an expert. On the contrary - I'm far from the level of dr. Flego
 
 But precisely for this reason I know the struggles of beginners, because they are still in my memory (some quite alive). I went through similar problems recently and I think it might have helped if I had something akin to this small tutorial at hand. Google can be overwhelming at times, right? :)
 
-**Update:** Originally I started with Google Docs, this version uses Markdown and Github instead.
+**Update:** Originally I started with Google Docs, this version uses Markdown and Github Pages instead.
 
 ***
 
@@ -30,7 +30,7 @@ login: **name@osu.cz** (even if you are student, it's still something like **P12
 password: needs to be set on [Portal](https://portal.osu.cz) (it's special for eduroam only).
 
 ### SSH - secure shell
-To connect from **Windows** you need ssh client, e.g. the simple [Putty](http://www.putty.org/) or the excellent [MobaXterm](http://mobaxterm.mobatek.net/). There you will fill the login details.
+To connect from **Windows** you need ssh client, e.g. the simple [Putty](http://www.putty.org/) or the advanced [MobaXterm](http://mobaxterm.mobatek.net/). There you will fill the login details.
 
 To connect from **Linux** you just open **Terminal** (try pressing Ctrl+Alt+T) and type command in this form:
 
@@ -117,7 +117,7 @@ This is probably the most helpful thing you will find here :)
 ***
 
 ## Syntax
-You may have noticed a few similarities with the R language. Linux command line actually uses its own language called bash (but can easily use some others, like awk or perl).
+You may have noticed a few similarities with the R language. Linux command line actually uses its own language called [bash](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) (but can easily use some others, like awk or perl).
 
 In R you have syntax like this:
 
