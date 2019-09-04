@@ -451,7 +451,7 @@ Even though these managers aim at HPCs, you can also use them on your own laptop
   - Variant callers (samtools, GATK, freebayes, ...)
   - NGS viewers (IGV)
 
-You can get conda in two different ways: either you download and install the full [Anaconda distribution](https://www.anaconda.com/download/) (recommended if your workflow is python-heavy) or you download [Miniconda](https://conda.io/miniconda.html), which includes only the conda package manager and few supporting packages (recommended if you don’t care about python, e.g. if you use R or other software). Either way you get it, you can then use the conda manager to install whatever other software you want (including full Anaconda, if you started with miniconda), add new repos (channels) and get quickly back to your work.
+You can get conda in two different ways: either you download and install the full [Anaconda distribution](https://www.anaconda.com/download/) (recommended if your workflow is python-heavy) or you download [Miniconda](https://conda.io/miniconda.html), which includes only the conda package manager and few supporting packages (recommended if you don’t care about python, e.g. if you use R or other software). Either way you get it, you can then use the conda manager to install whatever other software you want (including full Anaconda, if you started with miniconda), [add](https://bioconda.github.io/user/install.html) new repos (channels) and get quickly back to your work.
 
 Conda even allows you to install `nano` editor. It's as simple as:
 
