@@ -567,5 +567,14 @@ Scaffolding is useful for better understanding of expression, linkage (and LD in
 
 **More stuff soon, now I'm a bit busy :)**
 
+## Further reading
+Here are some useful resources I've found online:
+
+* The Linux Documentation Project has some [nice and quick introduction](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) as well as [more comprehensive guide](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html) to bash scripting.
+* nixCraft is a blog full of [useful tutorials](https://www.cyberciti.biz/).
+* If you get stuck, there are several superuseful Q&A sites that will most likely get you unstack and back on track:
+   - [StackOverflow](https://stackoverflow.com/questions/tagged/bash) helps with general programming problems.
+   - [Biostars](https://www.biostars.org/) is a Q&A forum for bioinformatics.
+
 ## Comments
 If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/dc630a17ca29ffdb18e70894942f3c01).
