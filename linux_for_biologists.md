@@ -520,7 +520,7 @@ Probably the most widely used program for QC is [FastQC](https://www.bioinformat
     
 The first command opens a graphical window, where you select a file for QC using the menu. The second command runs the analysis on specified file, in this case all files in a directory that end with *fq.gz*. It will output the reports in html format, that you can open in any web browser.
 
-*__Tip:__ to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are -X (no encryption), -Y (yes encryption) or simply -XY (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
+*__Tip:__ to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are `-X` (no encryption), `-Y` (yes encryption) or simply `-XY` (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
 
 #### MultiQC
 [MultiQC](https://multiqc.info/) is a package designed to assess multiple samples at once. It uses output of FastQC and compiles an interactive report for all samples. 
@@ -571,6 +571,7 @@ Scaffolding is useful for better understanding of expression, linkage (and LD in
 Here are some useful resources I've found online:
 
 * The Linux Documentation Project has some [nice and quick introduction](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) as well as [more comprehensive guide](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html) to bash scripting.
+* LinuxConfig has a nice, but [little dense tutorial](https://linuxconfig.org/bash-scripting-tutorial), that quickly covers many topics in one go. Good for quick reference.
 * nixCraft is a blog full of [useful tutorials](https://www.cyberciti.biz/).
 * If you get stuck, there are several superuseful Q&A sites that will most likely get you unstack and back on track:
    - [StackOverflow](https://stackoverflow.com/questions/tagged/bash) helps with general programming problems.
