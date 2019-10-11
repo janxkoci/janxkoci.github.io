@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Genome analysis survival guide
+title: Linux for terrified biologists
 ---
 
-*Linux for terrified biologists*
+*Genome analysis survival guide*
 
 {% include toc.html %}
 
@@ -222,7 +222,7 @@ To **quit** the interactive mode just press letter `q` (it's usually shown on th
 
 ![top task manager](./img/top.png)
 
-Top (above) is a popular interactive task manager for linux command line. Learn more with man top.
+Top (above) is a popular interactive task manager for linux command line. Learn more with `man top`.
 
 So going back to our example with fasta files and having quick look at them, you can send the results of head into interactive browser less:
 
@@ -559,7 +559,7 @@ There are several approaches to deal with redundancy. Some popular packages incl
 After successful assembly and cleaning of the reference, one might want to see how the reference improved and if it can be improved further.
 
 ### Scaffolding
-Scaffolding typically follows the assembly step. The aim is to connect separate contigs into longer sequences, using e.g. paired-end (PE) data or some other source, e.g. mate pairs (MP). The contigs are connected by gaps, no new sequence data are added. This information on physical proximity of contigs is exctracted from known length of fragments, that were sequenced from both ends (e.g. using PE or MP).
+Scaffolding typically follows the assembly step. The aim is to connect separate contigs into longer sequences, using e.g. paired-end (PE) data or some other source, e.g. mate pairs (MP). The contigs are connected by gaps, no new sequence data are added. This information on physical proximity of contigs is extracted from known length of fragments, that were sequenced from both ends (e.g. using PE or MP).
 
 Scaffolding is useful for better understanding of expression, linkage (and LD in populations), and other useful features of sequencing data.
 
@@ -571,10 +571,10 @@ Scaffolding is useful for better understanding of expression, linkage (and LD in
 Here are some useful resources I've found online:
 
 * The Linux Documentation Project has some [nice and quick introduction](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) as well as [more comprehensive guide](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html) to bash scripting.
-* LinuxConfig has a nice, but [little dense tutorial](https://linuxconfig.org/bash-scripting-tutorial), that quickly covers many topics in one go. Good for quick reference.
+* LinuxConfig has a nice, albeit [little dense tutorial](https://linuxconfig.org/bash-scripting-tutorial), that quickly covers many topics in one go. Good for quick reference.
 * nixCraft is a blog full of [useful tutorials](https://www.cyberciti.biz/).
-* If you get stuck, there are several superuseful Q&A sites that will most likely get you unstack and back on track:
-   - [StackOverflow](https://stackoverflow.com/questions/tagged/bash) helps with general programming problems.
+* If you get stuck, there are several superuseful Q&A sites that will most likely get you unstuck and back on track:
+   - [StackOverflow](https://stackoverflow.com/questions/tagged/bash) helps with general programming/scripting problems.
    - [Biostars](https://www.biostars.org/) is a Q&A forum for bioinformatics.
 
 ## Comments
