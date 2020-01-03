@@ -188,6 +188,51 @@ You can already do something useful with these, for example count number of sequ
 
 *__Tip:__ stdin and stdout are example of classic programming terminology and it may be handy to know such stuff when you google for solution to your problems. In many scenarios **stdout is your screen** and **stdin is your keyboard** (if you don't redirect them). There is also standard error (**stderr**), which is sometimes used as second output, typically to print error messages (but can be used for other purposes too).*
 
+### Quoting and escaping
+There are many special symbols and reserved words in bash, used all the time in commands and scripts. But sometimes you need to remove the special meaning. This is done by [quoting or escaping](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_03.html).
+
+In some cases you can't really do without quotes (or the solution is way more complicated than just using quotes), in some other cases they are rather recommended good practice, that can save you from disasters in edge cases. Escaping is mostly used when you want to disable special meaning for a single character. This is done by prepending the target character with backslash `\`.
+
+But let's get real. Consider this simple example of printing sequence names from fasta file:
+
+    grep > alignment.fasta
+    grep '>' alignment.fasta
+
+Now `grep` doesn't require quotes around pattern to work. But it's a good practice to use them, as this example shows. The problem here is with the special character `>`. The first command *interprets* it as redirection and basically saves empty input in your `alignment.fasta`, effectively **deleting it's contents!**
+
+The second variant uses quotes to *disable the interpretation* of this special character, so it's used for a filtering pattern as-is. This version will correctly print what you wanted.
+
+It is possible to also use escaping here, but in my opinion it's less intuitive:
+
+    grep \> alignment.fasta # this will work correctly too
+
+#### Different quotes
+There are differences between single quotes and double quotes. Double quotes allow interpretation of *some* special characters, while single quotes disable almost everything. In our example above, it doesn't really matter which quotes we use, as they both disable interpretation of `>` symbol. But there are other cases where the difference is important.
+
+Very typical example is using variables. Variables are objects that can store information, a value, which you then call using the dollar sign `$`. You already know the command `pwd`, which prints a path to your working directory, i.e. where you are in the folder structure. But there is also a system variable `$PWD` that stores the same information and allows its usage in scripts in an [easier way](https://www.unixtutorial.org/pwd-command-and-pwd-variable).
+
+```bash
+pwd # prints present working directory
+echo $PWD # prints present working directory
+echo "$PWD" # prints present working directory
+echo '$PWD' # prints the word $PWD
+```
+
+OK so using single quotes disables the special meaning of this system variable, but why use double quotes when the output is the same as not using any quotes at all? Well sometimes you don't know what the variable contains, because it can be e.g. result of some script or series of commands. If that value of a variable contains special characters, your command that calls this variable can have unexpected results.
+
+For example you might want to create a simple backup script, which copies a file in current directory into another (backup) location. Something like this:
+
+    cp file.txt $PWD/backup/file.txt
+
+It's not the most straightforward way to do it but let's go with it. It should work most of the time, but what if your current path has a space in it? I mean, what if you are in a folder like this:
+
+    echo $PWD
+    '/home/jena/Genomic data'
+
+In this case your script would get three inputs instead of two (because inputs are separated by space), so it will fail with error (and won't create your backup copy). In other cases it can make the copy somewhere you don't want it. The simple solution is to quote the variable when you call it and you will avoid all these headaches:
+
+    cp file.txt "$PWD"/backup/file.txt
+
 ### Wildcards
 Wildcards (also called globbing patterns) allow you to work on multiple files at the same time. By far the most widely used is asterisk `*`, which allows you to select multiple files by using it with common pattern in their names. For example, you can join all fasta files inside current folder with simple:
 
@@ -568,9 +613,9 @@ Scaffolding is useful for better understanding of expression, linkage (and LD in
 **More stuff soon, now I'm a bit busy :)**
 
 ## Further reading
-Here are some useful resources I've found online:
+Here are some useful online resources I've found very useful:
 
-* The Linux Documentation Project has some [nice and quick introduction](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) as well as [more comprehensive guide](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html) to bash scripting.
+* The Linux Documentation Project (TLDP.org) has some [nice and quick introduction](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) as well as [more comprehensive guide](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html) to bash scripting.
 * LinuxConfig has a nice, albeit [little dense tutorial](https://linuxconfig.org/bash-scripting-tutorial), that quickly covers many topics in one go. Good for quick reference.
 * nixCraft is a blog full of [useful tutorials](https://www.cyberciti.biz/).
 * If you get stuck, there are several superuseful Q&A sites that will most likely get you unstuck and back on track:
