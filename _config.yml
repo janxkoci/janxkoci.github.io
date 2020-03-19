@@ -2,7 +2,7 @@ title: What is Life
 description: Yet another "Quest for the Meaning of Life" blog, this time taken on by a biologist with fetish for math and computers.
 author: Jan Kočí
 
-remote_theme: wowthemesnet/mediumish-theme-jekyll
+remote_theme: wowthemesnet/mediumish
 
 header_pages:
   - tutorials.md
