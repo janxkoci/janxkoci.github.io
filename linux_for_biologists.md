@@ -229,7 +229,7 @@ It's not the most straightforward way to do it but let's go with it. It should w
     echo $PWD
     '/home/jena/Genomic data'
 
-In this case your script would get three inputs instead of two (because inputs are separated by space), so it will fail with error (and won't create your backup copy). In other cases it can make the copy somewhere you don't want it. The simple solution is to quote the variable when you call it and you will avoid all these headaches:
+In this case your script would get three inputs instead of two (because inputs are separated by space), so it will fail with error (and won't create your backup copy). In other cases it can make the copy somewhere you don't want it. The simple solution is to doublequote the variable when you call it and you will avoid all these headaches:
 
     cp file.txt "$PWD"/backup/file.txt
 
@@ -395,18 +395,21 @@ nohup bwa mem ref.fa reads.fq > aln-se.sam &
 
 If you find that `nohup` doesn't work with some programs, it might be because programmers of the software in question can change `nohup` behaviour. In such case `disown` should be a safer option.
 
-### Screen
-Screen is an **incredible tool**. It is a window manager for command line - it will let you open several “windows” or "workspaces" with different programs, use them in parallel, switch between them, and it also keeps them running when you detach from it on logout. Actually you may even skip detaching and just close the window and screen will keep running your programs - this might be helpful if you connect from a weak or patchy network (e.g. train), so that random disconnection won't ruin your work.
+### Terminal multiplexers
+Terminal multiplexers are **incredible tools**, that allow starting multiple programs, run them in parallel in separate "windows" or "workspaces", switch between them, and they also keep your programs running when you detach from your session on logout. Actually you may even skip detaching and just close the window and they will keep running your programs - this might be especially helpful if you connect from a weak or patchy network (e.g. train), so that random disconnection doesn't ruin your work. The two most popular examples are **GNU-screen** and **tmux**.
+
+#### GNU-screen
+GNU-screen is commonly installed on servers and HPCs, because it's so helpful. You can start new screen sessions or list and reconnect to already active sessions with these commands:
 
 ```bash
-screen -ls # lists available screens (with PIDs)
 screen -S transcriptome-pipeline # creates new (named) screen
+screen -ls # lists available screens (with PIDs)
 screen -d -r PID # detach and reattach to screen with PID
 ```
 
 Typically you would connect to a HPC, reconnect to one of your screens or start a new one and start some long-running script. You can use keyboard shortcuts to switch between different windows and so on.
 
-These shortcuts *always* start with **Ctrl+a** combo (**C-a** for short) followed by some other key or combination of keys. For example to create new workspace you would press **C-a**, release both and then press **c**. Some shortcuts use capital letter after pressing C-a - that just means you hold Shift when you press the letter. For instance the shortcut to start logging your screen into a file is C-a H, or Ctrl+a followed by Shift+h, to be more explicit. If the second key contains Ctrl, then you don't have to release it after C-a - e.g. switching between last two workspaces is done by holding Ctrl and tapping two times the letter a (C-a C-a).
+These shortcuts *always* start with a *prefix key* **Ctrl+a** combo (**C-a** for short) followed by some other key or combination of keys. For example to create new workspace you would press **C-a**, release both and then press **c**. Some shortcuts use capital letter after pressing C-a - that just means you hold Shift when you press the letter. For instance the shortcut to start logging your screen into a file is C-a H, or Ctrl+a followed by Shift+h, to be more explicit. If the second key contains Ctrl, then you don't have to release it after C-a - e.g. switching between last two workspaces is done by holding Ctrl and tapping two times the letter a (C-a C-a).
 
 Some of the shortcuts I find most usefull are these:
 
@@ -420,6 +423,22 @@ Some of the shortcuts I find most usefull are these:
 You can find more info in the `man screen` page (if you don't have it on your local computer, you can still read it on the HPC/cluster where you connect to).
 
 _**Note:** I noticed that some programs (especially MC) may work slightly differently inside screen session than they would do normally. For example on some HPCs the mouse input is ignored and you have to use keyboard for scrolling (arrows, PgUp & PgDn) or opening menu (F9) in MC. Also you won't see history of your commands when you minimize MC with Ctrl+o (but you can still browse previous commands with arrow up). Other programs, like emacs, may be also affected. However I've only seen this on a few HPCs._
+
+#### Tmux
+Tmux is very similar in functionality to screen and it's good to know about it in case screen is not installed on your HPC system. The basic commands are similar to screen:
+
+```bash
+tmux new # starts new session with default name (0, 1, ...)
+tmux new -sAnalysis # start new session named "Analysis"
+tmux attach # attach to last session
+tmux attach -tAnalysis # attach to session named "Analysis"
+```
+
+As allways - more info in `man tmux`, you can also find more in tmux [online tutorial](https://github.com/tmux/tmux/wiki/Getting-Started).
+
+The prefix key combo for tmux is **Ctrl+b**. For example **C-b d** will detach the current session. You can check other shortcuts for tmux with **C-b ?**.
+
+Tmux has one advantage over screen - it can be installed rather easily, in case both tools are missing on your HPC, thanks to *conda manager* that I discuss later.
 
 ### Qsub / Bsub & co.
 The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you will find they use specialized software to manage their computing jobs (also because they have to manage vastly more users that compete for resources).
@@ -504,6 +523,12 @@ Conda even allows you to install `nano` editor. It's as simple as:
 conda install nano # installs nano from main repository
 conda install -c conda-forge nano # installs newer version of nano editor from the conda-forge channel
 ```
+
+Conda-forge is probably the most important channel for all things conda. You will find a lot of useful packages there, lot of which are missing from default channels or only present in older version (as does `nano` in the example above). The Bioconda channel depends on conda-forge to build a lot of the packages. This means that if you install packages from bioconda channel, you should also include conda-forge. The easiest way is to just add both channels to conda configuration using `conda config --add channels` command, which you can find in the [bioconda instructions](https://bioconda.github.io/user/install.html). After adding the channels, you don't have to specify them anymore with the `-c` option.
+
+Another useful package in conda-forge channel is `tmux`, discussed before. You can install it with this command:
+
+    conda install -c conda-forge tmux
 
 #### Linuxbrew
 [Linuxbrew](http://linuxbrew.sh/) is a port of popular Homebrew package manager from macOS. It is based on ruby instead of python, however as with conda, the language used is not important to the end user. It also lets you install software on HPCs and clusters without root (admin) privileges, using its own repositories, called taps, to download and install software. The most useful tap for bioinformatics is [BrewSci-bio](https://brewsci.github.io/homebrew-bio/).
