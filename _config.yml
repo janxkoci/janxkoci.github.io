@@ -1,4 +1,4 @@
-title: Jan Kočí's home
+title: Everything Evolutionary
 description: "Everything is better with evolution in the mix!"
 author: Jan Kočí
 
@@ -6,6 +6,7 @@ theme: minima
 
 header_pages:
   - tutorials.md
+  - about_me.md
 
 show_excerpts: false
 
