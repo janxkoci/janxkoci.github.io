@@ -643,6 +643,7 @@ Here are some useful online resources I've found very useful:
 * The Linux Documentation Project (TLDP.org) has some [nice and quick introduction](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) as well as [more comprehensive guide](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html) to bash scripting.
 * LinuxConfig has a nice, albeit [little dense tutorial](https://linuxconfig.org/bash-scripting-tutorial), that quickly covers many topics in one go. Good for quick reference.
 * nixCraft is a blog full of [useful tutorials](https://www.cyberciti.biz/).
+* WikiBooks has a nice book about [bash shell scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting).
 * If you get stuck, there are several superuseful Q&A sites that will most likely get you unstuck and back on track:
    - [StackOverflow](https://stackoverflow.com/questions/tagged/bash) helps with general programming/scripting problems.
    - [Biostars](https://www.biostars.org/) is a Q&A forum for bioinformatics.
