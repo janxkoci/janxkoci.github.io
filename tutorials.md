@@ -3,7 +3,7 @@ layout: page
 title: Tutorials
 ---
 
-## Linux on Windows
+## [Linux on Windows](./linux_on_windows.md)
 New tutorial! This time we will have a quick look on how to enter the world of Linux command line from a Windows computer, with as little friction as possible. [Read more...](./linux_on_windows.md)
 
 ## [Linux for terrified biologists](./linux_for_biologists.md)
