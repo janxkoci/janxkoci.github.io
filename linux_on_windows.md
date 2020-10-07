@@ -122,5 +122,8 @@ Now select one of the drives, e.g. `c`, and then look at the menu bar on top of 
 
 Of course, nothing stops you from browsing your Windows drives now and creating all the links you need in your home folder. Make it your home ;)
 
+## Learn more
+If you want to learn more about the Linux command line, you can check out my other tutorial, where I show how [Linux can be useful for biologists](./linux_for_biologists.html).
+
 ## Comments
 If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/ace55bb80f10c741c08cab824b8be095).
