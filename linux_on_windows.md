@@ -112,11 +112,11 @@ MC shows you two panels that allow to navigate your folders and files. You switc
 
 Now it would be useful to know how to get to your normal Windows folders and files, so you can access them from the linux command line easily. After all, this is why we are doing all of this :)
 
-On the top of each panel in MC you see `..`. You may remember from the MS DOS era that this symbolizes going up in the folder hierarchy. Lets go there now. First we get to the `/home` folder, going to `..` one more time gets us to the *root directory* of our prefixed linux environment. You can think of it as *Your computer* on Windows, but as you can see, there are no disk drives, like `C:\` or `D:\`. In linux, these are located in `/mnt`, so let's go there - select the `mnt` folder in MC and enter it. There you will see your disk drives.
+On the top of each panel in MC you see `..`. You may remember from the MS DOS era that this symbolizes going up in the folder hierarchy. Let's go there now. First we get to the `/home` folder, going to `..` one more time gets us to the *root directory* of our prefixed linux environment. You can think of it as *Your computer* on Windows, but as you can see, there are no disk drives, like `C:\` or `D:\`. In linux, these are located in `/mnt`, so let's go there - select the `mnt` folder in MC and enter it. There you will see your disk drives.
 
 ![Symbolic links](img/mobaxterm-ln-s.png)
 
 Now select one of the drives, e.g. `c`, and then look at the menu bar on top of MC. There you can click on **File > Symbolic link** to create a symbolic link of your `C:\` drive in the folder in the other panel, which should be your home folder. In the dialog that shows up, you can just confirm with Enter and voila - you have a new link to your `C:\` drive in your home folder! Of course, nothing stops you from browsing your Windows drives now and creating all the links you need in your home folder. Make it your home ;)
 
 ## Comments
-If you'd like to leave a comment, you can join the discussion at Github.
+If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/ace55bb80f10c741c08cab824b8be095).
