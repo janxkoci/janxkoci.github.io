@@ -108,7 +108,7 @@ On WSL, you usually don't have any links setup here, so let me show you how to g
 ### Setup symbolic links to your folders
 When you open MC in your terminal, it will always show you the so-called "home folder". On real linux, the absolute address (or *path*) would be `/home/username` or something similar. On our Windows machines, the system is slightly different, so it's using a so-called *prefixed environment*, but for our intents and purposes, you can disregard the difference. The point is, MC will always open in the same place. So let's make it more useful.
 
-MC shows you two panels that allow to navigate your folders and files. You switch between panels with the Tab key, or you can click with a mouse (yes!). There is also a line of buttons at the bottom, numbered 1-10. These buttons can be activated with either mouse-click or the keys F1-F10 on your keyboard, and can open files for viewing (F3) or editing (F4), copy (F5) or move (F6) between folders in the two panels and so on.
+MC shows you two panels that allow navigating your folders and files. You switch between panels with the Tab key, or you can click with a mouse (yes!). There is also a line of buttons at the bottom, numbered 1-10. These buttons can be activated with either mouse-click or the keys F1-F10 on your keyboard, and can open files for viewing (F3) or editing (F4), copy (F5) or move (F6) between folders in the two panels and so on.
 
 Now it would be useful to know how to get to your normal Windows folders and files, so you can access them from the linux command line easily. After all, this is why we are doing all of this :)
 
