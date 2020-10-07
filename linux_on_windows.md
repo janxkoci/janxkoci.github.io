@@ -29,7 +29,7 @@ You can follow the [Ubuntu tutorial](https://ubuntu.com/tutorials/ubuntu-on-wind
 5. The main system is now ready to be used.
 
 ### Updating the Ubuntu repositories
-Ubuntu (and many other Linux distributions) uses curated software repositories, so you don't have to hunt for packages out on the wild internet. Before you can use them to install software, you should first **update** info about packages available in the repository and also **upgrade** packages we already have installed. This is done using the `apt` package manager by entering the following two commands:
+Ubuntu (and many other Linux distributions) uses curated software repositories, so you don't have to hunt for packages out on the wild internet. Before you can use them to install software, you should first **update** info about packages available in the repository and also **upgrade** packages we already have installed, so you have the latest versions available. This is done using the `apt` package manager by entering the following two commands:
 
     sudo apt update # updates info about packages available in the repository
     sudo apt upgrade # upgrades installed packages
