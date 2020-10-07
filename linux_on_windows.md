@@ -18,7 +18,7 @@ If you run Windows 10, you are in luck, because your system includes an official
 
 ![Microsoft Store](img/ms_store.png)
 
-I usually follow the [Ubuntu tutorial](https://ubuntu.com/tutorials/ubuntu-on-windows#1-overview), but here is the gist of it:
+You can follow the [Ubuntu tutorial](https://ubuntu.com/tutorials/ubuntu-on-windows#1-overview), but here is the gist of it:
 
 1. Open Microsoft Store (search it in your Start menu).
 2. Search and install the [Ubuntu app](https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6). There are a few versions, I usually install the rolling version without version number (i.e. just Ubuntu).
@@ -36,7 +36,7 @@ Ubuntu (and many other Linux distributions) uses curated software repositories, 
 
 The first command will ask for your user password, which we have set during the initial setup above. This is because we use the command `sudo` to get administrator privileges. The terminal will remember the password until you close it, so the following `sudo` commands don't ask for it again.
 
-> Note: The `#` symbol represents start of a comment and the text after it doesn't really do anything. I just use it to explain what the given commands do. If you copy it with the command, nothing extra will happen.
+> **Note:** The `#` symbol represents start of a comment and the text after it doesn't really do anything. I just use it to explain what the given commands do. If you copy it with the command, nothing extra will happen.
 
 It's a good idea to update your packages every now and then, using the two commands above. Once a week is a good middle ground. You can also upgrade whenever you read about some new security hole discovered - the patches are usually available within hours after the discovery, or one-two days at most.
 
@@ -47,7 +47,7 @@ For every Windows user, I always install the Midnight Commander and do a little 
 - to make the Linux terminal less scary :)
 - to make your files easier to access from the Linux terminal
 
-> Tip: I have written about the Midnight Commander [before](linux_for_biologists.html#midnight-commander---the-savior).
+> **Tip:** I have written about the Midnight Commander [before](linux_for_biologists.html#midnight-commander---the-savior).
 
 If you have already finished the initial upgrade, we are ready to install the Midnight Commander. Just use this command:
 
@@ -64,7 +64,7 @@ You will see a window similar to this:
 ## MobaXterm app
 In case you don't have Windows 10 available (or you don't have admin access), the second best thing (in my opinion) is the excellent [MobaXterm application](https://mobaxterm.mobatek.net/). It is a single versatile package, containing many Linux command-line tools, as well as clients for remote access (pretty much all the protocols are covered). It even contains the Ubuntu `apt` package manager for installing packages.
 
-As I said, it is possible to **install** MobaXterm as any other application on your system, or use the **portable version** which doesn't require admin privileges and can be run anywhere. The portable version only requires some quick extra setup in case you want to save its configuration and installed packages between sessions (which I will show below).
+As I said, it is possible to **install** MobaXterm as any other application on your system, or use the **portable version** which doesn't require admin privileges and can be run anywhere. The portable version only requires some quick extra setup in case you want to save its configuration and installed packages between sessions (which I will show below). If you install the normal version instead, you can skip the next section and [start using the app](#enabling-package-manager).
 
 ### Portable version setup
 The portable version by default does not remember any changes and settings you do to it, but of course it is useful to have your MobaXterm keep the settings you change and programs you install. This only requires setting a folder in settings which will hold all the permanent stuff.
