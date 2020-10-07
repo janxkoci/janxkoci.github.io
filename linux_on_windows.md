@@ -47,7 +47,7 @@ For every Windows user, I always install the Midnight Commander and do a little 
 - to make the Linux terminal less scary :)
 - to make your files easier to access from the Linux terminal
 
-> **Tip:** I have written about the Midnight Commander [before](linux_for_biologists.html#midnight-commander---the-savior).
+> **Tip:** I have written about the Midnight Commander [before](Linux_for_biologists.html#midnight-commander---the-savior).
 
 If you have already finished the initial upgrade, we are ready to install the Midnight Commander. Just use this command:
 
@@ -99,24 +99,28 @@ And the MC will open, showing the default home folder.
 ![Midnight Commander in MobaXterm](img/mobaxterm-mc.png)
 
 ## Make your life easier
-So now you have the power of linux command line at your fingertips, with the useful MC to help you manage your files. What I recommend next is to setup links to your common folders for quick access. We will do this using MC and a little magic called **symbolic links**.
+So now you have the power of Linux command line at your fingertips, with the useful MC to help you manage your files. What I recommend next is to setup links to your common folders for quick access. We will do this using MC and a little magic called **symbolic links**.
 
 The MobaXterm already has a few links setup - we can see the `~Desktop`, the `~LauncherFolder`, and the `~MyDocuments`. They are marked with the tilda `~` symbol and they point to folders in your computer, like Desktop and your Documents.
 
-On WSL, you usually don't have any links setup here, so let me show you how to get some links there. This will work in any MC, regardless if it's WSL, MobaXterm, or a real linux machine.
+On WSL, you usually don't have any links setup here, so let me show you how to get some links there. This will work in any MC, regardless if it's WSL, MobaXterm, or a real Linux machine.
 
 ### Setup symbolic links to your folders
-When you open MC in your terminal, it will always show you the so-called "home folder". On real linux, the absolute address (or *path*) would be `/home/username` or something similar. On our Windows machines, the system is slightly different, so it's using a so-called *prefixed environment*, but for our intents and purposes, you can disregard the difference. The point is, MC will always open in the same place. So let's make it more useful.
+When you open MC in your terminal, it will always show you the so-called "home folder". On real Linux, the absolute address (or *path*) would be `/home/username` or something similar. On our Windows machines, the system is slightly different, so it's using a so-called *prefixed environment*, but for our intents and purposes, you can disregard the difference. The point is, MC will always open in the same place. So let's make it more useful.
 
 MC shows you two panels that allow navigating your folders and files. You switch between panels with the Tab key, or you can click with a mouse (yes!). There is also a line of buttons at the bottom, numbered 1-10. These buttons can be activated with either mouse-click or the keys F1-F10 on your keyboard, and can open files for viewing (F3) or editing (F4), copy (F5) or move (F6) between folders in the two panels and so on.
 
-Now it would be useful to know how to get to your normal Windows folders and files, so you can access them from the linux command line easily. After all, this is why we are doing all of this :)
+Now it would be useful to know how to get to your normal Windows folders and files, so you can access them from the Linux command line easily. After all, this is why we are doing all of this :)
 
-On the top of each panel in MC you see `..`. You may remember from the MS DOS era that this symbolizes going up in the folder hierarchy. Let's go there now. First we get to the `/home` folder, going to `..` one more time gets us to the *root directory* `/` of our prefixed linux environment. You can think of it as *Your computer* on Windows, but as you can see, there are no disk drives, like `C:\` or `D:\`. In linux, these are located in `/mnt`, so let's go there - select the `mnt` folder in MC and enter it. There you will see your disk drives.
+On the top of each panel in MC you see `..`. You may remember from the MS DOS era that this symbolizes going up in the folder hierarchy. Let's go there now. First we get to the `/home` folder, going to `..` one more time gets us to the *root directory* `/` of our prefixed Linux environment. You can think of it as *Your computer* on Windows, but as you can see, there are no disk drives, like `C:\` or `D:\`. In Linux, these are located in `/mnt`, so let's go there - select the `mnt` folder in MC and enter it. There you will see your disk drives.
 
 ![Symbolic links](img/mobaxterm-ln-s.png)
 
-Now select one of the drives, e.g. `c`, and then look at the menu bar on top of MC. There you can click on **File > Symbolic link** to create a symbolic link of your `C:\` drive in the folder in the other panel, which should be your home folder. In the dialog that shows up, you can just confirm with Enter and voila - you have a new link to your `C:\` drive in your home folder! Of course, nothing stops you from browsing your Windows drives now and creating all the links you need in your home folder. Make it your home ;)
+Now select one of the drives, e.g. `c`, and then look at the menu bar on top of MC. There you can click on **File > Symbolic link** to create a symbolic link of your `C:\` drive in the folder in the other panel, which should be your home folder. In the dialog that shows up, you can just confirm with Enter and voila - you have a new link to your `C:\` drive in your home folder!
+
+> **Tip:** On some Linux machines, especially remote servers, the mouse may not work. In such case, you can use the top menu of MC with the F9 and arrow keys. And in case you are on some archaic system without function F1-F10 keys, you can use the Esc key followed by the corresponding number.
+
+Of course, nothing stops you from browsing your Windows drives now and creating all the links you need in your home folder. Make it your home ;)
 
 ## Comments
 If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/ace55bb80f10c741c08cab824b8be095).
