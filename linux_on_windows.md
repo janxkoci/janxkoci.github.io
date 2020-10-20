@@ -62,7 +62,7 @@ You will see a window similar to this:
 ![Midnight Commander](img/mc.png)
 
 ## MobaXterm app
-In case you don't have Windows 10 available (or you don't have admin access), the second best thing (in my opinion) is the excellent [MobaXterm application](https://mobaxterm.mobatek.net/). It is a single versatile package, containing many Linux command-line tools, as well as clients for remote access (pretty much all the protocols are covered, including SSH/SFTP, RDP, VNC and many others). It even contains the Ubuntu `apt` package manager for installing packages.
+In case you don't have Windows 10 available (or you don't have admin access), the second best thing (in my opinion) is the excellent [MobaXterm application](https://mobaxterm.mobatek.net/). It is a single versatile package, containing many Linux command-line tools, as well as clients for remote access (pretty much all the protocols are covered, including SSH/SFTP, RDP, VNC and many others). It even contains the Ubuntu `apt` package manager for installing packages (although the software repository is more limited, similar to android's [Termux](https://termux.com/)).
 
 As I said, it is possible to **install** MobaXterm as any other application on your system, or use the **portable version** which doesn't require admin privileges and can be run anywhere. The portable version only requires some quick extra setup in case you want to save its configuration and installed packages between sessions (which I will show below). If you install the normal version instead, you can skip the next section and [start using the app](#enabling-package-manager).
 
