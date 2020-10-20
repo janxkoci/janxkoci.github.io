@@ -443,22 +443,24 @@ Tmux has one advantage over screen - it can be installed rather easily, in case 
 ### Qsub / Bsub & co.
 The options above serve well on machines that are used in university courses or managed by someone you know in person. However if you ever use big professional cluster like IT4Innovations, MetaCentrum or Elixir, you will find they use specialized software to manage their computing jobs (also because they have to manage vastly more users that compete for resources).
 
-The two systems I've encountered are `qsub` (from PBS system) and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
+The two systems I've encountered are `qsub` (from [PBS system](https://en.wikipedia.org/wiki/Portable_Batch_System)) and `bsub`, both work in very similar way - you enter a qsub/bsub command followed with parameters for number of cores you want, memory you need, time you plan for the job etc. and then follows name of a script file with your actual job. These big profi clusters usually have proper documentation for preferred use of these commands in place, so I will leave it to them :)
 
-Here are just a few quick example qsub commands to get you started:
+Here are just a few quick example `qsub` commands to get you started:
 
 ```bash
-qsub -N Job_name -l select=1:ncpus=24:mem=32GB,walltime=48:00:00 job_script.sh # job submission with in-line PBS parameters (1 node, 24 cores, etc)
+qsub -N Job_name -l nodes=1:npp=24:mem=32GB,walltime=48:00:00 job_script.sh # job submission with in-line PBS parameters (1 node, 24 cores, etc)
 qstat -u username # check status of username's jobs
 qstat # status of all jobs
 qstat -a # status of all jobs with more info
 qdel JOB.ID # kill job with JOB.ID
 ```
 
+_**Note:** There are several implementations of the PBS system, including popular open-source TORQUE or commercial PBS Pro (used e.g. by [IT4Inovations](https://docs.it4i.cz/pbspro/)). These implementations may differ in how they use parameters. Here I'm showing the parameters for TORQUE, with details available [here](http://docs.adaptivecomputing.com/torque/4-0-2/Content/topics/commands/qsub.htm)._
+
 #### Interactive session in PBS
 What if you want to test commands to prepare your job script, but you don't want to block the login node with your intensive processes? Easy, PBS supports **interactive jobs**. You can start it like this:
 
-    qsub -I -l select=1,walltime=3:00:00 # starts interactive session on 1 computation node, for 3 hours
+    qsub -I -l nodes=1,walltime=3:00:00 # starts interactive session on 1 computation node, for 3 hours
 
 After a moment PBS will start a session for you on a computation node, where you can test your commands without blocking the login node. It's good idea to set a walltime limit so the job is ended when you no longer need it. You can also end the job by typing `exit`, pressing **Ctrl+d** or terminate it with `qdel` command as above.
 
