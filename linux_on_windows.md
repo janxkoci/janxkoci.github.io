@@ -126,4 +126,3 @@ Of course, nothing stops you from browsing your Windows drives now and creating 
 If you want to learn more about the Linux command line, you can check out my other tutorial, where I show how [Linux can be useful for biologists](./linux_for_biologists.html).
 
 ## Comments
-If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/ace55bb80f10c741c08cab824b8be095).
