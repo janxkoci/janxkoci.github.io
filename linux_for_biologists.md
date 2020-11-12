@@ -651,4 +651,3 @@ Here are some useful online resources I've found very useful:
    - [Biostars](https://www.biostars.org/) is a Q&A forum for bioinformatics.
 
 ## Comments
-If you'd like to leave a comment, you can join the discussion at [Github](https://gist.github.com/janxkoci/dc630a17ca29ffdb18e70894942f3c01).
