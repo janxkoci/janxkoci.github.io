@@ -448,7 +448,7 @@ The two systems I've encountered are `qsub` (from [PBS system](https://en.wikipe
 Here are just a few quick example `qsub` commands to get you started:
 
 ```bash
-qsub -N Job_name -l nodes=1:npp=24:mem=32GB,walltime=48:00:00 job_script.sh # job submission with in-line PBS parameters (1 node, 24 cores, etc)
+qsub -N Job_name -l nodes=1:ppn=24:mem=32GB,walltime=48:00:00 job_script.sh # job submission with in-line PBS parameters (1 node, 24 cores, etc)
 qstat -u username # check status of username's jobs
 qstat # status of all jobs
 qstat -a # status of all jobs with more info
