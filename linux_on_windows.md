@@ -36,7 +36,7 @@ Ubuntu (and many other Linux distributions) uses curated software repositories, 
 
 The first command will ask for your user password, which we have set during the initial setup above. This is because we use the command `sudo` to get administrator privileges. The terminal will remember the password until you close it, so the following `sudo` commands don't ask for it again.
 
-> **Note:** The `#` symbol represents start of a comment and the text after it doesn't really do anything. I just use it to explain what the given commands do. If you copy it with the command, nothing extra will happen.
+> ℹ️ **Note:** The `#` symbol represents start of a comment and the text after it doesn't really do anything. I just use it to explain what the given commands do. If you copy it with the command, nothing extra will happen.
 
 It's a good idea to update your packages every now and then, using the two commands above. Once a week is a good middle ground. You can also upgrade whenever you read about some new security hole discovered - the patches are usually available within hours after the discovery, or one-two days at most.
 
@@ -47,7 +47,7 @@ For every Windows user, I always install the Midnight Commander and do a little 
 - to make the Linux terminal less scary :)
 - to make your files easier to access from the Linux terminal
 
-> **Tip:** I have written about the Midnight Commander [before](Linux_for_biologists.html#midnight-commander---the-savior).
+> 💡️ **Tip:** I have written about the Midnight Commander [before](Linux_for_biologists.html#midnight-commander---the-savior).
 
 If you have already finished the initial upgrade, we are ready to install the Midnight Commander. Just use this command:
 
@@ -118,7 +118,7 @@ On the top of each panel in MC you see `..`. You may remember from the MS DOS er
 
 Now select one of the drives, e.g. `c`, and then look at the menu bar on top of MC. There you can click on **File > Symbolic link** to create a symbolic link of your `C:\` drive in the folder in the other panel, which should be your home folder. In the dialog that shows up, you can just confirm with Enter and voila - you have a new link to your `C:\` drive in your home folder!
 
-> **Tip:** On some Linux machines, especially remote servers, the mouse may not work. In such case, you can use the top menu of MC with the F9 and arrow keys. And in case you are on some archaic system without function F1-F10 keys, you can use the Esc key followed by the corresponding number.
+> 💡️ **Tip:** On some Linux machines, especially remote servers, the mouse may not work. In such case, you can use the top menu of MC with the F9 and arrow keys. And in case you are on some archaic system without function F1-F10 keys, you can use the Esc key followed by the corresponding number.
 
 Of course, nothing stops you from browsing your Windows drives now and creating all the links you need in your home folder. Make it your home ;)
 
