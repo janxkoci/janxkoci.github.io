@@ -87,7 +87,7 @@ cd / # change to root directory of the system (like C:/)
 cd ~ # go home ;) i.e. /home/studentuser
 ```
 
-*__Tip:__ one dot represents directory you are currently in. That's sometimes used for running scripts etc.*
+> 💡️ __Tip:__ one dot represents directory you are currently in. That's sometimes used for running scripts etc.
 
 To copy file into some subdirectory, just type:
 
@@ -96,7 +96,7 @@ cp file.txt Jena/ # copies file.txt into Jena directory
 cp file.txt Jena/renamed.txt # rename file during transfer
 ```
 
-*__Tip:__ If you want to recall previous command, press arrow up (like in R). Now you can modify it and confirm with Enter. Also, if you start typing name of file/folder like Je.. and hit Tab, it will fill in the rest of the name - magic! :) But only if there is nothing else starting with the same letters Je.. - in such case hit Tab second time and it will tell you what other files match what you type. That’s double magic, my friend :)*
+> 💡️ __Tip:__ If you want to recall previous command, press arrow up (like in R). Now you can modify it and confirm with Enter. Also, if you start typing name of file/folder like Je.. and hit Tab, it will fill in the rest of the name - magic! :) But only if there is nothing else starting with the same letters Je.. - in such case hit Tab second time and it will tell you what other files match what you type. That’s double magic, my friend :)
 
 	ls Jena # check content of subfolder without going there
 
@@ -112,7 +112,7 @@ Every command tool has its manual, which lists all the parameters and other usef
 
 This is probably the most helpful thing you will find here :)
 
-*__Tip:__ the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)*
+> 💡️ __Tip:__ the manual opens in interactive mode so you can move the page with arrows etc. Press Q to quit the manual page ;)
 
 ***
 
@@ -131,7 +131,7 @@ Many parameters have shortcuts which look like this:
 
 	function -p value # shorter version
 
-*__Tip:__ You can find both long and short version in the man page of particular command.*
+> 💡️ __Tip:__ You can find both long and short version in the man page of particular command.
  
 Let's try something more. In R you can see objects in the environment with `ls()` but you can also save its result into new object like this:
 
@@ -147,7 +147,7 @@ I'm showing the preferred syntax, but you can actually switch sides in R:
 
 So the analogy between the two languages becomes more obvious.
 
-*__Tip:__ note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.*
+> 💡️ __Tip:__ note that linux bash syntax is case sensitive (just like R) so file.txt and File.txt are two different files.
 
 ### Hello world
 And speaking of syntax, what about the famous "Hello world!" program? This is usually the first program you learn in a new language, as it's one of the simplest possible. It should just print Hello world! on the screen. In bash, this is as simple as:
@@ -180,13 +180,13 @@ If you use `cat` with just one file, it will just print it on your screen, which
 
 This is the famous **unix `|` pipe**. It takes standard output (**stdout**) of one command (here `cat`) and uses it as standard input (**stdin**) of another command (here `wc`).
 
-*__Tip:__ one `>` symbol will create new file or overwrite existing one. If you want to append output to the end of existing file instead of overwriting it, you can use `>>`.*
+> 💡️ __Tip:__ one `>` symbol will create new file or overwrite existing one. If you want to append output to the end of existing file instead of overwriting it, you can use `>>`.
 
 You can already do something useful with these, for example count number of sequences inside your fasta file (each sequence starts with “>” as you probably know):
 
 	cat alignment.fasta | grep '>' | wc -l # gives number of sequences in alignment.fasta file
 
-*__Tip:__ stdin and stdout are example of classic programming terminology and it may be handy to know such stuff when you google for solution to your problems. In many scenarios **stdout is your screen** and **stdin is your keyboard** (if you don't redirect them). There is also standard error (**stderr**), which is sometimes used as second output, typically to print error messages (but can be used for other purposes too).*
+> 💡️ __Tip:__ stdin and stdout are example of classic programming terminology and it may be handy to know such stuff when you google for solution to your problems. In many scenarios **stdout is your screen** and **stdin is your keyboard** (if you don't redirect them). There is also standard error (**stderr**), which is sometimes used as second output, typically to print error messages (but can be used for other purposes too).
 
 ### Quoting and escaping
 There are many special symbols and reserved words in bash, used all the time in commands and scripts. But sometimes you need to remove the special meaning. This is done by [quoting or escaping](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_03.html).
@@ -265,7 +265,7 @@ To **quit** the interactive mode just press letter `q` (it's usually shown on th
 
 	q # quits the interactive mode (so it's not a real command)
 
-![top task manager](./img/top.png)
+![top task manager](../img/top.png)
 
 Top (above) is a popular interactive task manager for linux command line. Learn more with `man top`.
 
@@ -328,7 +328,7 @@ There is no reason to go crazy from the command line. Quite a few programs were 
 
 ### Midnight Commander - the savior
 
-![midnight commander](./img/mc.png)
+![midnight commander](../img/mc.png)
 
 Start this advanced file manager with simple:
 
@@ -338,13 +338,13 @@ After opening, you will see two panels listing content of current folder - you c
 
 On the bottom you see 10 buttons with labels and numbers - the numbers correspond to keys on top row of your keyboard, labeled **F1 - F10**. So for example to copy file(s) between panels (if you open different folders in them) you just press **F5**. Easy :)
 
-*__Tip:__ select multiple files with **Shift** (if you use ssh from Ubuntu) or **Insert** (Putty on Windows & Xubuntu terminal)*
+> 💡️ __Tip:__ select multiple files with **Shift** (if you use ssh from Ubuntu) or **Insert** (Putty on Windows & Xubuntu terminal)
 
 View (**F3**) and Edit (**F4**) are little miracles on their own - you can use View to see content of various files (as long as they are not binary, so it works on text files, fasta, fastq and even displays basic pdf and html files! - how cool is that? :))
 
 Edit can open and modify many text files and scripts. In case of script files you get features like syntax highlighting etc.
 
-*__Tip:__ sometimes (probably first time) after pressing F3 or F4 you are asked to select default viewer or editor. The natives of MC are easy to pick by name - **mcview** and **mcedit**. I'm talking about these in here.*
+> 💡️ __Tip:__ sometimes (probably first time) after pressing F3 or F4 you are asked to select default viewer or editor. The natives of MC are easy to pick by name - **mcview** and **mcedit**. I'm talking about these in here.
 
 Sometimes you need to run some regular commands when you have MC open. You can “minimize” MC with keyboard shortcut **Ctrl+o** (or **C-o** for short). You can later get back to MC with the same shortcut.
 
@@ -357,14 +357,14 @@ MCedit can even be started by itself, without the MC. For instance you can simpl
 
 You can edit existing files the same way, just type a name of some file in the folder to open it.
 
-*__Tip:__ name completion with Tab key works as expected ;)*
+> 💡️ __Tip:__ name completion with Tab key works as expected ;)
 
 #### Nano
 Very simple and popular command line text editor. The shortcuts at the bottom buttons work with Ctrl and the corresponding letter. So to e.g. exit `nano` editor you would press Ctrl+x (it will also ask you to save any changes). You can start it the same way as other editors:
 
 	nano new.txt # opens empty new.txt file in the nano editor
 
-![nano text editor](./img/nano.png)
+![nano text editor](../img/nano.png)
 
 #### Other editors
 There are other editors, popular with linux gurus and commandline wizards, such as Vi / Vim or Emacs. Although they are powerful, in my opinion they are too complicated for beginners' use (I use mcedit most of the time, or in case I need something more sophisticated, I switch to graphical editor, such as Sublime text). But it's good to know they exist. So if you see some online tutorial, which uses `vim` command to edit a text file, you can replace `vim` with some other editor you prefer. Vi/vim is very common in online tutorials as it's an editor that is installed on *every* linux computer on the planet, which is not the case for other editors. However there is a way out - later I show you how to install nano if it's missing on your system (most modern systems like Ubuntu have nano though).
@@ -391,7 +391,7 @@ bwa mem ref.fa reads.fq > aln-se.sam & disown
 nohup bwa mem ref.fa reads.fq > aln-se.sam &
 ```
 
-*__Tip:__ the `&` symbol moves the command into background so you can input other commands (e.g. `disown`). It doesn't let you logout from HPC without interrupting your job (on its own), but it allows for some rudimentary multitasking.*
+> 💡️ __Tip:__ the `&` symbol moves the command into background so you can input other commands (e.g. `disown`). It doesn't let you logout from HPC without interrupting your job (on its own), but it allows for some rudimentary multitasking.
 
 If you find that `nohup` doesn't work with some programs, it might be because programmers of the software in question can change `nohup` behaviour. In such case `disown` should be a safer option.
 
@@ -422,7 +422,7 @@ Some of the shortcuts I find most usefull are these:
 
 You can find more info in the `man screen` page (if you don't have it on your local computer, you can still read it on the HPC/cluster where you connect to).
 
-_**Note:** I noticed that some programs (especially MC) may work slightly differently inside screen session than they would do normally. For example on some HPCs the mouse input is ignored and you have to use keyboard for scrolling (arrows, PgUp & PgDn) or opening menu (F9) in MC. Also you won't see history of your commands when you minimize MC with Ctrl+o (but you can still browse previous commands with arrow up). Other programs, like emacs, may be also affected. However I've only seen this on a few HPCs._
+> ℹ️ **Note:** I noticed that some programs (especially MC) may work slightly differently inside screen session than they would do normally. For example on some HPCs the mouse input is ignored and you have to use keyboard for scrolling (arrows, PgUp & PgDn) or opening menu (F9) in MC. Also you won't see history of your commands when you minimize MC with Ctrl+o (but you can still browse previous commands with arrow up). Other programs, like emacs, may be also affected. However I've only seen this on a few HPCs.
 
 #### Tmux
 Tmux is very similar in functionality to screen and it's good to know about it in case screen is not installed on your HPC system. The basic commands are similar to screen:
@@ -455,7 +455,7 @@ qstat -a # status of all jobs with more info
 qdel JOB.ID # kill job with JOB.ID
 ```
 
-_**Note:** There are several implementations of the PBS system, including popular open-source TORQUE or commercial PBS Pro (used e.g. by [IT4Inovations](https://docs.it4i.cz/pbspro/)). These implementations may differ in how they use parameters. Here I'm showing the parameters for TORQUE, with details available [here](http://docs.adaptivecomputing.com/torque/4-0-2/Content/topics/commands/qsub.htm)._
+> ℹ️ **Note:** There are several implementations of the PBS system, including popular open-source TORQUE or commercial PBS Pro (used e.g. by [IT4Inovations](https://docs.it4i.cz/pbspro/)). These implementations may differ in how they use parameters. Here I'm showing the parameters for TORQUE, with details available [here](http://docs.adaptivecomputing.com/torque/4-0-2/Content/topics/commands/qsub.htm).
 
 #### Interactive session in PBS
 What if you want to test commands to prepare your job script, but you don't want to block the login node with your intensive processes? Easy, PBS supports **interactive jobs**. You can start it like this:
@@ -492,7 +492,7 @@ There are however still cases where you need to install software on your own:
 ### Scientific package managers
 Package managers are very common on Linux distributions - they make installing software easy by connecting to curated repositories, from which you can download and install any available software using these managers. Some managers aim at general users and look like Google Play store (see e.g. elementary AppCenter below), other managers are focused on power users.
 
-![elementary AppCenter](./img/appcenter.png)
+![elementary AppCenter](../img/appcenter.png)
 
 Most of the general package managers present in Linux distributions require root (admin) privileges. However several package managers have been developed specifically for scientists and for use on HPCs and clusters without such privileges. These include **conda** and **linuxbrew**. Most programs are available via both managers, however I found few edge cases when a package was only found in one of them. ~~However it’s possible to install and use both at the same time.~~ **Update:** I haven't tested this rigorously, but I would be careful using both on the same machine because of the PATH variable (which also depends on if you include any of them in the system path). I used both on the same machine to some extent by including only one (conda) in the system PATH.
 
@@ -500,7 +500,7 @@ Even though these managers aim at HPCs, you can also use them on your own laptop
 
 #### Conda
 
-![conda software manager](./img/conda.png)
+![conda software manager](../img/conda.png)
 
 [Conda](https://conda.io/docs/) started as a package manager to distribute python packages for data science, as part of Anaconda project. However since then it grew into general purpose package manager with several software repositories (channels) for science and bioinformatics, the most important being [Bioconda](https://bioconda.github.io/). These days, conda will let you install a lot of scientific software, including:
 
@@ -579,7 +579,7 @@ There are actually simpler ways to do this even with wildcards. For example you 
     
 However, you will still need `for` loops to process your files with specialized bioinformatics softwares. For instance most trimmers or mappers (aligners) allow at most two files for primary input and wouldn't work if you try to provide all your files in one step. You *will* need the `for` loop in the future.
 
-*__Tip:__ you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I only know about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).*
+> 💡️ __Tip:__ you might be wondering now how many other tools you already know work with gzipped files just by appending z at the beginning of their name - the truth is, I only know about these two, `zcat` and `zgrep`. There might be more, but it's not common to see them in the wild (i.e. on the internet).
 
 ### Quality control (QC)
 Playing with files like this is all fun and games, but if you want some real work done, you need something better. You want to *understand* the sequences, and the first thing is to check *quality* of the sequencing itself - i.e. if our sequences are real biology or full of technical artifacts.
@@ -592,7 +592,7 @@ Probably the most widely used program for QC is [FastQC](https://www.bioinformat
     
 The first command opens a graphical window, where you select a file for QC using the menu. The second command runs the analysis on specified file, in this case all files in a directory that end with *fq.gz*. It will output the reports in html format, that you can open in any web browser.
 
-*__Tip:__ to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are `-X` (no encryption), `-Y` (yes encryption) or simply `-XY` (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.*
+> 💡️ __Tip:__ to open graphical programs in ssh session (e.g. when connected to HPC), you have to add a parameter to the `ssh` command. The options are `-X` (no encryption), `-Y` (yes encryption) or simply `-XY` (encryption, unless it's not supported). So you would connect e.g. using `ssh -XY studentuser@genome.osu.cz`.
 
 #### MultiQC
 [MultiQC](https://multiqc.info/) is a package designed to assess multiple samples at once. It uses output of FastQC and compiles an interactive report for all samples. 
