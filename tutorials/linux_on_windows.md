@@ -16,7 +16,7 @@ Here I intend to show what I consider the most simple ways to run Linux on Windo
 ## Windows subsystem for Linux (WSL)
 If you run Windows 10, you are in luck, because your system includes an official Linux support. All you need to do is enable it with one command and download an app from the Microsoft store.
 
-![Microsoft Store](img/ms_store.png)
+![Microsoft Store](../img/ms_store.png)
 
 You can follow the [Ubuntu tutorial](https://ubuntu.com/tutorials/ubuntu-on-windows#1-overview), but here is the gist of it:
 
@@ -59,7 +59,7 @@ Then we can run this command to open it:
 
 You will see a window similar to this:
 
-![Midnight Commander](img/mc.png)
+![Midnight Commander](../img/mc.png)
 
 ## MobaXterm app
 In case you don't have Windows 10 available (or you don't have admin access), the second best thing (in my opinion) is the excellent [MobaXterm application](https://mobaxterm.mobatek.net/). It is a single versatile package, containing many Linux command-line tools, as well as clients for remote access (pretty much all the protocols are covered, including SSH/SFTP, RDP, VNC and many others). It even contains the Ubuntu `apt` package manager for installing packages (although the software repository is more limited, similar to android's [Termux](https://termux.com/)).
@@ -71,14 +71,14 @@ The portable version by default does not remember any changes and settings you d
 
 You just need to use the menu bar and navigate to **Settings > Configuration**. After the settings window opens, you see the **General** tab, where you need to set the **Persistent home directory** and **Persistent root directory** to some folder on your PC that doesn't get deleted (by default these are set to Temp, which is removed after you close MobaXterm).
 
-![MobaXterm settings](img/mobaxterm-settings.png)
+![MobaXterm settings](../img/mobaxterm-settings.png)
 
 After you set the folders for permanent files, confirm with the OK button. MobaXterm will ask you to restart the program to use the new setup. The permanent folders will not work until you restart it, so I recommend doing it now. When it restarts, you are good to go.
 
 ### Enabling package manager
 When you open MobaXterm, it lets you open a local terminal directly from the welcome screen.
 
-![MobaXterm welcome screen](img/mobaxterm-welcome.png)
+![MobaXterm welcome screen](../img/mobaxterm-welcome.png)
 
 After starting the local terminal, you can run this command to enable the `apt` package manager and update the repository info:
 
@@ -96,7 +96,7 @@ Then you can start MC by running:
 
 And the MC will open, showing the default home folder.
 
-![Midnight Commander in MobaXterm](img/mobaxterm-mc.png)
+![Midnight Commander in MobaXterm](../img/mobaxterm-mc.png)
 
 ## Make your life easier
 So now you have the power of Linux command line at your fingertips, with the useful MC to help you manage your files. What I recommend next is to setup links to your common folders for quick access. We will do this using MC and a little magic called **symbolic links**.
@@ -114,7 +114,7 @@ Now it would be useful to know how to get to your normal Windows folders and fil
 
 On the top of each panel in MC you see `..`. You may remember from the MS DOS era that this symbolizes going up in the folder hierarchy. Let's go there now. First we get to the `/home` folder, going to `..` one more time gets us to the *root directory* `/` of our prefixed Linux environment. You can think of it as *Your computer* on Windows, but as you can see, there are no disk drives, like `C:\` or `D:\`. In Linux, these are located in `/mnt`, so let's go there - select the `mnt` folder in MC and enter it. There you will see your disk drives.
 
-![Symbolic links](img/mobaxterm-ln-s.png)
+![Symbolic links](../img/mobaxterm-ln-s.png)
 
 Now select one of the drives, e.g. `c`, and then look at the menu bar on top of MC. There you can click on **File > Symbolic link** to create a symbolic link of your `C:\` drive in the folder in the other panel, which should be your home folder. In the dialog that shows up, you can just confirm with Enter and voila - you have a new link to your `C:\` drive in your home folder!
 
