@@ -47,7 +47,7 @@ For every Windows user, I always install the Midnight Commander and do a little 
 - to make the Linux terminal less scary :)
 - to make your files easier to access from the Linux terminal
 
-> 💡️ **Tip:** I have written about the Midnight Commander [before](Linux_for_biologists.html#midnight-commander---the-savior).
+> 💡️ **Tip:** I have written about the Midnight Commander [before](tutorials/linux_for_biologists.html#midnight-commander---the-savior).
 
 If you have already finished the initial upgrade, we are ready to install the Midnight Commander. Just use this command:
 
@@ -123,6 +123,6 @@ Now select one of the drives, e.g. `c`, and then look at the menu bar on top of 
 Of course, nothing stops you from browsing your Windows drives now and creating all the links you need in your home folder. Make it your home ;)
 
 ## Learn more
-If you want to learn more about the Linux command line, you can check out my other tutorial, where I show how [Linux can be useful for biologists](./linux_for_biologists.html).
+If you want to learn more about the Linux command line, you can check out my other tutorial, where I show how [Linux can be useful for biologists](./tutorials/linux_for_biologists.html).
 
 ## Comments
