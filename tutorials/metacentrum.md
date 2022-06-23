@@ -3,9 +3,9 @@ layout: post
 title: MetaCentrum
 ---
 
-{% include toc.html %}
-
 > ### MetaCentrum is an organisation managing a national grid of clusters for scientific computing. All academics and students at Czech institutions can use its resources for free.
+
+{% include toc.html %}
 
 ## Useful links
 To get you started, here are links to a few useful resources:
