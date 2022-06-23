@@ -3,9 +3,9 @@ layout: post
 title: MetaCentrum
 ---
 
-> ### MetaCentrum is an organisation managing a national grid of clusters for scientific computing. All academics and students at Czech institutions can use its resources for free.
-
 {% include toc.html %}
+
+> MetaCentrum is an organisation managing a national grid of clusters for scientific computing. All academics and students at Czech institutions can use its resources for free.
 
 ## Useful links
 To get you started, here are links to a few useful resources:
@@ -37,7 +37,7 @@ For example, after you submit a job, the job may be running at a computer that d
 ## Job scheduling with PBS Pro / OpenPBS
 MetaCentrum uses PBS Pro / OpenPBS for scheduling jobs.
 
-> In 2020, PBS Pro was renamed to OpenPBS and [released](https://github.com/openpbs/openpbs) under an open-source license. However, most resources on the internet refer to the old name, including the documentation at MetaCentrum. The name PBS Pro is also used for commercial version (same code, but with paid support).
+> ℹ️ **Note:** In 2020, PBS Pro was renamed to OpenPBS and [released](https://github.com/openpbs/openpbs) under an open-source license. However, most resources on the internet refer to the old name, including the documentation at MetaCentrum. The name PBS Pro is also used for commercial version (same code, but with paid support).
 
 The syntax of PBS Pro differs from Torque PBS, which is another implementation used e.g. at our faculty cluster. You can have a look at the [quick cheat sheet](https://wiki.metacentrum.cz/w/images/9/9f/Quickstart-pbspro-small.pdf) or the [full docs](https://wiki.metacentrum.cz/wiki/About_scheduling_system) provided by MetaCentrum.
 
@@ -103,7 +103,7 @@ There are several ways to get the software you need. First, MetaCentrum provides
 
 But packages in **modules can be old**. Or the software you need is **not available**. In that case, you are free to install the software yourself. I highly recommend using a **package manager**, such as `conda` or `brew`, as I've [described before](https://janxkoci.github.io/tutorials/linux_for_biologists.html#scientific-package-managers).
 
-> **Tip:** The [conda manager is already available](https://wiki.metacentrum.cz/wiki/Conda_-_modules) at MetaCentrum, as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments) to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! ;)
+> **Tip:** The [conda manager is already available](https://wiki.metacentrum.cz/wiki/Conda_-_modules) at MetaCentrum, as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments) to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
 
 ### Modules
 MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [list sorted by topics here](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List).
