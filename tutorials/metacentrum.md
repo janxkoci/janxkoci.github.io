@@ -62,7 +62,7 @@ The command will prompt you for a password to your account (by default).
 When submitting jobs, you should keep in mind a few details about the queues:
 
 - Unless specified, the **default queue is only 1 hour**! You should explicitly specify longer queue or set a wall time for your job, if required.
-- Queue and required job wall time affect **priority of the job** - longer jobs have lower priority. Very long jobs can wait a long time to even start!
+- Queue and required job wall time affect **priority of the job** - longer jobs have lower priority. Very long jobs can wait a long time to even start! You can increase your priority by acknowledging MetaCentrum in your publications.
 - If not explicitly selected, the queue will be **automatically assigned based on wall time** set in the job script or as argument to the `qsub` command.
 
 ### Interactive jobs
@@ -79,7 +79,7 @@ There are [three types](https://wiki.metacentrum.cz/wiki/Working_with_data#Data_
 
 - **Scratch storages** - fast, small capacity, use for computations (esp. I/O intensive)
 - **Disk arrays** - regular drives to keep data between computations (includes your `/home` directory)
-- **Hierarchical storages** - massive capacity for long-term storage of data
+- **Hierarchical storages** - massive capacity for [long-term storage of data](https://wiki.metacentrum.cz/wiki/Working_with_data#Data_archiving_and_backup)
 
 ### Working directory
 Not every computer in the grid will automatically share your `/home` directory, so its content will depend on where you login or where your job is being executed. For example, if you typically login to a cluster `skirit.ics.muni.cz` in Brno and copy all your files there, it does **not** mean that a job scheduled to run say in Prague will see the same files in the `/home` directory.
@@ -103,7 +103,7 @@ There are several ways to get the software you need. First, MetaCentrum provides
 
 But packages in **modules can be old**. Or the software you need is **not available**. In that case, you are free to install the software yourself. I highly recommend using a **package manager**, such as `conda` or `brew`, as I've [described before](https://janxkoci.github.io/tutorials/linux_for_biologists.html#scientific-package-managers).
 
-> **Tip:** The [conda manager is already available](https://wiki.metacentrum.cz/wiki/Conda_-_modules) at MetaCentrum, as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments) to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
+> **Tip:** The `conda` manager is already [available at MetaCentrum](https://wiki.metacentrum.cz/wiki/Conda_-_modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
 
 ### Modules
 MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [list sorted by topics here](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List).
