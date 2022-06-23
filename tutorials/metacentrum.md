@@ -103,7 +103,7 @@ There are several ways to get the software you need. First, MetaCentrum provides
 
 But packages in **modules can be old**. Or the software you need is **not available**. In that case, you are free to install the software yourself. I highly recommend using a **package manager**, such as `conda` or `brew`, as I've [described before](https://janxkoci.github.io/tutorials/linux_for_biologists.html#scientific-package-managers).
 
-> **Tip:** The `conda` manager is already [available at MetaCentrum](https://wiki.metacentrum.cz/wiki/Conda_-_modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
+> 💡 **Tip:** The `conda` manager is already [available at MetaCentrum](https://wiki.metacentrum.cz/wiki/Conda_-_modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
 
 ### Modules
 MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [list sorted by topics here](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List).
@@ -118,7 +118,12 @@ module avail r/ # see all R modules (without matching)
 # load module
 module load samtools # load default version
 module load samtools-0.1.19 # load specific version
+module add samtools-0.1.19 # same as above
+# list loaded modules
+module list # see list of loaded modules
 ```
+
+You can find more details at the [MetaCentrum wiki page](https://wiki.metacentrum.cz/wiki/Application_modules).
 
 ### Graphical programs
 It is even possible to run [graphical programs](https://wiki.metacentrum.cz/wiki/Kategorie:Applications_with_GUI), such as RStudio, Tablet, or Geneious (MetaCentrum even provides a license, try `qsub -l geneious=1`). There are two main ways to run GUI programs:
@@ -140,7 +145,7 @@ You can also use either a web browser or a VNC client to use GUI programs. See t
 
 ## Examples
 ### Example 1 - job script
-Here is an example script that uses `pigz` (the parallel implementation of gzip) to uncompress data in current directory. The `pigz` package is already preinstalled at MetaCentrum (and available without loading any module, at least on the Debian systems), but we will use a version installed by `conda`, just so I can illustrate its usage.
+Here is an example script that uses `pigz` (the parallel implementation of `gzip`) to uncompress data in current directory. The `pigz` package is already preinstalled at MetaCentrum (and available without loading any module, at least on the Debian systems), but we will use a version installed by `conda`, just so I can illustrate its usage.
 
 ```bash
 #PBS -N pigz
@@ -157,7 +162,7 @@ pigz -d data/*.fq.gz
 ```
 
 ### Example 2 - interactive R session
-Here is an example **series of commands** to launch an interactive job and the R computing environment in the current working directory:
+Here is an example **series of commands** to launch an interactive job and the `R` computing environment in the current working directory:
 
 ```bash
 ## SUBMIT interactive job
@@ -189,3 +194,5 @@ module add tablet-1.14
 ## START Tablet
 tablet
 ```
+
+## Comments
