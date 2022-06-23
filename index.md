@@ -3,6 +3,9 @@ layout: home
 title: Articles
 ---
 
+## [Metacentrum](./tutorials/metacentrum.md)
+MetaCentrum is an organisation managing a national grid of clusters for scientific computing. All academics and students at Czech institutions can use its resources for free. [Read more...](./tutorials/metacentrum.md)
+
 ## [Linux on Windows](./tutorials/linux_on_windows.md)
 New tutorial! This time we will have a quick look on how to enter the world of Linux command line from a Windows computer, with as little friction as possible. [Read more...](./tutorials/linux_on_windows.md)
 

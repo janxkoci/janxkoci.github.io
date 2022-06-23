@@ -96,6 +96,8 @@ cd $PBS_O_WORKDIR || exit
 
 On the other hand, the variable `HOME` corresponds to the `/home` directory at the particular node where your job started executing. This is arguably less useful, but worth knowing about.
 
+If your job requires fast ([scratch](https://wiki.metacentrum.cz/wiki/Beginners_guide#Specify_scratch_directory)) disk space, you may need another useful variable - `SCRATCHDIR`.
+
 ## Software
 There are several ways to get the software you need. First, MetaCentrum provides so-called **software modules**. These are loadable packages of software and libraries that you can load and use in your scripts. Many of the packages are provided in several versions to choose from, to cater to all your software needs.
 
