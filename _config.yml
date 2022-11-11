@@ -4,6 +4,9 @@ author: Jan Kočí
 
 theme: minima
 
+minima:
+  skin: auto
+
 header_pages:
   - tutorials.md
   - about_me.md
