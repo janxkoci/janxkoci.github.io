@@ -2,10 +2,14 @@ title: Everything Evolutionary
 description: "Everything is better with evolution in the mix!"
 author: Jan Kočí
 
-theme: minima
+#theme: minima
 
 minima:
   skin: auto
+
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme
 
 header_pages:
   - tutorials.md
