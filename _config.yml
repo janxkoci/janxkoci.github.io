@@ -5,7 +5,7 @@ author: Jan Kočí
 #theme: minima
 
 minima:
-  skin: auto
+  skin: solarized
 
 remote_theme: jekyll/minima
 plugins:
