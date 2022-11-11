@@ -5,7 +5,7 @@ author: Jan Kočí
 theme: minima
 
 minima:
-  skin: solarized
+  skin: auto
 
 header_pages:
   - tutorials.md
