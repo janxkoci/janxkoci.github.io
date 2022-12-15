@@ -3,6 +3,9 @@ layout: page
 title: Tutorials
 ---
 
+## [Conda cheat sheet](./tutorials/conda_cheatsheet.md)
+The cheat sheet for conda - a package manager for science and HPCs - is here! We have all the commands and links you need! [Read more...](./tutorials/conda_cheatsheet.md)
+
 ## [MetaCentrum](./tutorials/metacentrum.md)
 MetaCentrum is an organisation managing a national grid of clusters for scientific computing. All academics and students at Czech institutions can use its resources for free. [Read more...](./tutorials/metacentrum.md)
 
