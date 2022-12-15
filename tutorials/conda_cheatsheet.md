@@ -18,6 +18,8 @@ Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, indepe
 - directly with [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html),
 - or using `conda`.
 
+Mamba includes extra features, like `query`, so make sure to check their [docs](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) too.
+
 Below, you can use `conda` or `mamba` interchangeably, with a few [exceptions](#mamba-limitations).
 
 ## Conda basics
