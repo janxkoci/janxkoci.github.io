@@ -11,7 +11,7 @@ Simple cheatsheet for `conda` - a package manager designed for scientists and HP
 The `conda` manager is available for all major platforms in two main versions:
 
 - [Anaconda](https://www.anaconda.com/products/individual#Downloads) - best for Python-heavy workflows, includes 200+ packages for scientific computing, currated by Continuum Inc. (`conda` dev company).
-- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) - ready for any workflow - only the `conda` manager, its dependencies. It also allows installing any or all packages from the Anaconda distribution, and thousands more.
+- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) - ready for any workflow - only the `conda` manager, its dependencies, and channels at your command. It also allows installing any or all packages from the Anaconda distribution, and thousands more.
 
 Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, with a few remaining limitations related to environments (see below). Install `mamba`:
 
