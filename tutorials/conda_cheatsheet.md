@@ -1,5 +1,11 @@
-# Conda cheat sheet
-Simple cheatsheet for `conda` - a package manager designed for scientists and HPCs, that **works without root/sudo permissions**.
+---
+layout: post
+title: Conda cheat sheet
+---
+
+Simple cheatsheet for `conda` - a package manager designed for scientists and HPCs. **No sudo/root permissions needed**.
+
+{% include toc.html %}
 
 ## Get conda (and/or mamba)
 The `conda` manager is available for all major platforms in two main versions:
@@ -7,9 +13,9 @@ The `conda` manager is available for all major platforms in two main versions:
 - [Anaconda](https://www.anaconda.com/products/individual#Downloads) - best for Python-heavy workflows, includes 200+ packages for scientific computing, currated by Continuum Inc. (`conda` dev company).
 - [Miniconda](https://docs.conda.io/en/latest/miniconda.html) - ready for any workflow - only the `conda` manager, its dependencies. It also allows installing any or all packages from the Anaconda distribution, and thousands more.
 
-Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, with a few remaining limitations related to environments (see below). Install directly with
+Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, with a few remaining limitations related to environments (see below). Install `mamba`:
 
-- [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html),
+- directly with [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html),
 - or using `conda`.
 
 Below, you can use `conda` or `mamba` interchangeably, with a few [exceptions](#mamba-limitations).
@@ -97,4 +103,6 @@ But it does not support:
 - rolling back revisions of environment's history
 
 Well - yet. Give them time and [check again](https://github.com/mamba-org/mamba/issues/803) soon! 😉️
+
+## Comments
 
