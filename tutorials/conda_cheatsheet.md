@@ -33,7 +33,7 @@ conda install -h # command-specific help
 
 ### Packages
 
-The `conda` manager can search the default channels as well as any additional channel you configure (see below). You can also search all channels at [anaconda.org](https://anaconda.org/).
+The `conda` manager can search the default channels as well as any additional channel you configure (see below). You can also search packages in all channels at [anaconda.org](https://anaconda.org/).
 
 ```bash
 conda search pigz # search parallel gzip in available channels
