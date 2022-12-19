@@ -13,6 +13,7 @@ To get you started, here are links to a few useful resources:
 - [Get account](https://metavo.metacentrum.cz/en/application/index.html) (uses [eduID](https://www.eduid.cz/en/index) accounts)
 - [Wiki with help guides](https://wiki.metacentrum.cz/wiki/Categorized_list_of_topics)
 - [Beginner's guide](https://wiki.metacentrum.cz/wiki/Beginners_guide)
+- [Software modules by topic](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List)
 - [Hardware overview](https://metavo.metacentrum.cz/pbsmon2/hardware) (more [details here](https://metavo.metacentrum.cz/pbsmon2/props))
 - [Long-term storage of data](https://wiki.metacentrum.cz/wiki/Working_with_data#Data_archiving_and_backup)
 
@@ -32,7 +33,7 @@ The grid infrastructure has a few peculiar traits that you may need to deal with
 
 For start, **the grid is not a homogeneous cluster**, but rather a network of clusters of various sizes, located in different cities all over the country. Different parts have different hardware specifications, and in some cases even different Linux OS versions (distributions).
 
-For example, after you submit a job, the job may be running at a computer that does not see your data - so you have to specify where the data is (i.e. which city and cluster). Luckily, this is quite easy to do, so read on and don't panic! 😎
+For example, after you submit a job, the job may be running at a computer that does not see your data - so you have to specify where the data is (i.e. which city and cluster). Luckily, this is quite easy to do, so don't panic and read on! 😎
 
 ## Job scheduling with PBS Pro / OpenPBS
 MetaCentrum uses PBS Pro / OpenPBS for scheduling jobs.
@@ -50,19 +51,19 @@ qsub -A Project_ID -q queue -l select=x:ncpus=y:mem=z,walltime=[[hh:]mm:]ss[.ms]
 In practice, you can omit a few parameters and mostly focus on specifying resources needed for your job (using the `-l` argument).
 
 ### Kerberos tickets
-To be able to submit jobs, you also need something called a **kerberos ticket**. You will automatically obtain the Kerberos tickets while login with password. **The ticket is valid for 10 hours**. This limitation is especially important if you are using a [terminal multiplexer](https://janxkoci.github.io/tutorials/linux_for_biologists.html#terminal-multiplexers), such as GNU `screen` or `tmux`.
+To submit jobs, you also need something called a **kerberos ticket**. You will automatically get a fresh Kerberos ticket after login with a password. **The ticket is valid for 10 hours**. This limitation is especially important if you are using a [terminal multiplexer](https://janxkoci.github.io/tutorials/linux_for_biologists.html#terminal-multiplexers), such as GNU `screen` or `tmux`.
 
-In case you need to obtain a new kerberos ticket (and cannot just logout and login back, such as when inside a `screen` or `tmux` session), you can issue the following command:
+In case you need a new kerberos ticket (and cannot just logout and login back, such as when inside a `screen` or `tmux` session), you can use the following command:
 
 	kinit
 
-The command will prompt you for a password to your account (by default).
+The command will ask you for a password to your account. After authentication, a new ticket will be issued for your account and you will be able to submit jobs again.
 
 ### Queues
 When submitting jobs, you should keep in mind a few details about the queues:
 
-- Unless specified, the **default queue is only 1 hour**! You should explicitly specify longer queue or set a wall time for your job, if required.
-- Queue and required job wall time affect **priority of the job** - longer jobs have lower priority. Very long jobs can wait a long time to even start! You can increase your priority by acknowledging MetaCentrum in your publications.
+- Specify the resources you need - **the defaults are 1 core, 400 MB of RAM, and 24 hours of walltime**. You should explicitly specify longer queue or set a wall time for your job, if required.
+- **Shorter jobs have higher priority**. Very long jobs can wait a long time to even start! You can also **increase your priority** by acknowledging MetaCentrum in your publications.
 - If not explicitly selected, the queue will be **automatically assigned based on wall time** set in the job script or as argument to the `qsub` command.
 
 ### Interactive jobs
@@ -71,7 +72,8 @@ The PBS scheduling system supports interactive jobs. These are useful to test so
 You can start an interactive job by using the `qsub` command with the `-I` argument, e.g.:
 
 ```bash
-qsub -N ijob -I -l select=1:ncpus=16:mem=4gb,walltime=24:00:00
+# select 1 node, 16 cores, 4 GB of memory, and 24 h walltime
+qsub -I -N ijob -l select=1:ncpus=16:mem=4gb,walltime=24:00:00
 ```
 
 ## Storage
@@ -103,10 +105,10 @@ There are several ways to get the software you need. First, MetaCentrum provides
 
 But packages in **modules can be old**. Or the software you need is **not available**. In that case, you are free to install the software yourself. I highly recommend using a **package manager**, such as `conda` or `brew`, as I've [described before](https://janxkoci.github.io/tutorials/linux_for_biologists.html#scientific-package-managers).
 
-> 💡 **Tip:** The `conda` manager is already [available at MetaCentrum](https://wiki.metacentrum.cz/wiki/Conda_-_modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://gist.github.com/janxkoci/a3e446ee0f209e9593a2f2f87fca0058#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
+> 💡 **Tip:** The `conda` manager is already [available at MetaCentrum](https://wiki.metacentrum.cz/wiki/Conda_-_modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://janxkoci.github.io/tutorials/conda_cheatsheet.html#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
 
 ### Modules
-MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [list sorted by topics here](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List).
+MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [**list sorted by topics** here](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List).
 
 A few quick commands to work with modules:
 
@@ -166,8 +168,12 @@ Here is an example **series of commands** to launch an interactive job and the `
 
 ```bash
 ## SUBMIT interactive job
-qsub -N Rjob -I -l select=1:ncpus=16:mem=16gb,walltime=24:00:00
+qsub -I -N Rjob -l select=1:ncpus=16:mem=16gb,walltime=24:00:00
+```
 
+After the interactive session starts, you can start working:
+
+```bash
 ## GO TO WORKDIR
 cd $PBS_O_WORKDIR || exit
 
@@ -184,7 +190,11 @@ Here is an example **series of commands** to launch an interactive job and the T
 ```bash
 ## SUBMIT interactive job
 qsub -N tablet -I -l select=1:ncpus=16:mem=16gb,walltime=24:00:00
+```
 
+After the interactive session starts, you can start working:
+
+```bash
 ## GO TO WORKDIR
 cd $PBS_O_WORKDIR || exit
 
