@@ -61,6 +61,7 @@ Add channels to your conda configuration, so they are searched by default. Order
 conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
+conda config --set channel_priority strict # new since conda>=4.6
 ```
 
 After adding channels into the config as above, they are searched by commands such as `conda search` or `conda install`, even without the `-c|--channel` parameter.
