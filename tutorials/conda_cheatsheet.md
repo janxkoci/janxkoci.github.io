@@ -54,7 +54,7 @@ conda clean --all # cleans downloaded packages (already installed) to free up di
 Add channels to your conda configuration, so they are searched by default. Order of adding determines **priority**. The most useful channels are:
 
 - [conda-forge](https://conda-forge.org/) - general science software, including packages for R, and more;
-- [Bioconda channel](http://bioconda.github.io/user/install.html#set-up-channels) - for bioinformatics software, depends on the conda-forge channel (here comes the importance of priority).
+- [Bioconda channel](http://bioconda.github.io/) - for bioinformatics software, depends on the conda-forge channel (here comes the importance of priority).
 
 ```bash
 # last channel = highest priority
