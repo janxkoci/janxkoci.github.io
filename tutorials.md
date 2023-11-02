@@ -3,6 +3,9 @@ layout: page
 title: Tutorials
 ---
 
+## [Friends for remote computing](./tutorials/hpc_friends.md)
+These are my friends for remote computing - handy little programs and tools that make my work at remote HPC clusters a lot nicer. Most of these friendly tools are command-line programs, but I will also show a few graphical tools and plugins that can make our life easier. [Read more...](./tutorials/hpc_friends.md)
+
 ## [Conda cheat sheet](./tutorials/conda_cheatsheet.md)
 The cheat sheet for conda - a package manager for science and HPCs - is here! We have all the commands and links you need! [Read more...](./tutorials/conda_cheatsheet.md)
 
