@@ -3,6 +3,9 @@ layout: page
 title: Tutorials
 ---
 
+## [Getting taxonomy from NCBI with `R` & `rentrez`](./tutorials/rentrez.md)
+A while ago I got the opportunity to learn something new when collaborating on a small sideproject - accessing the NCBI Entrez query system with `R` and the `rentrez` package. Here is a brief tutorial showing a few things one can do with the package. [Read more...](./tutorials/rentrez.md)
+
 ## [Friends for remote computing](./tutorials/hpc_friends.md)
 These are my friends for remote computing - handy little programs and tools that make my work at remote HPC clusters a lot nicer. Most of these friendly tools are command-line programs, but I will also show a few graphical tools and plugins that can make our life easier. [Read more...](./tutorials/hpc_friends.md)
 

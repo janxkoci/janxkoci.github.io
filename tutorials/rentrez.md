@@ -1,6 +1,11 @@
-# Getting taxonomy from NCBI with `R` & `rentrez`
+---
+layout: post
+title: Getting taxonomy from NCBI with `R` & `rentrez`
+---
 
 Recently, I happened to work with Blast a lot. At some point we wanted to get some high-level taxonomy for our dataset. I've never done this, but I know the NCBI provides a query interface called Entrez, which can be accessed from command-line tools as well as from several programming languages. In `R`, you can query the Entrez system with the [`rentrez`](https://cran.r-project.org/package=rentrez) package. Here I describe the basics of getting taxonomy information with this package.
+
+{% include toc.html %}
 
 Let's load our packages - `rentrez` and also `magrittr` (to get pipes for easier coding):
 
