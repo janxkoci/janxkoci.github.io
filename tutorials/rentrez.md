@@ -207,15 +207,12 @@ So far we used the function `str()` to see results of our queries and to figure 
 entrez_summary(db="taxonomy", id=taxa$id[1:10]) %>% extract_from_esummary("division")
 ```
 
-
-<style>
-.dl-inline {width: auto; margin:0; padding: 0}
-.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
-.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
-.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
-</style><dl class=dl-inline><dt>1219383</dt><dd>'g-proteobacteria'</dd><dt>1219382</dt><dd>'g-proteobacteria'</dd><dt>1392540</dt><dd>'g-proteobacteria'</dd><dt>1229165</dt><dd>'g-proteobacteria'</dd><dt>29545</dt><dd>'b-proteobacteria'</dd><dt>2691581</dt><dd>'b-proteobacteria'</dd><dt>1907941</dt><dd>'g-proteobacteria'</dd><dt>86304</dt><dd>'g-proteobacteria'</dd><dt>203122</dt><dd>'g-proteobacteria'</dd><dt>2675457</dt><dd>'b-proteobacteria'</dd></dl>
-
-
+               1219383            1219382            1392540            1229165 
+    "g-proteobacteria" "g-proteobacteria" "g-proteobacteria" "g-proteobacteria" 
+                 29545            2691581            1907941              86304 
+    "b-proteobacteria" "b-proteobacteria" "g-proteobacteria" "g-proteobacteria" 
+                203122            2675457 
+    "g-proteobacteria" "b-proteobacteria" 
 
 ### Full data (~90k ids)
 
