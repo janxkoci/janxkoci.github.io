@@ -21,18 +21,20 @@ Here is the list of available databases:
 
 
 ```R
-entrez_dbs()
+entrez_dbs() %>% print
 ```
 
-
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class=list-inline><li>'pubmed'</li><li>'protein'</li><li>'nuccore'</li><li>'ipg'</li><li>'nucleotide'</li><li>'structure'</li><li>'genome'</li><li>'annotinfo'</li><li>'assembly'</li><li>'bioproject'</li><li>'biosample'</li><li>'blastdbinfo'</li><li>'books'</li><li>'cdd'</li><li>'clinvar'</li><li>'gap'</li><li>'gapplus'</li><li>'grasp'</li><li>'dbvar'</li><li>'gene'</li><li>'gds'</li><li>'geoprofiles'</li><li>'homologene'</li><li>'medgen'</li><li>'mesh'</li><li>'ncbisearch'</li><li>'nlmcatalog'</li><li>'omim'</li><li>'orgtrack'</li><li>'pmc'</li><li>'popset'</li><li>'proteinclusters'</li><li>'pcassay'</li><li>'protfam'</li><li>'biosystems'</li><li>'pccompound'</li><li>'pcsubstance'</li><li>'seqannot'</li><li>'snp'</li><li>'sra'</li><li>'taxonomy'</li><li>'biocollections'</li><li>'gtr'</li></ol>
-
-
+     [1] "pubmed"          "protein"         "nuccore"         "ipg"            
+     [5] "nucleotide"      "structure"       "genome"          "annotinfo"      
+     [9] "assembly"        "bioproject"      "biosample"       "blastdbinfo"    
+    [13] "books"           "cdd"             "clinvar"         "gap"            
+    [17] "gapplus"         "grasp"           "dbvar"           "gene"           
+    [21] "gds"             "geoprofiles"     "homologene"      "medgen"         
+    [25] "mesh"            "nlmcatalog"      "omim"            "orgtrack"       
+    [29] "pmc"             "popset"          "proteinclusters" "pcassay"        
+    [33] "protfam"         "pccompound"      "pcsubstance"     "seqannot"       
+    [37] "snp"             "sra"             "taxonomy"        "biocollections" 
+    [41] "gtr"            
 
 The basic command to get taxonomy for an ID:
 
