@@ -204,7 +204,7 @@ So far we used the function `str()` to see results of our queries and to figure 
 
 
 ```R
-entrez_summary(db="taxonomy", id=taxa$id[1:10]) %>% extract_from_esummary("division")
+entrez_summary(db="taxonomy", id=taxa$id[1:10]) %>% extract_from_esummary("division") %>% print
 ```
 
                1219383            1219382            1392540            1229165 
