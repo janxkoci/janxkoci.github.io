@@ -78,7 +78,8 @@ If you like the split-screen feature of `tmux` and would like to use it also in 
 
 - **Linux:** [tilix](https://gnunn1.github.io/tilix-web/) or [terminator](https://gnome-terminator.org/)
 - **macOS:** [iTerm2](https://iterm2.com/)
-- **Windows:** [Windows terminal](https://apps.microsoft.com/detail/9N0DX20HK701)
+- **Windows:** [Windows terminal](https://apps.microsoft.com/detail/9N0DX20HK701) or [MobaXterm](https://mobaxterm.mobatek.net/)
+  - While Windows Terminal can be used with [WSL](./linux_on_windows.html), PowerShell, or CMD, MobaXterm on the other hand includes its own version of Linux terminal.
 
 With the split-screen feature, you can connect to several servers side-by-side and even run commands at once - most of them support synced input for all or selected sub-windows!
 
@@ -87,12 +88,15 @@ Managing files on remote servers can be done from graphical apps too. On Linux, 
 
 - Nautilus et al. (Linux, preinstalled)
 - [WinSCP](https://winscp.net/eng/index.php) (Windows)
+- [MobaXterm](https://mobaxterm.mobatek.net/) (Windows)
 - [Filezilla](https://filezilla-project.org/download.php?type=client) (multiplatform)
 
 > **Note:** Although Filezilla is a well-known and respectable open-source project, downloading it from websites often pulls in all kinds of questionable _baggage_. This is no issue on Linux with central repositories, but be careful on other platforms.
+
+Some of these clients let you open files without downloading them first (all except Filezilla). Some also include text editors for editing files and scripts directly on the HPC server, or terminals to run commands (WinSCP and MobaXterm). Nautilus and other Linux managers let you open files with your desktop apps, or open remote terminal to run commands.
 
 ### text editor plugins
 Many popular text editors have plugins for accessing files on SFTP servers. With these plugins, you can connect to a HPC and directly edit files using your favourite editor.
 
 - [SFTP for Sublime Text](https://codexns.io/products/sftp_for_sublime)
-- VS Code
+- VS Code has many such plugins in its marketplace (I can't really recommend any, as I don't use it)
