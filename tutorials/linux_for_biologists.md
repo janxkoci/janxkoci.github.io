@@ -195,8 +195,8 @@ In some cases you can't really do without quotes (or the solution is way more co
 
 But let's get real. Consider this simple example of printing sequence names from fasta file:
 
-    grep > alignment.fasta
-    grep '>' alignment.fasta
+    grep > alignment.fasta # BAD BAD VERY BAD!!!
+    grep '>' alignment.fasta # OKAY
 
 Now `grep` doesn't require quotes around pattern to work. But it's a good practice to use them, as this example shows. The problem here is with the special character `>`. The first command *interprets* it as redirection and basically saves empty input in your `alignment.fasta`, effectively **deleting it's contents!**
 
