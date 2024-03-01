@@ -13,9 +13,11 @@ The `conda` manager is available for all major platforms in two main versions:
 - [Anaconda](https://www.anaconda.com/products/individual#Downloads) - best for Python-heavy workflows, includes 200+ packages for scientific computing, currated by Continuum Inc. (`conda` dev company).
 - [Miniconda](https://docs.conda.io/en/latest/miniconda.html) - ready for any workflow - only the `conda` manager, its dependencies, and channels at your command. It also allows installing any or all packages from the Anaconda distribution, and thousands more.
 
-Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, with a few remaining limitations related to environments (see below). Install `mamba`:
+Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, with a few remaining limitations related to environments (see below).
 
-- directly with [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html),
+You can install `mamba`:
+
+- directly with [Miniforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html),
 - or using `conda`.
 
 Mamba includes extra features, like `query`, so make sure to check their [docs](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) too.
@@ -66,7 +68,7 @@ conda config --set channel_priority strict # new since conda>=4.6
 
 After adding channels into the config as above, they are searched by commands such as `conda search` or `conda install`, even without the `-c|--channel` parameter.
 
-> ⚠️ **Note:** The Bioconda channel packs software only for macOS and Linux, but it also works on Windows 10 or higher using [WSL](linux_on_windows.html#windows-subsystem-for-linux-wsl).
+> ⚠️ **Note:** The Bioconda channel packs software only for macOS and Linux, but it also works on **Windows 10 or higher** using [WSL](linux_on_windows.html#windows-subsystem-for-linux-wsl).
 
 ### Environments
 Create [isolated environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to **avoid dependency conflicts** between installed packages or to **install multiple versions** of the same program side-by-side.
@@ -103,9 +105,7 @@ Mamba currently supports:
 
 But it does not support:
 
-- rolling back revisions of environment's history
-
-Well - yet. Give them time and [check again](https://github.com/mamba-org/mamba/issues/803) soon! 😉️
+- rolling back revisions of environment's history - see [this bug report](https://github.com/mamba-org/mamba/issues/803) for updates 😉️
 
 ## Comments
 
