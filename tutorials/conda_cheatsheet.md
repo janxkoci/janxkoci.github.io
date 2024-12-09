@@ -60,7 +60,6 @@ Add channels to your conda configuration, so they are searched by default. Order
 
 ```bash
 # last channel = highest priority
-conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict # new since conda>=4.6
