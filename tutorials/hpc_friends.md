@@ -89,7 +89,7 @@ Managing files on remote servers can be done from graphical apps too. On Linux, 
 - Nautilus et al. (Linux, preinstalled)
 - [WinSCP](https://winscp.net/eng/index.php) (Windows)
 - [MobaXterm](https://mobaxterm.mobatek.net/) (Windows)
-- [Filezilla](https://filezilla-project.org/download.php?type=client) (multiplatform)
+- [Filezilla](https://filezilla-project.org/download.php?show_all=1) (multiplatform)
 
 > **Note:** Although Filezilla is a well-known and respectable open-source project, downloading it from websites often pulls in all kinds of questionable _baggage_. This is no issue on Linux with central repositories, but be careful on other platforms.
 
