@@ -468,8 +468,8 @@ Before I started, this part looked the most difficult, as I couldn't find any ea
 
 Here, I use the function `glue_data()` - which works on data frames, matrices, or lists - to process our data frame all at once:
 
-
-```R
+{% highlight R %}
+{% raw %}
 bibtex <- papers %>% 
     glue_data("
 @article{{{uid},
@@ -483,7 +483,8 @@ bibtex <- papers %>%
     doi={{{doi}}}
 }}
 ")
-```
+{% endraw %}
+{% endhighlight %}
 
 Finally, we can write the resulting bibtex string into a file.
 
