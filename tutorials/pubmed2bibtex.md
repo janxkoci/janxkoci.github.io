@@ -24,25 +24,25 @@ library(glue)
     [32m✔[39m [34mforcats  [39m 1.0.0     [32m✔[39m [34mstringr  [39m 1.5.1
     [32m✔[39m [34mggplot2  [39m 3.5.2     [32m✔[39m [34mtibble   [39m 3.3.0
     [32m✔[39m [34mlubridate[39m 1.9.4     [32m✔[39m [34mtidyr    [39m 1.3.1
-    [32m✔[39m [34mpurrr    [39m 1.1.0     
+    [32m✔[39m [34mpurrr    [39m 1.1.0
     ── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
     [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
     [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
     [36mℹ[39m Use the conflicted package ([3m[34m<http://conflicted.r-lib.org/>[39m[23m) to force all conflicts to become errors
-    
+
     Attaching package: ‘magrittr’
-    
-    
+
+
     The following object is masked from ‘package:purrr’:
-    
+
         set_names
-    
-    
+
+
     The following object is masked from ‘package:tidyr’:
-    
+
         extract
-    
-    
+
+
 
 
 ## rentrez queries
@@ -67,7 +67,7 @@ entrez_search(db = "pubmed", term = search_term) %>% str
      $ count           : int 57
      $ retmax          : int 20
      $ QueryTranslation: chr "\"flegontov p\"[Author] OR \"flegontov pn\"[Author]"
-     $ file            :Classes 'XMLInternalDocument', 'XMLAbstractDocument' <externalptr> 
+     $ file            :Classes 'XMLInternalDocument', 'XMLAbstractDocument' <externalptr>
      - attr(*, "class")= chr [1:2] "esearch" "list"
 
 
@@ -166,21 +166,21 @@ And here are names of all the items that can be obtained from a record:
 esummary[[1]] %>% names %>% print
 ```
 
-     [1] "uid"               "pubdate"           "epubdate"         
-     [4] "source"            "authors"           "lastauthor"       
-     [7] "title"             "sorttitle"         "volume"           
-    [10] "issue"             "pages"             "lang"             
-    [13] "nlmuniqueid"       "issn"              "essn"             
-    [16] "pubtype"           "recordstatus"      "pubstatus"        
-    [19] "articleids"        "history"           "references"       
-    [22] "attributes"        "pmcrefcount"       "fulljournalname"  
-    [25] "elocationid"       "doctype"           "srccontriblist"   
-    [28] "booktitle"         "medium"            "edition"          
-    [31] "publisherlocation" "publishername"     "srcdate"          
-    [34] "reportnumber"      "availablefromurl"  "locationlabel"    
-    [37] "doccontriblist"    "docdate"           "bookname"         
-    [40] "chapter"           "sortpubdate"       "sortfirstauthor"  
-    [43] "vernaculartitle"  
+     [1] "uid"               "pubdate"           "epubdate"
+     [4] "source"            "authors"           "lastauthor"
+     [7] "title"             "sorttitle"         "volume"
+    [10] "issue"             "pages"             "lang"
+    [13] "nlmuniqueid"       "issn"              "essn"
+    [16] "pubtype"           "recordstatus"      "pubstatus"
+    [19] "articleids"        "history"           "references"
+    [22] "attributes"        "pmcrefcount"       "fulljournalname"
+    [25] "elocationid"       "doctype"           "srccontriblist"
+    [28] "booktitle"         "medium"            "edition"
+    [31] "publisherlocation" "publishername"     "srcdate"
+    [34] "reportnumber"      "availablefromurl"  "locationlabel"
+    [37] "doccontriblist"    "docdate"           "bookname"
+    [40] "chapter"           "sortpubdate"       "sortfirstauthor"
+    [43] "vernaculartitle"
 
 
 The items can be manipulated by names, as follows:
@@ -191,12 +191,12 @@ esummary[[1]][c("fulljournalname","pubdate")]
 ```
 
 
-<dl>
-	<dt>$fulljournalname</dt>
-		<dd>'Nature'</dd>
-	<dt>$pubdate</dt>
-		<dd>'2025 Aug'</dd>
-</dl>
+    $fulljournalname
+    [1] "Nature"
+
+    $pubdate
+    [1] "2025 Aug"
+
 
 
 
@@ -208,12 +208,11 @@ esummary[[1]] %>% extract(c("fulljournalname","pubdate"))
 ```
 
 
-<dl>
-	<dt>$fulljournalname</dt>
-		<dd>'Nature'</dd>
-	<dt>$pubdate</dt>
-		<dd>'2025 Aug'</dd>
-</dl>
+    $fulljournalname
+    [1] "Nature"
+
+    $pubdate
+    [1] "2025 Aug"
 
 
 
@@ -221,27 +220,20 @@ We can have a look at a few summaries:
 
 
 ```R
-esummary %>% 
-    extract_from_esummary("pubtype") %>% 
-    lapply(paste, collapse = " - ") %>% 
-    unlist %>% table %>% sort(decreasing = T) %>% as_tibble
+esummary %>%
+    extract_from_esummary("pubtype") %>%
+    lapply(paste, collapse = " - ") %>%
+    unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% print
 ```
 
-
-<table class="dataframe">
-<caption>A tibble: 5 × 2</caption>
-<thead>
-	<tr><th scope=col>.</th><th scope=col>n</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>Journal Article                     </td><td>47</td></tr>
-	<tr><td>Journal Article - Review            </td><td> 4</td></tr>
-	<tr><td>Historical Article - Journal Article</td><td> 3</td></tr>
-	<tr><td>Journal Article - Historical Article</td><td> 2</td></tr>
-	<tr><td>Published Erratum                   </td><td> 1</td></tr>
-</tbody>
-</table>
+    [90m# A tibble: 5 × 2[39m
+      .                                        n
+      [3m[90m<chr>[39m[23m                                [3m[90m<int>[39m[23m
+    [90m1[39m Journal Article                         47
+    [90m2[39m Journal Article - Review                 4
+    [90m3[39m Historical Article - Journal Article     3
+    [90m4[39m Journal Article - Historical Article     2
+    [90m5[39m Published Erratum                        1
 
 
 
@@ -249,32 +241,26 @@ Here a journals, with a bit of format processing:
 
 
 ```R
-esummary %>% 
-    extract_from_esummary("fulljournalname") %>% 
+esummary %>%
+    extract_from_esummary("fulljournalname") %>%
     lapply(., function(x) gsub(":.*", "", x)) %>% # some journals seem to use sub-title too
-    unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% head(10)
+    unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% print
 ```
 
-
-<table class="dataframe">
-<caption>A tibble: 10 × 2</caption>
-<thead>
-	<tr><th scope=col>.</th><th scope=col>n</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>Scientific reports                    </td><td>7</td></tr>
-	<tr><td>bioRxiv                               </td><td>5</td></tr>
-	<tr><td>Nature                                </td><td>4</td></tr>
-	<tr><td>Genome biology and evolution          </td><td>3</td></tr>
-	<tr><td>PLoS genetics                         </td><td>3</td></tr>
-	<tr><td>Current biology                       </td><td>2</td></tr>
-	<tr><td>eLife                                 </td><td>2</td></tr>
-	<tr><td>Environmental microbiology            </td><td>2</td></tr>
-	<tr><td>Genetics                              </td><td>2</td></tr>
-	<tr><td>Molecular and biochemical parasitology</td><td>2</td></tr>
-</tbody>
-</table>
+    [90m# A tibble: 31 × 2[39m
+       .                                            n
+       [3m[90m<chr>[39m[23m                                    [3m[90m<int>[39m[23m
+    [90m 1[39m [90m"[39mScientific reports[90m"[39m                         7
+    [90m 2[39m [90m"[39mbioRxiv [90m"[39m                                   5
+    [90m 3[39m [90m"[39mNature[90m"[39m                                     4
+    [90m 4[39m [90m"[39mGenome biology and evolution[90m"[39m               3
+    [90m 5[39m [90m"[39mPLoS genetics[90m"[39m                              3
+    [90m 6[39m [90m"[39mCurrent biology [90m"[39m                           2
+    [90m 7[39m [90m"[39meLife[90m"[39m                                      2
+    [90m 8[39m [90m"[39mEnvironmental microbiology[90m"[39m                 2
+    [90m 9[39m [90m"[39mGenetics[90m"[39m                                   2
+    [90m10[39m [90m"[39mMolecular and biochemical parasitology[90m"[39m     2
+    [90m# ℹ 21 more rows[39m
 
 
 
@@ -282,31 +268,25 @@ The `source` item may be even more useful, as it's already formatted the way mos
 
 
 ```R
-esummary %>% 
-    extract_from_esummary("source") %>% 
-    unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% head(10)
+esummary %>%
+    extract_from_esummary("source") %>%
+    unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% print
 ```
 
-
-<table class="dataframe">
-<caption>A tibble: 10 × 2</caption>
-<thead>
-	<tr><th scope=col>.</th><th scope=col>n</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>Sci Rep              </td><td>7</td></tr>
-	<tr><td>bioRxiv              </td><td>5</td></tr>
-	<tr><td>Nature               </td><td>4</td></tr>
-	<tr><td>Genome Biol Evol     </td><td>3</td></tr>
-	<tr><td>PLoS Genet           </td><td>3</td></tr>
-	<tr><td>Curr Biol            </td><td>2</td></tr>
-	<tr><td>Elife                </td><td>2</td></tr>
-	<tr><td>Environ Microbiol    </td><td>2</td></tr>
-	<tr><td>Genetics             </td><td>2</td></tr>
-	<tr><td>Mol Biochem Parasitol</td><td>2</td></tr>
-</tbody>
-</table>
+    [90m# A tibble: 31 × 2[39m
+       .                         n
+       [3m[90m<chr>[39m[23m                 [3m[90m<int>[39m[23m
+    [90m 1[39m Sci Rep                   7
+    [90m 2[39m bioRxiv                   5
+    [90m 3[39m Nature                    4
+    [90m 4[39m Genome Biol Evol          3
+    [90m 5[39m PLoS Genet                3
+    [90m 6[39m Curr Biol                 2
+    [90m 7[39m Elife                     2
+    [90m 8[39m Environ Microbiol         2
+    [90m 9[39m Genetics                  2
+    [90m10[39m Mol Biochem Parasitol     2
+    [90m# ℹ 21 more rows[39m
 
 
 
@@ -345,8 +325,8 @@ Extracting just the DOI then looks like this:
 
 
 ```R
-esummary[[1]] %>% use_series(articleids) %>% 
-    subset(idtype == "doi", select = value) %>% 
+esummary[[1]] %>% use_series(articleids) %>%
+    subset(idtype == "doi", select = value) %>%
     pluck(1) # return scalar, not list
 ```
 
@@ -369,7 +349,7 @@ We can use the above code within a `lapply` call, which we will later use to add
 
 
 ```R
-esummary %>% head %>% 
+esummary %>% head %>%
     lapply(function(x) use_series(x, authors) %>% pull(name) %>% paste(collapse = ", ")) %>% str
 ```
 
@@ -398,34 +378,33 @@ I will start with the simple items first, puting them into a data frame. I will 
 
 
 ```R
-papers <- esummary %>% 
-    lapply(extract, c("uid", "title", "fulljournalname", "source","pubdate", "sortpubdate", "issue", "volume", "pages")) %>% 
-    bind_rows %>% 
+papers <- esummary %>%
+    lapply(extract, c("uid", "title", "fulljournalname", "source","pubdate", "sortpubdate", "issue", "volume", "pages")) %>%
+    bind_rows %>%
     mutate(
         journalname = stringr::str_remove(fulljournalname, ":.*"),
         year = stringr::str_extract(sortpubdate, "\\d{4}"),
         pages = stringr::str_replace(pages, "-","--")
     )
 
-papers %>% head
+papers %>% print
 ```
 
-
-<table class="dataframe">
-<caption>A tibble: 6 × 11</caption>
-<thead>
-	<tr><th scope=col>uid</th><th scope=col>title</th><th scope=col>fulljournalname</th><th scope=col>source</th><th scope=col>pubdate</th><th scope=col>sortpubdate</th><th scope=col>issue</th><th scope=col>volume</th><th scope=col>pages</th><th scope=col>journalname</th><th scope=col>year</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>40604287</td><td>Ancient DNA reveals the prehistory of the Uralic and Yeniseian peoples.                                                                          </td><td>Nature                                   </td><td>Nature  </td><td>2025 Aug   </td><td>2025/08/01 00:00</td><td>8075</td><td>644</td><td>122--132</td><td>Nature           </td><td>2025</td></tr>
-	<tr><td>40454862</td><td>Genomic Analysis of Hair Sheep From West/Central Africa Reveals Unique Genetic Diversity and Ancestral Links to Breed Formation in the Caribbean.</td><td>Molecular ecology                        </td><td>Mol Ecol</td><td>2025 Jun 2 </td><td>2025/06/02 00:00</td><td>    </td><td>   </td><td>e17796  </td><td>Molecular ecology</td><td>2025</td></tr>
-	<tr><td>40169722</td><td>Performance of qpAdm-based screens for genetic admixture on graph-shaped histories and stepping stone landscapes.                                </td><td>Genetics                                 </td><td>Genetics</td><td>2025 May 8 </td><td>2025/05/08 00:00</td><td>1   </td><td>230</td><td>        </td><td>Genetics         </td><td>2025</td></tr>
-	<tr><td>39979458</td><td>Author Correction: The genetic origin of the Indo-Europeans.                                                                                     </td><td>Nature                                   </td><td>Nature  </td><td>2025 Mar   </td><td>2025/03/01 00:00</td><td>8054</td><td>639</td><td>E14     </td><td>Nature           </td><td>2025</td></tr>
-	<tr><td>39910300</td><td>The genetic origin of the Indo-Europeans.                                                                                                        </td><td>Nature                                   </td><td>Nature  </td><td>2025 Mar   </td><td>2025/03/01 00:00</td><td>8053</td><td>639</td><td>132--142</td><td>Nature           </td><td>2025</td></tr>
-	<tr><td>39091721</td><td>Long shared haplotypes identify the Southern Urals as a primary source for the 10th century Hungarians.                                          </td><td>bioRxiv : the preprint server for biology</td><td>bioRxiv </td><td>2024 Jul 23</td><td>2024/07/23 00:00</td><td>    </td><td>   </td><td>        </td><td>bioRxiv          </td><td>2024</td></tr>
-</tbody>
-</table>
+    [90m# A tibble: 57 × 11[39m
+       uid      title  fulljournalname source pubdate sortpubdate issue volume pages
+       [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m           [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m   [3m[90m<chr>[39m[23m       [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m
+    [90m 1[39m 40604287 Ancie… Nature          Nature 2025 A… 2025/08/01… [90m"[39m807… [90m"[39m644[90m"[39m  [90m"[39m122…
+    [90m 2[39m 40454862 Genom… Molecular ecol… Mol E… 2025 J… 2025/06/02… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39me17…
+    [90m 3[39m 40169722 Perfo… Genetics        Genet… 2025 M… 2025/05/08… [90m"[39m1[90m"[39m   [90m"[39m230[90m"[39m  [90m"[39m[90m"[39m
+    [90m 4[39m 39979458 Autho… Nature          Nature 2025 M… 2025/03/01… [90m"[39m805… [90m"[39m639[90m"[39m  [90m"[39mE14[90m"[39m
+    [90m 5[39m 39910300 The g… Nature          Nature 2025 M… 2025/03/01… [90m"[39m805… [90m"[39m639[90m"[39m  [90m"[39m132…
+    [90m 6[39m 39091721 Long … bioRxiv : the … bioRx… 2024 J… 2024/07/23… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
+    [90m 7[39m 39013011 Testi… Genetics        Genet… 2024 S… 2024/09/04… [90m"[39m1[90m"[39m   [90m"[39m228[90m"[39m  [90m"[39m[90m"[39m
+    [90m 8[39m 38659893 The G… bioRxiv : the … bioRx… 2024 A… 2024/04/18… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
+    [90m 9[39m 38014190 Testi… bioRxiv : the … bioRx… 2023 N… 2023/11/15… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
+    [90m10[39m 37904998 Perfo… bioRxiv : the … bioRx… 2025 F… 2025/02/03… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
+    [90m# ℹ 47 more rows[39m
+    [90m# ℹ 2 more variables: journalname <chr>, year <chr>[39m
 
 
 
@@ -435,10 +414,10 @@ Now, we can add more columns with information parsed from the nested data frames
 
 
 ```R
-papers$doi <- esummary %>% 
+papers$doi <- esummary %>%
     lapply(function(x) use_series(x, articleids) %>% subset(idtype == "doi", select = value) %>% pluck(1))
 
-papers$authors <- esummary %>% 
+papers$authors <- esummary %>%
     lapply(function(x) use_series(x, authors) %>% pull(name) %>% paste(collapse = ", ")) #%>% str
 
 papers %>% glimpse
@@ -470,7 +449,7 @@ Here, I use the function `glue_data()` - which works on data frames, matrices, o
 
 {% highlight R %}
 {% raw %}
-bibtex <- papers %>% 
+bibtex <- papers %>%
     glue_data("
 @article{{{uid},
     authors={{{authors}}},
