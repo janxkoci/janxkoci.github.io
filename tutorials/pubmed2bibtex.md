@@ -19,16 +19,16 @@ library(magrittr)
 library(glue)
 ```
 
-    ── [1mAttaching core tidyverse packages[22m ──────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-    [32m✔[39m [34mdplyr    [39m 1.1.4     [32m✔[39m [34mreadr    [39m 2.1.5
-    [32m✔[39m [34mforcats  [39m 1.0.0     [32m✔[39m [34mstringr  [39m 1.5.1
-    [32m✔[39m [34mggplot2  [39m 3.5.2     [32m✔[39m [34mtibble   [39m 3.3.0
-    [32m✔[39m [34mlubridate[39m 1.9.4     [32m✔[39m [34mtidyr    [39m 1.3.1
-    [32m✔[39m [34mpurrr    [39m 1.1.0
-    ── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-    [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
-    [36mℹ[39m Use the conflicted package ([3m[34m<http://conflicted.r-lib.org/>[39m[23m) to force all conflicts to become errors
+    ── Attaching core tidyverse packages ──────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+    ✔ dplyr     1.1.4     ✔ readr     2.1.5
+    ✔ forcats   1.0.0     ✔ stringr   1.5.1
+    ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+    ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+    ✔ purrr     1.1.0
+    ── Conflicts ────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+    ✖ dplyr::filter() masks stats::filter()
+    ✖ dplyr::lag()    masks stats::lag()
+    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
     Attaching package: ‘magrittr’
 
@@ -41,6 +41,7 @@ library(glue)
     The following object is masked from ‘package:tidyr’:
 
         extract
+
 
 
 
@@ -226,15 +227,14 @@ esummary %>%
     unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% print
 ```
 
-    [90m# A tibble: 5 × 2[39m
+    # A tibble: 5 × 2
       .                                        n
-      [3m[90m<chr>[39m[23m                                [3m[90m<int>[39m[23m
-    [90m1[39m Journal Article                         47
-    [90m2[39m Journal Article - Review                 4
-    [90m3[39m Historical Article - Journal Article     3
-    [90m4[39m Journal Article - Historical Article     2
-    [90m5[39m Published Erratum                        1
-
+      <chr>                                <int>
+    1 Journal Article                         47
+    2 Journal Article - Review                 4
+    3 Historical Article - Journal Article     3
+    4 Journal Article - Historical Article     2
+    5 Published Erratum                        1
 
 
 Here a journals, with a bit of format processing:
@@ -247,20 +247,20 @@ esummary %>%
     unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% print
 ```
 
-    [90m# A tibble: 31 × 2[39m
-       .                                            n
-       [3m[90m<chr>[39m[23m                                    [3m[90m<int>[39m[23m
-    [90m 1[39m [90m"[39mScientific reports[90m"[39m                         7
-    [90m 2[39m [90m"[39mbioRxiv [90m"[39m                                   5
-    [90m 3[39m [90m"[39mNature[90m"[39m                                     4
-    [90m 4[39m [90m"[39mGenome biology and evolution[90m"[39m               3
-    [90m 5[39m [90m"[39mPLoS genetics[90m"[39m                              3
-    [90m 6[39m [90m"[39mCurrent biology [90m"[39m                           2
-    [90m 7[39m [90m"[39meLife[90m"[39m                                      2
-    [90m 8[39m [90m"[39mEnvironmental microbiology[90m"[39m                 2
-    [90m 9[39m [90m"[39mGenetics[90m"[39m                                   2
-    [90m10[39m [90m"[39mMolecular and biochemical parasitology[90m"[39m     2
-    [90m# ℹ 21 more rows[39m
+    # A tibble: 31 × 2
+      .                                            n
+      <chr>                                    <int>
+    1 "Scientific reports"                         7
+    2 "bioRxiv "                                   5
+    3 "Nature"                                     4
+    4 "Genome biology and evolution"               3
+    5 "PLoS genetics"                              3
+    6 "Current biology "                           2
+    7 "eLife"                                      2
+    8 "Environmental microbiology"                 2
+    9 "Genetics"                                   2
+    10 "Molecular and biochemical parasitology"     2
+    # ℹ 21 more rows
 
 
 
@@ -273,20 +273,20 @@ esummary %>%
     unlist %>% table %>% sort(decreasing = T) %>% as_tibble %>% print
 ```
 
-    [90m# A tibble: 31 × 2[39m
-       .                         n
-       [3m[90m<chr>[39m[23m                 [3m[90m<int>[39m[23m
-    [90m 1[39m Sci Rep                   7
-    [90m 2[39m bioRxiv                   5
-    [90m 3[39m Nature                    4
-    [90m 4[39m Genome Biol Evol          3
-    [90m 5[39m PLoS Genet                3
-    [90m 6[39m Curr Biol                 2
-    [90m 7[39m Elife                     2
-    [90m 8[39m Environ Microbiol         2
-    [90m 9[39m Genetics                  2
-    [90m10[39m Mol Biochem Parasitol     2
-    [90m# ℹ 21 more rows[39m
+    # A tibble: 31 × 2
+      .                         n
+      <chr>                 <int>
+    1 Sci Rep                   7
+    2 bioRxiv                   5
+    3 Nature                    4
+    4 Genome Biol Evol          3
+    5 PLoS Genet                3
+    6 Curr Biol                 2
+    7 Elife                     2
+    8 Environ Microbiol         2
+    9 Genetics                  2
+    10 Mol Biochem Parasitol     2
+    # ℹ 21 more rows
 
 
 
@@ -390,21 +390,21 @@ papers <- esummary %>%
 papers %>% print
 ```
 
-    [90m# A tibble: 57 × 11[39m
-       uid      title  fulljournalname source pubdate sortpubdate issue volume pages
-       [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m           [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m   [3m[90m<chr>[39m[23m       [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m
-    [90m 1[39m 40604287 Ancie… Nature          Nature 2025 A… 2025/08/01… [90m"[39m807… [90m"[39m644[90m"[39m  [90m"[39m122…
-    [90m 2[39m 40454862 Genom… Molecular ecol… Mol E… 2025 J… 2025/06/02… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39me17…
-    [90m 3[39m 40169722 Perfo… Genetics        Genet… 2025 M… 2025/05/08… [90m"[39m1[90m"[39m   [90m"[39m230[90m"[39m  [90m"[39m[90m"[39m
-    [90m 4[39m 39979458 Autho… Nature          Nature 2025 M… 2025/03/01… [90m"[39m805… [90m"[39m639[90m"[39m  [90m"[39mE14[90m"[39m
-    [90m 5[39m 39910300 The g… Nature          Nature 2025 M… 2025/03/01… [90m"[39m805… [90m"[39m639[90m"[39m  [90m"[39m132…
-    [90m 6[39m 39091721 Long … bioRxiv : the … bioRx… 2024 J… 2024/07/23… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
-    [90m 7[39m 39013011 Testi… Genetics        Genet… 2024 S… 2024/09/04… [90m"[39m1[90m"[39m   [90m"[39m228[90m"[39m  [90m"[39m[90m"[39m
-    [90m 8[39m 38659893 The G… bioRxiv : the … bioRx… 2024 A… 2024/04/18… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
-    [90m 9[39m 38014190 Testi… bioRxiv : the … bioRx… 2023 N… 2023/11/15… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
-    [90m10[39m 37904998 Perfo… bioRxiv : the … bioRx… 2025 F… 2025/02/03… [90m"[39m[90m"[39m    [90m"[39m[90m"[39m     [90m"[39m[90m"[39m
-    [90m# ℹ 47 more rows[39m
-    [90m# ℹ 2 more variables: journalname <chr>, year <chr>[39m
+    # A tibble: 57 × 11
+      uid      title  fulljournalname source pubdate sortpubdate issue volume pages
+      <chr>    <chr>  <chr>           <chr>  <chr>   <chr>       <chr> <chr>  <chr>
+    1 40604287 Ancie… Nature          Nature 2025 A… 2025/08/01… "807… "644"  "122…
+    2 40454862 Genom… Molecular ecol… Mol E… 2025 J… 2025/06/02… ""    ""     "e17…
+    3 40169722 Perfo… Genetics        Genet… 2025 M… 2025/05/08… "1"   "230"  ""
+    4 39979458 Autho… Nature          Nature 2025 M… 2025/03/01… "805… "639"  "E14"
+    5 39910300 The g… Nature          Nature 2025 M… 2025/03/01… "805… "639"  "132…
+    6 39091721 Long … bioRxiv : the … bioRx… 2024 J… 2024/07/23… ""    ""     ""
+    7 39013011 Testi… Genetics        Genet… 2024 S… 2024/09/04… "1"   "228"  ""
+    8 38659893 The G… bioRxiv : the … bioRx… 2024 A… 2024/04/18… ""    ""     ""
+    9 38014190 Testi… bioRxiv : the … bioRx… 2023 N… 2023/11/15… ""    ""     ""
+    10 37904998 Perfo… bioRxiv : the … bioRx… 2025 F… 2025/02/03… ""    ""     ""
+    # ℹ 47 more rows
+    # ℹ 2 more variables: journalname <chr>, year <chr>
 
 
 
@@ -425,19 +425,19 @@ papers %>% glimpse
 
     Rows: 57
     Columns: 13
-    $ uid             [3m[90m<chr>[39m[23m "40604287"[90m, [39m"40454862"[90m, [39m"40169722"[90m, [39m"39979458"[90m, [39m"39910…
-    $ title           [3m[90m<chr>[39m[23m "Ancient DNA reveals the prehistory of the Uralic and …
-    $ fulljournalname [3m[90m<chr>[39m[23m "Nature"[90m, [39m"Molecular ecology"[90m, [39m"Genetics"[90m, [39m"Nature"[90m, [39m"…
-    $ source          [3m[90m<chr>[39m[23m "Nature"[90m, [39m"Mol Ecol"[90m, [39m"Genetics"[90m, [39m"Nature"[90m, [39m"Nature"[90m, [39m…
-    $ pubdate         [3m[90m<chr>[39m[23m "2025 Aug"[90m, [39m"2025 Jun 2"[90m, [39m"2025 May 8"[90m, [39m"2025 Mar"[90m, [39m"2…
-    $ sortpubdate     [3m[90m<chr>[39m[23m "2025/08/01 00:00"[90m, [39m"2025/06/02 00:00"[90m, [39m"2025/05/08 00…
-    $ issue           [3m[90m<chr>[39m[23m "8075"[90m, [39m""[90m, [39m"1"[90m, [39m"8054"[90m, [39m"8053"[90m, [39m""[90m, [39m"1"[90m, [39m""[90m, [39m""[90m, [39m""[90m, [39m…
-    $ volume          [3m[90m<chr>[39m[23m "644"[90m, [39m""[90m, [39m"230"[90m, [39m"639"[90m, [39m"639"[90m, [39m""[90m, [39m"228"[90m, [39m""[90m, [39m""[90m, [39m""[90m,[39m…
-    $ pages           [3m[90m<chr>[39m[23m "122--132"[90m, [39m"e17796"[90m, [39m""[90m, [39m"E14"[90m, [39m"132--142"[90m, [39m""[90m, [39m""[90m, [39m"…
-    $ journalname     [3m[90m<chr>[39m[23m "Nature"[90m, [39m"Molecular ecology"[90m, [39m"Genetics"[90m, [39m"Nature"[90m, [39m"…
-    $ year            [3m[90m<chr>[39m[23m "2025"[90m, [39m"2025"[90m, [39m"2025"[90m, [39m"2025"[90m, [39m"2025"[90m, [39m"2024"[90m, [39m"2024"…
-    $ doi             [3m[90m<named list>[39m[23m "10.1038/s41586-025-09189-3"[90m, [39m"10.1111/mec.1779…
-    $ authors         [3m[90m<named list>[39m[23m "Zeng TC, Vyazov LA, Kim A, Flegontov P, Sirak …
+    $ uid             <chr> "40604287", "40454862", "40169722", "39979458", "39910…
+    $ title           <chr> "Ancient DNA reveals the prehistory of the Uralic and …
+    $ fulljournalname <chr> "Nature", "Molecular ecology", "Genetics", "Nature", "…
+    $ source          <chr> "Nature", "Mol Ecol", "Genetics", "Nature", "Nature", …
+    $ pubdate         <chr> "2025 Aug", "2025 Jun 2", "2025 May 8", "2025 Mar", "2…
+    $ sortpubdate     <chr> "2025/08/01 00:00", "2025/06/02 00:00", "2025/05/08 00…
+    $ issue           <chr> "8075", "", "1", "8054", "8053", "", "1", "", "", "", …
+    $ volume          <chr> "644", "", "230", "639", "639", "", "228", "", "", "",…
+    $ pages           <chr> "122--132", "e17796", "", "E14", "132--142", "", "", "…
+    $ journalname     <chr> "Nature", "Molecular ecology", "Genetics", "Nature", "…
+    $ year            <chr> "2025", "2025", "2025", "2025", "2025", "2024", "2024"…
+    $ doi             <named list> "10.1038/s41586-025-09189-3", "10.1111/mec.1779…
+    $ authors         <named list> "Zeng TC, Vyazov LA, Kim A, Flegontov P, Sirak …
 
 
 ## Converting to BibTeX with glue
