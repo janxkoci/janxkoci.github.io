@@ -3,6 +3,9 @@ layout: home
 title: Articles
 ---
 
+## [Getting BibTeX bibliography from PubMed with R, rentrez, and glue](./tutorials/pubmed2bibtex.md)
+Building on the skills from the last tutorial, I've tried to solve another problem I had - this time getting BibTeX bibliography for our lab website. I started with `rentrez` and finished the job with `glue`, another amazing package. [Read more...](./tutorials/pubmed2bibtex.md)
+
 ## [Getting taxonomy from NCBI with `R` & `rentrez`](./tutorials/rentrez.md)
 A while ago I got the opportunity to learn something new when collaborating on a small sideproject - accessing the NCBI Entrez query system with `R` and the `rentrez` package. Here is a brief tutorial showing a few things one can do with the package. [Read more...](./tutorials/rentrez.md)
 
@@ -26,4 +29,3 @@ This tutorial provides an introduction to using Jupyter and conda manager for sc
 
 ## Hello world!
 This is my first post. Soon I plan to post some tutorials on R and genomic data - stay tuned ;)
-
