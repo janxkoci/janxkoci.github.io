@@ -443,7 +443,7 @@ papers %>% glimpse
 ## Converting to BibTeX with glue
 The basic bibtex format for one record (in this case an article) looks as follows:
 
-{% raw %}
+```
 @article{einstein1905electrodynamics,
   title={On the electrodynamics of moving bodies},
   author={Einstein, A.},
@@ -453,7 +453,7 @@ The basic bibtex format for one record (in this case an article) looks as follow
   volume={10},
   pages={891--921}
 }
-{% endraw %}
+```
 
 Before I started, this part looked the most difficult, as I couldn't find any easy-to-use library for doing the conversion to BibTeX. But `glue` is so powerful that outputting a well-formated BibTeX was the easiest part of the process - it took me about 20 minutes to figure out all the details. And I never used `glue` before!
 
