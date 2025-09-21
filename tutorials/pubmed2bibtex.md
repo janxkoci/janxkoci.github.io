@@ -201,7 +201,7 @@ esummary[[1]][c("fulljournalname","pubdate")]
 
 
 
-Later, I will instead use helper functions from the `magrittr` package, such as `use_series` (instead of `$`) or `extract` (instead of `[]`), as they fit better within complex pipelines. So the above looks like this:
+Later, I will instead use helper functions from the `magrittr` package, such as `use_series` (instead of `$`) or `extract` (instead of `[]`), as they fit better within complex pipelines. So the above example will look like this:
 
 
 ```R
@@ -237,7 +237,7 @@ esummary %>%
     5 Published Erratum                        1
 
 
-Here a journals, with a bit of format processing:
+Here are journals, with a bit of format processing:
 
 
 ```R
@@ -441,11 +441,27 @@ papers %>% glimpse
 
 
 ## Converting to BibTeX with glue
+The basic bibtex format for one record (in this case an article) looks as follows:
+
+{% raw %}
+@article{einstein1905electrodynamics,
+  title={On the electrodynamics of moving bodies},
+  author={Einstein, A.},
+  journal={Ann. Phys.},
+  year={1905},
+  number={17},
+  volume={10},
+  pages={891--921}
+}
+{% endraw %}
+
 Before I started, this part looked the most difficult, as I couldn't find any easy-to-use library for doing the conversion to BibTeX. But `glue` is so powerful that outputting a well-formated BibTeX was the easiest part of the process - it took me about 20 minutes to figure out all the details. And I never used `glue` before!
 
 > **Note:** When you load `tidyverse` (or just `stringr`) you already get access to `glue` functionality with `stringr::str_glue()`, which is an alias to `glue::glue()`. But I wanted to explicitly use the `glue` library to give it a well-deserved shout-out!
 
-Here, I use the function `glue_data()` - which works on data frames, matrices, or lists - to process our data frame all at once:
+Note that both BibTeX and `glue` use braces `{}` in their syntax, which can lead to collision, so I need to escape the braces in my `glue` code. This is done by triplicating them, so we use e.g. `{{{uid}}}` for the article ID. This is because the innermost pair of braces is interpreted by `glue` as a variable to be interpolated, while the two outer pairs insert literal braces required by BibTeX.
+
+Moreover, I use the function `glue_data()` here - which works on data frames, matrices, or lists - to process our data frame all at once:
 
 {% highlight R %}
 {% raw %}
@@ -473,12 +489,18 @@ Finally, we can write the resulting bibtex string into a file.
 writeLines(bibtex, "papers.bib")
 ```
 
-Since some records have missing data for some items (such as pages for electronic-only journals), I pass the final file through the `sed` utility to remove these empty items from all records. This probably won't work on Windows.
+Since some records have missing data for some items (such as pages for electronic-only journals), I pass the final file through the `sed` utility to remove these empty items from all records:
 
 
 ```R
 ## remove empty fields
 system("sed -i '/{}/d' papers.bib")
 ```
+
+This probably won't work on Windows though (unless you run R in WSL). There should be a way to remove these empty fields directly in R, but I thought I've done enough coding for this project already, so I went with a simple Unix one-liner that I know will do the job just fine. It may also be the case that the Jekyll-scholar plugin can handle empty fields without issues, but I haven't tested it.
+
+One final corner case involves another detail - if any of the papers in my examples did not have a DOI, then the corresponding field would get deleted, which would leave a trailing comma at the end of the preceding line, which would lead to an error. This would be true for any item that you put as last, so be careful about missing data in this last item. I've checked that all the papers have DOI included, so it's not an issue here.
+
+Finally, this page was made with [Jupyter notebook](https://github.com/janxkoci/janxkoci.github.io/blob/master/notebooks/pubmed2bibtex.ipynb), which you can use to run your own queries. I have also prepared a brief version of the notebook, skipping over the exploratory parts, along with a script to run directly (e.g. in Rstudio, if you prefer), which you can get [here](https://gist.github.com/janxkoci/f6538194706103447b9826b653e6d7db).
 
 ## Comments
