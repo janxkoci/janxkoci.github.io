@@ -18,6 +18,8 @@ But precisely for this reason I know the struggles of beginners, because they ar
 
 **Update:** Originally I started with Google Docs, this version uses Markdown and Github Pages instead.
 
+**Update September 2025:** It has proven difficult to maintain this document over the years. Many sections need updating as I learn new things, but it's too long and requires too much time and work to fix all the details properly. I will try to fix the worst issues, but going forward, I will instead make new, more focused tutorials covering more narrow topics.
+
 ***
 
 ## Connection
@@ -117,7 +119,7 @@ This is probably the most helpful thing you will find here :)
 ***
 
 ## Syntax
-You may have noticed a few similarities with the R language. Linux command line actually uses its own language called [bash](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html) (but can easily use some others, like awk or perl).
+You may have noticed a few similarities with the R language. Linux command line actually uses its own language called [bash](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html).
 
 In R you have syntax like this:
 
@@ -313,13 +315,40 @@ The basic syntax of tr would look as follows:
 ```bash
 tr "OLD" "NEW" file.txt # replace OLD with NEW in file.txt
 tr -d "OLD" file.txt # delete OLD from file
+tr "A-Z" "a-z" # convert uppercase to lowercase
 tr " " "\t" file.txt # replace each space with a tabulator
 ```
 
-Tr is not as popular in the online tutorials as sed is, probably because it's little limited in what it can do when compared to sed. However it's very simple to use and can be also chained by pipes into more complex processing tool, so feel free to play around with it.
+Tr works on a per-character basis, rather than on the entire line, like `sed`. This mean that some replacements easily done in `sed` are not possible with `tr`. On the other hand, `tr` can be used on files with very long lines (e.g. entire genome sequences) that can cause issues to other tools.
 
 ### AWK
 AWK is not just a command, but a [whole programming language](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_06.html). It's designed to process text files, especially in tabular format, extract data and create reports.
+
+> If sed was like find-and-replace on steroids, then awk is the whole spreadsheet app, in a command-line tool.
+
+Above, you could see how to count the number of sequences in a fasta file using `grep`. You can do the same with `awk`:
+
+    awk '/>/ {nseq++} END {print nseq}' genes.fasta # awk version
+    grep -c '>' genes.fasta # grep version is shorter, sure
+
+But `awk` can do even more with very little effort. For example, here is how to get mean length of sequences in a fasta file:
+
+    awk '/>/ {nseq++} !/>/ {bp += length($0)} END {print "Mean length:", bp/nseq}' genes.fasta
+
+This shows multiple things:
+
+- `/>/ {nseq++}` looks for a regular expression (regex pattern) while reading each line, and when it finds it, a counter is incremented. A `counter++` is a shorthand for `counter += 1`, which _itself_ is a shorthand for `counter = counter + 1` - they all mean the same thing.
+- `!/>/ {bp += length($0)}` outside of headers are sequences, so this cummulativelly adds-up their lengths, updating a variable `bp` with the length of the whole current line `$0`.
+- `END {print "Mean length: " bp/nseq}` after the _end_ of input, print a message, while using the collected data to directly calculate the mean.
+
+This should be enough to show the power of `awk`. It excels in writing quick code snippets that solve _data problems_, using pattern matching, text processing, modification, basic and advanced printing with `print` and `printf`, and even math! Of course, it can do more. It's possible to write complex scripts, and somebody even wrote a terminal version of Wolf 3D in `awk`!!
+
+### bioawk
+Since we talk Linux for _biologists_ here, you may find it interesting to know there is even a "flavour" of `awk` for us to enjoy, called `bioawk`. Here is a quick version of the above code:
+
+    bioawk -cfastx '{bp += length($seq)} END {print bp/NR}' genes.fasta
+
+While some version of `awk` is always present as a standard part of Unix-like system (such as Linux or macOS), [bioawk](https://github.com/lh3/bioawk) needs to be installed extra. One easy way is provided by package managers like `conda`, discussed later below.
 
 ***
 
