@@ -6,7 +6,7 @@ title: About
 ![me](img/jena.jpg)
 
 [orcid](https://orcid.org/0000-0002-9036-8321) | 
-[researcherID](https://publons.com/researcher/2915880/jan-koci/) | 
+[researcherID](https://www.webofscience.com/wos/author/record/1227261) | 
 [scholar](https://scholar.google.com/citations?user=T-A4CwMAAAAJ&hl=en&oi=sra) | 
 [researchgate](https://www.researchgate.net/profile/Jan_Koci2)
 
