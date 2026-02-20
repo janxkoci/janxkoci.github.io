@@ -13,16 +13,16 @@ The `conda` manager is available for all major platforms in two main versions:
 - [Anaconda](https://www.anaconda.com/products/individual#Downloads) - best for Python-heavy workflows, includes 200+ packages for scientific computing, currated by Continuum Inc. (`conda` dev company).
 - [Miniconda](https://docs.conda.io/en/latest/miniconda.html) - ready for any workflow - only the `conda` manager, its dependencies, and channels at your command. It also allows installing any or all packages from the Anaconda distribution, and thousands more.
 
-Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, with a few remaining limitations related to environments (see below).
+Another option is [Mamba](https://github.com/mamba-org/mamba) - a faster, independent replacement for `conda` written in `C++`, created by a non-profit [for the future of the ecosystem](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). It now supports nearly all of `conda` features, and it adds a few of its own.
 
 You can install `mamba`:
 
 - directly with [Miniforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html),
 - or using `conda`.
 
-Mamba includes extra features, like `query`, so make sure to check their [docs](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) too.
+Mamba includes extra features, like `repoquery`, so make sure to check their [docs](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) too.
 
-Below, you can use `conda` or `mamba` interchangeably, with a few [exceptions](#mamba-limitations).
+Below, you can use `conda` or `mamba` interchangeably.
 
 ## Conda basics
 
@@ -96,15 +96,7 @@ conda list --revisions # list revisions of current environment
 conda install --rev 3 # roll back to rev 3 of current environment
 ```
 
-### Mamba limitations
-Mamba currently supports:
 
-- creating environments,
-- activating/deactivating environments.
-
-But it does not support:
-
-- rolling back revisions of environment's history - see [this bug report](https://github.com/mamba-org/mamba/issues/803) for updates 😉️
 
 ## Comments
 
