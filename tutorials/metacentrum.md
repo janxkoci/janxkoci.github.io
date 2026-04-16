@@ -11,11 +11,11 @@ title: MetaCentrum
 To get you started, here are links to a few useful resources:
 
 - [Get account](https://metavo.metacentrum.cz/en/application/index.html) (uses [eduID](https://www.eduid.cz/en/index) accounts)
-- [Wiki with help guides](https://wiki.metacentrum.cz/wiki/Categorized_list_of_topics)
-- [Beginner's guide](https://wiki.metacentrum.cz/wiki/Beginners_guide)
-- [Software modules by topic](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List)
+- [MetaCentrum Documentation](https://docs.metacentrum.cz/en/docs/welcome)
+- [Beginner's guide](https://docs.metacentrum.cz/en/docs/computing/run-basic-job)
+- [Software modules](https://docs.metacentrum.cz/en/docs/software/alphabet)
 - [Hardware overview](https://metavo.metacentrum.cz/pbsmon2/hardware) (more [details here](https://metavo.metacentrum.cz/pbsmon2/props))
-- [Long-term storage of data](https://wiki.metacentrum.cz/wiki/Working_with_data#Data_archiving_and_backup)
+- [Long-term storage of data](https://docs.metacentrum.cz/en/docs/data/types-of-storage)
 
 No need to read them right away, feel free to come back to them later 😉
 
@@ -26,7 +26,7 @@ After you register an account using your university credentials, you can connect
 
 Authentication can be done using passwords or `ssh` keys - all the cool methods you know and love!
 
-To work at the Linux system, you can check out [my previous guide](https://janxkoci.github.io/tutorials/linux_for_biologists.html) or the [Beginner's guide](https://wiki.metacentrum.cz/wiki/Beginners_guide) of MetaCentrum.
+To work at the Linux system, you can check out [my previous guide](https://janxkoci.github.io/tutorials/linux_for_biologists.html) or the [Beginner's guide](https://docs.metacentrum.cz/en/docs/computing/run-basic-job) of MetaCentrum.
 
 ## Grid peculiarities
 The grid infrastructure has a few peculiar traits that you may need to deal with. Below I'll provide quick solutions I used to deal with common problems.
@@ -40,7 +40,7 @@ MetaCentrum uses PBS Pro / OpenPBS for scheduling jobs.
 
 > ℹ️ **Note:** In 2020, PBS Pro was renamed to OpenPBS and [released](https://github.com/openpbs/openpbs) under an open-source license. However, most resources on the internet refer to the old name, including the documentation at MetaCentrum. The name PBS Pro is also used for commercial version (same code, but with paid support).
 
-The syntax of PBS Pro differs from Torque PBS, which is another implementation used e.g. at our faculty cluster. You can have a look at the [quick cheat sheet](https://wiki.metacentrum.cz/w/images/9/9f/Quickstart-pbspro-small.pdf) or the [full docs](https://wiki.metacentrum.cz/wiki/About_scheduling_system) provided by MetaCentrum.
+The syntax of PBS Pro differs from Torque PBS, which is another implementation used e.g. at our faculty cluster. You can have a look at the [docs](https://docs.metacentrum.cz/en/docs/computing/advanced) provided by MetaCentrum.
 
 The basic command has the following structure:
 
@@ -51,7 +51,7 @@ qsub -A Project_ID -q queue -l select=x:ncpus=y:mem=z,walltime=[[hh:]mm:]ss[.ms]
 In practice, you can omit a few parameters and mostly focus on specifying resources needed for your job (using the `-l` argument).
 
 ### Kerberos tickets
-To submit jobs, you also need something called a **kerberos ticket**. You will automatically get a fresh Kerberos ticket after login with a password. **The ticket is valid for 10 hours**. This limitation is especially important if you are using a [terminal multiplexer](https://janxkoci.github.io/tutorials/linux_for_biologists.html#terminal-multiplexers), such as GNU `screen` or `tmux`.
+To submit jobs, you also need something called a [**kerberos ticket**](https://docs.metacentrum.cz/en/docs/computing/advanced#kerberos-authentication). You will automatically get a fresh Kerberos ticket after login with a password. **The ticket is valid for 10 hours**. This limitation is especially important if you are using a [terminal multiplexer](https://janxkoci.github.io/tutorials/linux_for_biologists.html#terminal-multiplexers), such as GNU `screen` or `tmux`.
 
 In case you need a new kerberos ticket (and cannot just logout and login back, such as when inside a `screen` or `tmux` session), you can use the following command:
 
@@ -77,16 +77,16 @@ qsub -I -N ijob -l select=1:ncpus=16:mem=4gb,walltime=24:00:00
 ```
 
 ## Storage
-There are [three types](https://wiki.metacentrum.cz/wiki/Working_with_data#Data_storage) of storage at MetaCentrum:
+There are [three types](https://docs.metacentrum.cz/en/docs/data/types-of-storage) of storage at MetaCentrum:
 
 - **Scratch storages** - fast, small capacity, use for computations (esp. I/O intensive)
 - **Disk arrays** - regular drives to keep data between computations (includes your `/home` directory)
-- **Hierarchical storages** - massive capacity for [long-term storage of data](https://wiki.metacentrum.cz/wiki/Working_with_data#Data_archiving_and_backup)
+- **Hierarchical storages** - massive capacity for [long-term storage of data](https://docs.metacentrum.cz/en/docs/data/types-of-storage)
 
 ### Working directory
 Not every computer in the grid will automatically share your `/home` directory, so its content will depend on where you login or where your job is being executed. For example, if you typically login to a cluster `skirit.ics.muni.cz` in Brno and copy all your files there, it does **not** mean that a job scheduled to run say in Prague will see the same files in the `/home` directory.
 
-In practice, `/home` directories are specific to login nodes of clusters at each institution in each city (called [frontends](https://wiki.metacentrum.cz/wiki/Frontend)). They are also connected by network to other clusters in other cities, so the data are accessible within the entire grid. However, this means that your `/home` directory can actually be something like `/storage/brno2/home`.
+In practice, `/home` directories are specific to login nodes of clusters at each institution in each city (called [frontends](https://docs.metacentrum.cz/en/docs/computing/infrastructure/frontends)). They are also connected by network to other clusters in other cities, so the data are accessible within the entire grid. However, this means that your `/home` directory can actually be something like `/storage/brno2/home`.
 
 For this reason, MetaCentrum provides a few **environment variables** to make accessing your files easier.
 
@@ -98,17 +98,17 @@ cd $PBS_O_WORKDIR || exit
 
 On the other hand, the variable `HOME` corresponds to the `/home` directory at the particular node where your job started executing. This is arguably less useful, but worth knowing about.
 
-If your job requires fast ([scratch](https://wiki.metacentrum.cz/wiki/Beginners_guide#Specify_scratch_directory)) disk space, you may need another useful variable - `SCRATCHDIR`.
+If your job requires fast ([scratch](https://docs.metacentrum.cz/en/docs/computing/infrastructure/scratch-storages)) disk space, you may need another useful variable - `SCRATCHDIR`.
 
 ## Software
 There are several ways to get the software you need. First, MetaCentrum provides so-called **software modules**. These are loadable packages of software and libraries that you can load and use in your scripts. Many of the packages are provided in several versions to choose from, to cater to all your software needs.
 
-But packages in **modules can be old**. Or the software you need is **not available**. In that case, you are free to install the software yourself. I highly recommend using a **package manager**, such as `conda` or `brew`, as I've [described before](https://janxkoci.github.io/tutorials/linux_for_biologists.html#scientific-package-managers).
+But packages in **modules can be old**. Or the software you need is **not available**. In that case, you are [free to install the software yourself](https://docs.metacentrum.cz/en/docs/software/install-software). I highly recommend using a **package manager**, such as `conda` or `brew`, as I've [described before](https://janxkoci.github.io/tutorials/linux_for_biologists.html#scientific-package-managers).
 
-> 💡 **Tip:** The `conda` manager is already [available at MetaCentrum](https://wiki.metacentrum.cz/wiki/Conda_-_modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://janxkoci.github.io/tutorials/conda_cheatsheet.html#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
+> 💡 **Tip:** The `conda` manager is already [available at MetaCentrum](https://docs.metacentrum.cz/en/docs/software/sw-list/conda-modules), as a module. It includes several preinstalled environments for specific tasks. If you choose to use it, it's probably a good idea to install your programs in an [isolated environment](https://janxkoci.github.io/tutorials/conda_cheatsheet.html#environments), to not interfere with the rest of the conda-managed packages. On the other hand - nothing is stopping you from installing your own miniconda or anaconda in your home directory! 😉️
 
 ### Modules
-MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [**list sorted by topics** here](https://wiki.metacentrum.cz/wiki/MetaCentrum_Application_List).
+MetaCentrum provides quite a lot of software modules for different areas of research. You can see a [list here](https://docs.metacentrum.cz/en/docs/software/alphabet).
 
 A few quick commands to work with modules:
 
@@ -125,25 +125,10 @@ module add samtools-0.1.19 # same as above
 module list # see list of loaded modules
 ```
 
-You can find more details at the [MetaCentrum wiki page](https://wiki.metacentrum.cz/wiki/Application_modules).
+You can find more details in the [MetaCentrum docs](https://docs.metacentrum.cz/en/docs/software/modules).
 
 ### Graphical programs
-It is even possible to run [graphical programs](https://wiki.metacentrum.cz/wiki/Kategorie:Applications_with_GUI), such as RStudio, Tablet, or Geneious (MetaCentrum even provides a license, try `qsub -l geneious=1`). There are two main ways to run GUI programs:
-
-- [X forwarding over ssh](https://wiki.metacentrum.cz/wiki/X-Window)
-- [Remote desktop](https://wiki.metacentrum.cz/wiki/Remote_desktop)
-
-#### X forwarding over ssh
-To use graphical programs over `ssh`, you should include either the argument:
-
-- `-X` (unencrypted X forwarding),
-- `-Y` (encrypted X forwarding), or simply
-- `-XY` (encrypted X forwarding, if available, else unencrypted fallback).
-
-So to connect use e.g. `ssh -XY name@skirit.metacentrum.cz`.
-
-#### Remote desktop
-You can also use either a web browser or a VNC client to use GUI programs. See the [instructions from MetaCentrum](https://wiki.metacentrum.cz/wiki/Remote_desktop) for more details.
+It is even possible to run [graphical programs](https://docs.metacentrum.cz/en/docs/software/graphical-access), such as RStudio, Tablet, or Geneious (MetaCentrum even provides a license, try `qsub -l geneious=1`).
 
 ## Examples
 ### Example 1 - job script
