@@ -26,7 +26,7 @@ After you register an account using your university credentials, you can connect
 
 Authentication can be done using passwords or `ssh` keys - all the cool methods you know and love!
 
-To work at the Linux system, you can check out [my previous guide](https://janxkoci.github.io/tutorials/linux_for_biologists.html) or the [Beginner's guide](https://docs.metacentrum.cz/en/docs/computing/run-basic-job) of MetaCentrum.
+To work at the Linux system, you can check out [my previous guide](https://janxkoci.github.io/tutorials/linux_for_biologists.html) or the [introductory guide](https://docs.metacentrum.cz/en/docs/computing/run-basic-job) of MetaCentrum.
 
 ## Grid peculiarities
 The grid infrastructure has a few peculiar traits that you may need to deal with. Below I'll provide quick solutions I used to deal with common problems.
@@ -35,12 +35,12 @@ For start, **the grid is not a homogeneous cluster**, but rather a network of cl
 
 For example, after you submit a job, the job may be running at a computer that does not see your data - so you have to specify where the data is (i.e. which city and cluster). Luckily, this is quite easy to do, so don't panic and read on! 😎
 
-## Job scheduling with PBS Pro / OpenPBS
-MetaCentrum uses PBS Pro / OpenPBS for scheduling jobs.
+## Job scheduling with OpenPBS (ex PBS Pro)
+MetaCentrum uses OpenPBS for scheduling jobs.
 
-> ℹ️ **Note:** In 2020, PBS Pro was renamed to OpenPBS and [released](https://github.com/openpbs/openpbs) under an open-source license. However, most resources on the internet refer to the old name, including the documentation at MetaCentrum. The name PBS Pro is also used for commercial version (same code, but with paid support).
+> ℹ️ **Note:** In 2020, PBS Pro was renamed to OpenPBS and [released](https://github.com/openpbs/openpbs) under an open-source license. However, many resources on the internet refer to the old name, including the documentation at MetaCentrum. The name PBS Pro is also used for commercial version (same code, but with paid support).
 
-The syntax of PBS Pro differs from Torque PBS, which is another implementation used e.g. at our faculty cluster. You can have a look at the [docs](https://docs.metacentrum.cz/en/docs/computing/advanced) provided by MetaCentrum.
+The syntax of OpenPBS differs from Torque PBS, which is another implementation used e.g. at our faculty cluster. You can have a look at the [quick overview](https://docs.metacentrum.cz/en/docs/computing/resources/pbs-commands) or the [detailed docs](https://docs.metacentrum.cz/en/docs/computing/advanced) provided by MetaCentrum.
 
 The basic command has the following structure:
 
@@ -48,7 +48,15 @@ The basic command has the following structure:
 qsub -A Project_ID -q queue -l select=x:ncpus=y:mem=z,walltime=[[hh:]mm:]ss[.ms] jobscript
 ```
 
-In practice, you can omit a few parameters and mostly focus on specifying resources needed for your job (using the `-l` argument).
+In practice, you can omit a few parameters and mostly focus on specifying resources needed for your job (using the `-l` argument). You can also check the online [qsub assembler](https://docs.metacentrum.cz/en/docs/computing/resources/qsub-compiler).
+
+You can check your jobs in the queue with `qstat`:
+
+```bash
+qstat # show all jobs (will be very long)
+qstat -u my_name # show jobs for given user only
+qstat -xu my_name # show also recently finished jobs
+```
 
 ### Kerberos tickets
 To submit jobs, you also need something called a [**kerberos ticket**](https://docs.metacentrum.cz/en/docs/computing/advanced#kerberos-authentication). You will automatically get a fresh Kerberos ticket after login with a password. **The ticket is valid for 10 hours**. This limitation is especially important if you are using a [terminal multiplexer](https://janxkoci.github.io/tutorials/linux_for_biologists.html#terminal-multiplexers), such as GNU `screen` or `tmux`.
@@ -60,14 +68,14 @@ In case you need a new kerberos ticket (and cannot just logout and login back, s
 The command will ask you for a password to your account. After authentication, a new ticket will be issued for your account and you will be able to submit jobs again.
 
 ### Queues
-When submitting jobs, you should keep in mind a few details about the queues:
+When submitting jobs, you should keep in mind a few details about the [queues](https://docs.metacentrum.cz/en/docs/computing/resources/queues):
 
 - Specify the resources you need - **the defaults are 1 core, 400 MB of RAM, and 24 hours of walltime**. You should explicitly specify longer queue or set a wall time for your job, if required.
-- **Shorter jobs have higher priority**. Very long jobs can wait a long time to even start! You can also **increase your priority** by acknowledging MetaCentrum in your publications.
+- **Shorter jobs have higher priority**. Very long jobs can wait a long time to even start! You can also **increase your priority** by [acknowledging MetaCentrum in your publications](https://docs.metacentrum.cz/en/docs/computing/resources/fairshare).
 - If not explicitly selected, the queue will be **automatically assigned based on wall time** set in the job script or as argument to the `qsub` command.
 
 ### Interactive jobs
-The PBS scheduling system supports interactive jobs. These are useful to test software or (un)compress data, without clogging the login nodes.
+The PBS scheduling system supports [interactive jobs](https://docs.metacentrum.cz/en/docs/computing/advanced#interactive-jobs). These are useful to test software or (un)compress data, without clogging the login nodes.
 
 You can start an interactive job by using the `qsub` command with the `-I` argument, e.g.:
 
