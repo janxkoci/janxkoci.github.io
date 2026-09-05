@@ -8,7 +8,7 @@ icon: 🐊
 #minima:
 #  skin: solarized #auto
 
-remote_theme: codebygina/mediumish-theme-jekyll@v1.0.36 #jekyll/minima@1e8a445
+remote_theme: codebygina/mediumish-theme-jekyll@1.0.36 #jekyll/minima@1e8a445
 plugins:
   - jekyll-remote-theme
 
