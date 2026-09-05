@@ -8,7 +8,7 @@ icon: 🐊
 #minima:
 #  skin: solarized #auto
 
-remote_theme: mmistakes/minimal-mistakes@4.28.1 #jekyll/minima@1e8a445
+remote_theme: LeNPaul/academic@v1.0.0 #mmistakes/minimal-mistakes@4.28.1 #jekyll/minima@1e8a445
 plugins:
   - jekyll-remote-theme
 
