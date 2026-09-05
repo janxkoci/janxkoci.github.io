@@ -5,10 +5,10 @@ icon: 🐊
 
 #theme: minima
 
-minima:
-  skin: solarized #auto
+#minima:
+#  skin: solarized #auto
 
-remote_theme: jekyll/minima@1e8a445
+remote_theme: alshedivat/al-folio #jekyll/minima@1e8a445
 plugins:
   - jekyll-remote-theme
 
