@@ -6,7 +6,7 @@ icon: 🐊
 #theme: minima
 
 minima:
-  skin: auto
+  skin: solarized #auto
 
 remote_theme: jekyll/minima@1e8a445
 plugins:
