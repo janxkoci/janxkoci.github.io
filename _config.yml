@@ -21,3 +21,5 @@ show_excerpts: false
 kramdown:
   parse_block_html: true
 
+url: https://janxkoci.github.io # the base hostname & protocol for your site
+baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
